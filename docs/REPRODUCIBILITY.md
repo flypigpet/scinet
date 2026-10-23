@@ -4,7 +4,7 @@ The reference is *Same Stats, Different Graphs* (CHI 2017), [DOI](https://doi.or
 
 ## Environment and commands
 
-Follow the [README installation steps](../README.md). Use Python 3.12+; Windows/Python 3.12 is the locally validated baseline. `requirements-lock.txt` records the original Windows environment's dependency versions, not a verified lock for every operating system. Linux verification is pending a successful CI run.
+Follow the [README installation steps](../README.md). Use Python 3.12+; Python 3.12 was tested on Windows and Ubuntu in the [initial release CI run](https://github.com/flypigpet/scinet/actions/runs/39979804184). Other Python versions are not yet tested. `requirements-lock.txt` records the original Windows environment's dependency versions, not a verified lock for every operating system. See the [validation record](VALIDATION.md) for the checked commit and scope.
 
 After installation and environment activation:
 

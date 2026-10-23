@@ -19,7 +19,7 @@
 
 ## 安装与离线演示
 
-需要 Python **3.12 或更高版本**和 Git。本地已验证 Windows/Python 3.12；Linux 仍待 CI 成功运行验证。安装时可能需要下载依赖；安装完成后，数值演示无需联网或 AI 账号。
+需要 Python **3.12 或更高版本**和 Git。首版已在 Windows 和 Ubuntu / Python 3.12 上通过安装、40 项测试、离线复算和证据校验；参见[验证记录](docs/VALIDATION.md)。其他 Python 版本尚未测试。安装时可能需要下载依赖；安装完成后，数值演示无需联网或 AI 账号。
 
 ```sh
 git clone https://github.com/flypigpet/scinet.git

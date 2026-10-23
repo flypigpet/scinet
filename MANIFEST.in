@@ -2,3 +2,4 @@ include README.zh-CN.md CITATION.cff CONTRIBUTING.md SECURITY.md CHANGELOG.md
 include requirements.txt requirements-lock.txt run.ps1
 include scripts/acquire.py
 include docs/AI_USAGE.md docs/ASSETS.md docs/REPRODUCIBILITY.md
+include docs/VALIDATION.md

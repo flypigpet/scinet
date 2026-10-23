@@ -19,7 +19,7 @@ This covers neither the full paper nor its animations, original random trajector
 
 ## Install and run the offline demo
 
-Use Python **3.12 or later** and Git. Windows with Python 3.12 is the locally validated platform; Linux support awaits a successful CI run. Installation may download dependencies. Once installed, the numerical demo needs no network access or AI account.
+Use Python **3.12 or later** and Git. The initial release passed installation, 40 tests, an offline audit and evidence verification on Windows and Ubuntu with Python 3.12; see the [validation record](docs/VALIDATION.md). Other Python versions are not yet tested. Installation may download dependencies. Once installed, the numerical demo needs no network access or AI account.
 
 ```sh
 git clone https://github.com/flypigpet/scinet.git
