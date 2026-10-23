@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scinet-audit"
+version = "0.1.0alpha1"
+description = "An evidence-first, offline audit example for Same Stats, Different Graphs"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy==2.3.5",
+    "pandas==3.0.1",
+    "matplotlib==3.11.2",
+    "pytweening==1.2.0",
+    "pypdf==6.14.2",
+    "scipy==1.18.1",
+]
+
+[project.scripts]
+scinet = "scinet.pipeline:main"
+
+[tool.setuptools]
+packages = ["scinet"]
+include-package-data = false
+
+[tool.setuptools.package-data]
+scinet = [
+    "data/DatasaurusDozen.tsv",
+    "data/author_code.py",
+    "data/Datasaurus_data.csv",
+    "data/AUTHOR_LICENSE.txt",
+    "data/AUTHOR_README.md",
+]

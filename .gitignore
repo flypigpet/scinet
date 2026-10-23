@@ -1,0 +1,16 @@
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+vendor/
+sources/
+output/
+build/
+dist/
+*.egg-info/
+.ci-work/
+demo/
+docs/LOCAL_MVP_HISTORY.md
+docs/superpowers/
+.env
+.env.*

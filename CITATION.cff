@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, cite this record and identify the version or commit used. Cite the original paper and dataset separately when relevant."
+type: software
+title: "SciNet: a single-paper evidence-audit prototype"
+authors:
+  - name: "SciNet contributors"
+version: "0.1.0a1"
+repository-code: "https://github.com/flypigpet/scinet"
+url: "https://github.com/flypigpet/scinet"
+license: MIT
+abstract: "An alpha prototype that recomputes selected numerical claims from one paper, executes hash-checked author functions, and records evidence for an optional AI review. Human scientific validation is pending."
+keywords:
+  - reproducibility
+  - evidence-audit
+  - research-software
