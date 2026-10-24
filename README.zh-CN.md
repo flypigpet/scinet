@@ -1,27 +1,24 @@
 # SciNet
 
-**针对单篇科学论文的证据审计原型。** SciNet 复算有限的数值主张，试运行选定的作者函数，并生成本地中文 HTML 证据报告；可选的 Codex 评审用于解释这些已记录的结果。
+**复算论文结果，查看 AI 评审和原始证据。**
 
-[English](README.md) · [复现说明](docs/REPRODUCIBILITY.md) · [AI 使用披露](docs/AI_USAGE.md) · [素材与许可](docs/ASSETS.md)
+[![检查](https://github.com/flypigpet/scinet/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/flypigpet/scinet/actions/workflows/ci.yml)
+[![版本](https://img.shields.io/badge/release-0.1.0a1-orange)](https://github.com/flypigpet/scinet/releases/tag/v0.1.0a1)
+[![MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-**0.1.0a1 是研究软件预览版。** 人工科学验证状态为 **待完成**（`human_validation_pending`）。本项目不能证明 AI 同行评审可靠，也不作论文录用或发表决定。
+[快速开始](#快速开始) · [真实案例](#真实案例) · [文档](#文档) · [English](README.md)
 
-**真实评审公开案例（2026-10-24）：** [查看案例与证据](docs/cases/2026-10-24-datasaurus-live-review/README.zh-CN.md)。新调用明确请求 `gpt-6-astra`，服务端内部模型快照未返回。案例公开原始模型回答、数值结果、来源及局限：2 项有条件支持、1 项支持、1 项未验证。它仍是带检查提示的单篇论文演示，人类专家验证待完成。
+SciNet 计算论文中的数值，运行选定的作者代码，再把结果、来源和可选的 AI 评审放进一份本地 HTML 报告。你可以查看计算过程，也可以沿着评审意见找到对应的证据。
 
-## 覆盖范围
+当前 alpha 版本仅内置一个可运行示例：**Same Stats, Different Graphs（Datasaurus）**。安装后即可离线运行，无需 AI 账号。
 
-目前只有一个案例：Matejka 与 Fitzmaurice 的 *Same Stats, Different Graphs*（CHI 2017）。参见[作者项目页](https://www.research.autodesk.com/publications/same-stats-different-graphs/)、[论文 DOI](https://doi.org/10.1145/3025453.3025912)及[固定版本作者仓库](https://github.com/jmatejka/same-stats-different-graphs/tree/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370)。
+- **核对数字。** 用两种实现复算 13 组数据的 65 个统计量。
+- **运行代码。** 固定随机种子，执行选定的作者函数，记录兼容性修改。
+- **留下记录。** 保存输入、输出和文件哈希；AI 运行还保存提示词、回答和请求的模型。
 
-- 对 13 组、每组 142 个点的数据计算五项统计量，共 65 个值；分别使用 Python 标准库和 pandas/NumPy 路径交叉核对。
-- 分别计算向下取整、向零截断与四舍五入；标准差使用样本标准差（`ddof=1`）。
-- 只执行已检查、哈希固定的作者函数，记录种子、1,000 次提案和兼容性改动。
-- 保存来源、计算结果、中文 HTML 报告及 SHA-256 清单；AI 评审可选。
+## 快速开始
 
-这不包含论文全部实验、动画、原始随机轨迹、收敛或性能主张的复现。数值核对或软件测试通过，不能证明科学评审有效。作者代码运行有超时限制，但**独立进程不等于安全沙箱，不能用于执行任意投稿代码**。
-
-## 安装与离线演示
-
-需要 Python **3.12 或更高版本**和 Git。首版已在 Windows 和 Ubuntu / Python 3.12 上通过安装、40 项测试、离线复算和证据校验；参见[验证记录](docs/VALIDATION.md)。其他 Python 版本尚未测试。安装时可能需要下载依赖；安装完成后，数值演示无需联网或 AI 账号。
+需要 Git 和 Python **3.12+**。已在 Windows、Ubuntu 的 Python 3.12 环境验证。从源码安装：
 
 ```sh
 git clone https://github.com/flypigpet/scinet.git
@@ -29,56 +26,67 @@ cd scinet
 python -m venv .venv
 ```
 
-在 Windows PowerShell 激活环境：
+激活环境：
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-POSIX shell 使用 `source .venv/bin/activate`。然后运行：
+Linux/macOS 使用 `source .venv/bin/activate`。然后运行：
 
 ```sh
 python -m pip install .
 scinet init --workspace demo
 scinet --workspace demo run
+scinet --workspace demo verify latest
 ```
 
-命令会显示新运行目录和报告位置，使用浏览器打开其中的 `report.html`。每次运行创建新目录，离线报告明确显示未运行 AI。PowerShell 中可检查最近一次运行：
+用浏览器打开命令打印的 `REPORT=` 路径。报告中有 13 组散点图、全部计算值、作者代码运行结果，以及对应的证据文件链接。目前报告使用中文。
 
-```powershell
-$run = Get-Content -LiteralPath demo/output/latest.txt
-scinet verify $run
-```
+每次运行都会在 `demo/output/` 下创建独立目录。`verify latest` 检查最近一次运行的文件和证据引用。项目尚未发布到 PyPI。
 
-也可直接传入显示的运行目录：`scinet verify demo/output/run-<timestamp>-<id>`，需替换示例目录名。检查覆盖记录文件与证据引用结构，不能证明科学结论、作者身份或可信发表时间。
+## 真实案例
 
-当前从源码安装，**尚未发布到 PyPI**。
+[查看一次实际运行，包括未经改写的 AI 回答 →](docs/cases/2026-10-24-datasaurus-live-review/README.zh-CN.md)
 
-## 可选 AI 评审
+Datasaurus 案例展示了这套检查能发现什么：
 
-需要另行安装并登录 Codex CLI。`MODEL_ID` 代表你账号可用的模型标识，需自行替换；本文不指定或暗示某个模型可用。调用会使用你的服务额度。
+- 同一批数据在某些两位小数规则下相同，按常规四舍五入却有差异。
+- 保存的项目网页说明给出正相关系数，数据和论文给出的都是负值。
+- 论文正文中的温度比较方向，与伪代码和作者代码相反。
 
-在克隆的仓库目录中，把官方论文和项目页下载到本地工作区，再创建一次新运行：
+案例页列出了每项观察的来源、模型请求、实际结果和待确认问题。这些是具体检查，尚未覆盖整篇论文的全部实验。
+
+## 加入 AI 评审
+
+另行安装并登录 Codex CLI。在克隆的仓库目录中下载论文材料，再启动一次新运行：
 
 ```sh
 python scripts/acquire.py --workspace demo
 scinet --workspace demo run --ai --model MODEL_ID
 ```
 
-下载需要网络。论文文本、网页文本、作者代码、待核验主张和计算结果会发送至模型服务。使用非公开材料前请阅读 [AI 使用披露](docs/AI_USAGE.md)。未登录、调用失败或超时会报错，不会用模板冒充模型输出。
+把 `MODEL_ID` 替换为你账号可用的模型。这一步需要联网并使用你的服务额度。论文文本、网页文本、作者代码、选定的问题和计算结果会发送给模型服务，详见[发送内容与保存记录](docs/AI_USAGE.md)。
 
-对已包含下载材料、且尚未评审的运行，可使用 `scinet --workspace demo review RUN_DIR --model MODEL_ID`，并替换两个占位符。已有评审会保留；再次评审请创建新运行。
+## 当前支持到哪一步
 
-## 如何理解结果
+CLI 目前围绕内置的 Datasaurus 案例编写，接入另一篇论文需要另做检查和运行适配。AI 会看到选定的问题和计算结果，属于带提示的评审；科学判断尚未经独立领域专家验证。
 
-运行目录保存数值结果、作者函数试运行记录、来源和实现快照，以及文件校验清单。AI 运行还保存实际提示词、输入哈希、结构化评审和调用记录；详见[复现说明](docs/REPRODUCIBILITY.md)。
+程序只运行选定的作者函数，有超时限制，**没有执行任意代码的安全沙箱**。文件哈希用于检查内容变化，不能证明论文结论，也不提供可信时间戳。目前没有实现区块链功能。
 
-提示词已经提醒模型关注精度规则以及网页与论文的区别，因此这是**单论文、单 AI 评审者的受引导演示**，不是盲测。论文是知名案例，不能排除模型训练记忆的影响。引用定位和科学判断仍待人工核验，未声称经过独立领域专家同行评审。旧本地运行中未记录的模型身份仍为未知。
+## 文档
 
-哈希只检测相对于清单的变化，无法阻止文件与清单一同被替换。本项目没有数字签名、区块链存证或可信外部时间戳。
+| 文档 | 内容 |
+| --- | --- |
+| [复现说明](docs/REPRODUCIBILITY.md) | 命令、输出文件和计算细节 |
+| [AI 评审说明](docs/AI_USAGE.md) | 输入内容、模型记录和限制 |
+| [验证记录](docs/VALIDATION.md) | 已执行的安装、测试和 CI 检查 |
+| [来源与许可](docs/ASSETS.md) | 数据、代码和论文的出处 |
 
-## 参与和许可
+## 参与开发
 
-参见[贡献指南](CONTRIBUTING.md)、[安全说明](SECURITY.md)、[变更记录](CHANGELOG.md)和[引用元数据](CITATION.cff)。自动化检查用于验证实现，不代表科学验证；CI 成功运行前不宣称其通过。
+可以从一篇有公开数据和代码的论文开始，也可以补充复算检查，或对照原文核验已有发现。参见[贡献指南](CONTRIBUTING.md)和[安全说明](SECURITY.md)。
 
-SciNet 原创代码和文档使用 [MIT 许可](LICENSE)，附带的数值素材与作者代码保留原 MIT 声明。论文和网页拥有独立权利，通过脚本下载至本地，不能套用本项目 MIT 许可。完整本地运行、论文全文、网页快照及原始 AI 日志不公开。公开案例另行列出经检查的结构化模型回答、数值材料和来源链接；详见[素材清单](docs/ASSETS.md)。
+## 许可
+
+SciNet 使用 [MIT 许可](LICENSE)。附带数据和作者代码保留原 MIT 声明；论文和网页沿用各自的许可。另见[素材清单](docs/ASSETS.md)、[变更记录](CHANGELOG.md)和[引用信息](CITATION.cff)。

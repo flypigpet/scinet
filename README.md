@@ -1,27 +1,24 @@
 # SciNet
 
-**An alpha prototype for evidence-based auditing of one scientific paper.** SciNet recomputes selected numerical claims, runs selected author functions, and produces a local HTML evidence report. An optional Codex review interprets those recorded results.
+**Recompute paper results. Inspect the AI review and the evidence behind it.**
 
-[中文说明](README.zh-CN.md) · [Reproducibility](docs/REPRODUCIBILITY.md) · [AI disclosure](docs/AI_USAGE.md) · [Asset provenance](docs/ASSETS.md)
+[![Checks](https://github.com/flypigpet/scinet/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/flypigpet/scinet/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/badge/release-0.1.0a1-orange)](https://github.com/flypigpet/scinet/releases/tag/v0.1.0a1)
+[![MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Version **0.1.0a1** is a research software preview. Human scientific validation is **pending** (`human_validation_pending`). It does not establish that AI peer review is reliable and does not make publication or acceptance decisions.
+[Quick start](#quick-start) · [Example review](#example-review) · [Docs](#documentation) · [中文](README.zh-CN.md)
 
-**Public live-review case (24 October 2026):** [Read the case and evidence](docs/cases/2026-10-24-datasaurus-live-review/README.md). A fresh call explicitly requested `gpt-6-astra`; the backend snapshot was not returned. The case publishes the unchanged model response, numerical results, source provenance and limitations: two qualified findings, one supported finding, and one not tested. It remains a guided, single-paper demonstration with human validation pending.
+SciNet runs numerical checks and selected author code, then puts the results, source references and an optional AI review in a local HTML report. You can inspect the calculations and follow a finding back to its evidence.
 
-## What it covers
+The current alpha includes one runnable example: **Same Stats, Different Graphs (Datasaurus)**. Once installed, the demo runs offline without an AI account.
 
-The single reference case is Matejka and Fitzmaurice's *Same Stats, Different Graphs* (CHI 2017): [paper/project page](https://www.research.autodesk.com/publications/same-stats-different-graphs/), [DOI](https://doi.org/10.1145/3025453.3025912), [pinned author repository](https://github.com/jmatejka/same-stats-different-graphs/tree/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370).
+- **Check the numbers.** Recompute 65 statistics across 13 datasets with two implementations.
+- **Run the code.** Exercise selected author functions with a fixed seed and recorded compatibility changes.
+- **Keep the record.** Save inputs, outputs and file hashes; AI runs also save the prompt, response and model request.
 
-- Recompute five statistics for each of 13 datasets with 142 points: 65 values, using Python's standard library and a separate pandas/NumPy path.
-- Compare floor, truncation and rounding conventions explicitly; standard deviations use `ddof=1`.
-- Run selected, hash-checked author functions for 1,000 proposals with a recorded seed and documented compatibility edits.
-- Save input provenance, numerical results, a Chinese HTML report and a SHA-256 manifest. AI review is optional.
+## Quick start
 
-This covers neither the full paper nor its animations, original random trajectories, convergence or performance claims. A passing numerical check or test suite concerns the implementation, not scientific-review quality. The selected author-code process has a timeout; **it is not a security sandbox for arbitrary code**.
-
-## Install and run the offline demo
-
-Use Python **3.12 or later** and Git. The initial release passed installation, 40 tests, an offline audit and evidence verification on Windows and Ubuntu with Python 3.12; see the [validation record](docs/VALIDATION.md). Other Python versions are not yet tested. Installation may download dependencies. Once installed, the numerical demo needs no network access or AI account.
+Requires Git and Python **3.12+**. Tested on Windows and Ubuntu with Python 3.12. Install from source:
 
 ```sh
 git clone https://github.com/flypigpet/scinet.git
@@ -29,56 +26,67 @@ cd scinet
 python -m venv .venv
 ```
 
-Activate the environment in Windows PowerShell:
+Activate the environment:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-On a POSIX shell, use `source .venv/bin/activate` instead. Then:
+On Linux/macOS, use `source .venv/bin/activate` instead. Then run:
 
 ```sh
 python -m pip install .
 scinet init --workspace demo
 scinet --workspace demo run
+scinet --workspace demo verify latest
 ```
 
-SciNet prints the new run directory and report path. Open its `report.html` in a browser. Each run gets a new directory; the offline report states that AI review was not run. In PowerShell, verify the latest run with:
+Open the printed `REPORT=` path in your browser. The report includes all 13 scatterplots, the calculated values, author-code results and links to the saved evidence. Reports are currently in Chinese.
 
-```powershell
-$run = Get-Content -LiteralPath demo/output/latest.txt
-scinet verify $run
-```
+Each run gets its own folder under `demo/output/`. `verify latest` checks the most recent run's recorded files and evidence references. SciNet is not yet on PyPI.
 
-You can also pass the printed directory directly: `scinet verify demo/output/run-<timestamp>-<id>` (replace the example name). Verification checks recorded files and evidence references; it cannot certify scientific correctness, authorship or an independently trusted timestamp.
+## Example review
 
-This preview is installed from source. It is **not published on PyPI**.
+[Read a real run, including the unchanged AI response →](docs/cases/2026-10-24-datasaurus-live-review/README.md)
 
-## Optional AI review
+The Datasaurus case shows what these checks can catch:
 
-Use a separately installed, authenticated Codex CLI. Choose a model identifier available to your account; `MODEL_ID` below is a placeholder, not a recommended or verified model. The call uses your account's service allowance.
+- The datasets agree under some two-decimal conventions, but differ under ordinary rounding.
+- A captured project-page caption gives a positive correlation; the data and paper give a negative one.
+- The paper's prose reverses a temperature comparison used in its pseudocode and author code.
 
-From the cloned repository, download the official paper and project page into the local workspace, then make a fresh run:
+The case links each observation to its source and records the model request, results and remaining questions. These are specific checks, not a full reproduction of the paper.
+
+## Add an AI review
+
+Install and sign in to the Codex CLI separately. From the cloned repository, download the paper inputs and start a new run:
 
 ```sh
 python scripts/acquire.py --workspace demo
 scinet --workspace demo run --ai --model MODEL_ID
 ```
 
-The acquisition step requires internet access. The paper, webpage text, author code, claims and calculation results are sent to the model service for review. Read [AI usage and limitations](docs/AI_USAGE.md) before using private material. Missing authentication, failed calls and timeouts do not produce a fabricated review.
+Replace `MODEL_ID` with a model available to your account. This step needs network access and uses your account's service allowance. Paper text, webpage text, author code, selected claims and calculation results are sent to the model service. See [what is sent and recorded](docs/AI_USAGE.md).
 
-To review an existing, unreviewed run that already contains the downloaded paper inputs, use `scinet --workspace demo review RUN_DIR --model MODEL_ID`, replacing both placeholders. A completed review is preserved; create another run for another review.
+## Current scope
 
-## Evidence and limitations
+The CLI is built around the bundled Datasaurus example; adding another paper requires its own checks and execution setup. The AI receives selected questions and computed results. This is a guided review, and its scientific judgments have not been independently validated by domain experts.
 
-Each run records `metrics.json`, `author_smoke.json`, input provenance, an implementation snapshot and `manifest.json`. AI runs additionally record the prompt, input hashes, structured review and call provenance. See [reproduction details](docs/REPRODUCIBILITY.md) for how to inspect them.
+Only selected author functions run. The process has a timeout, **not a sandbox for arbitrary code**. File hashes help detect changes; they do not certify a paper's conclusions or provide a trusted timestamp. No blockchain is implemented.
 
-The review prompt already directs attention to precision conventions and the distinction between paper and webpage claims. This is a **guided, single-paper demonstration with one AI reviewer**, not a blinded benchmark. Familiarity with this well-known example may affect the model. Human checks of citations and scientific judgments remain pending; no independent domain-expert review is claimed. Historical local calls with an unreported model remain recorded as unknown.
+## Documentation
 
-Hashes detect changes relative to a manifest. A person who replaces both files and their manifest can evade that check; this project has no trusted signatures, blockchain or external timestamp service.
+| Guide | Contents |
+| --- | --- |
+| [Reproduce a run](docs/REPRODUCIBILITY.md) | Commands, output files and calculation details |
+| [AI review](docs/AI_USAGE.md) | Inputs, model records and limitations |
+| [Validation](docs/VALIDATION.md) | Recorded installation, test and CI results |
+| [Sources and licenses](docs/ASSETS.md) | Dataset, code and paper provenance |
 
-## Contributing and licensing
+## Contributing
 
-See [contribution guidance](CONTRIBUTING.md), [security guidance](SECURITY.md), [changes](CHANGELOG.md) and [citation metadata](CITATION.cff). Automated checks can support code review but cannot establish scientific validity. No CI result is claimed before its workflow has run successfully.
+Good places to help: add a paper with public data and code, improve a reproduction check, or review a finding against its source. See [CONTRIBUTING.md](CONTRIBUTING.md) and [security guidance](SECURITY.md).
 
-SciNet's original code and documentation are [MIT licensed](LICENSE). Bundled numerical fixtures and author code retain their original MIT notice. The paper and project webpage have separate rights and are downloaded locally; SciNet's license does not relicense them. Full local runs, paper full text, website snapshots and raw AI logs are excluded from publication. The public case is a separately inventoried subset with source links, numerical artifacts and a reviewed structured model response. See the [asset register](docs/ASSETS.md).
+## License
+
+SciNet is [MIT licensed](LICENSE). Bundled data and author code retain their original MIT notice; papers and webpages keep their own licenses. See the [asset register](docs/ASSETS.md), [changelog](CHANGELOG.md) and [citation metadata](CITATION.cff).
