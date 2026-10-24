@@ -1,0 +1,44 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/worm_comparisons.json",
+    "original_sha256": "2736a71cf00b9a2eb34417768bb8fb4b3edd9971f77172d20956647fd8904963",
+    "omitted_json_pointers": [
+      "/power_vs_exponential/pointwise_loglikelihoods",
+      "/power_vs_truncated/pointwise_loglikelihoods"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "case": "worm_comparisons",
+    "started_at_utc": "2026-10-24T03:48:10.107419+00:00",
+    "power_vs_exponential": {
+      "R": 16.384325448885427,
+      "p": 0.024184177728485495,
+      "xmin": 4.0,
+      "tail_n": 112,
+      "alpha": 3.0680986449882477,
+      "alternative_parameters": {
+        "parameter1": 0.32275943396226453
+      },
+      "optimizer_warning_status": "Original Distribution.fit discards warnflag; no claim of optimizer convergence."
+    },
+    "power_vs_truncated": {
+      "R": -0.07065175495347509,
+      "p": 0.7069885705767462,
+      "xmin": 4.0,
+      "tail_n": 112,
+      "alpha": 3.0680986449882477,
+      "alternative_parameters": {
+        "parameter1": 3.134208527402306,
+        "parameter2": 0.0007835846624815305
+      },
+      "optimizer_warning_status": "Original Distribution.fit discards warnflag; no claim of optimizer convergence."
+    },
+    "status": "completed",
+    "finished_at_utc": "2026-10-24T03:48:12.111739+00:00",
+    "elapsed_seconds": 2.004193500004476
+  }
+}

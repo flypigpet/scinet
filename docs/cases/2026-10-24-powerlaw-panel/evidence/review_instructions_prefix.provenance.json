@@ -1,0 +1,6 @@
+{
+  "redacted": true,
+  "original_artifact": "prompt.txt",
+  "original_sha256": "86dc6133079ca501f13ba6a9464a46961bcc1bcc4464d09cd11132efc07834fa",
+  "method": "Instruction prefix through the line before the JSON source packet. The paper, code, data and full prompt are withheld. A final newline is added."
+}

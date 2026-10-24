@@ -1,0 +1,46 @@
+{
+  "publication": {
+    "redacted": false,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/runtime/compatibility.json",
+    "original_sha256": "c98981dc8fd412fa96e8e2426479b2cc21248e6711153874ccd5b902453ba949",
+    "omitted_json_pointers": [],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "source_sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+    "adapter_sha256": "3c4631be2ca87c6e2eab261f7a62bace27b33f845742c2dfe2922b093188a886",
+    "changes": [
+      {
+        "change": "expandtabs(8)",
+        "reason": "Preserve Python tab stops in a spaces-only adapter."
+      },
+      {
+        "change": "lib2to3: fix_print, fix_raise, fix_xrange, fix_map, fix_dict, fix_filter, fix_zip",
+        "reason": "Python 2 syntax and eager sequence semantics on Python 3."
+      },
+      {
+        "change": "\\b(data|parameters)\\s*==\\s*None -> \\1 is None",
+        "count": 12,
+        "reason": "Use identity checks rather than ambiguous modern NumPy array comparisons."
+      },
+      {
+        "change": "\\b(data|parameters)\\s*!=\\s*None -> \\1 is not None",
+        "count": 2,
+        "reason": "Use identity checks rather than ambiguous modern NumPy array comparisons."
+      },
+      {
+        "change": "mask=-good_values -> mask=~good_values",
+        "count": 1,
+        "reason": "Logical mask inversion for current NumPy; exact original NumPy behavior is not established."
+      },
+      {
+        "change": "scipy.misc.comb -> scipy.special.comb",
+        "count": 1,
+        "reason": "Relocated SciPy API; the legacy negative-binomial path is not certified."
+      }
+    ],
+    "limit": "Compatibility edits are disclosed; the historical execution environment is not reconstructed. Original Code S2 is used as preprocessing reference, not executed in full."
+  }
+}

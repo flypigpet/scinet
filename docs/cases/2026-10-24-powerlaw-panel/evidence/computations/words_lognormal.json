@@ -1,0 +1,32 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/words_lognormal.json",
+    "original_sha256": "478041ae5644ef6b89ec99109a46b79ee0d8544a651ef813bb155845a5177824",
+    "omitted_json_pointers": [
+      "/comparison/pointwise_loglikelihoods"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "case": "words_lognormal",
+    "started_at_utc": "2026-10-24T03:48:12.455954+00:00",
+    "comparison": {
+      "R": 0.9280178811632647,
+      "p": 0.4258456944033603,
+      "xmin": 7.0,
+      "tail_n": 2958,
+      "alpha": 1.9501572269094178,
+      "alternative_parameters": {
+        "parameter1": -33.550977262897774,
+        "parameter2": 6.281296741110538
+      },
+      "optimizer_warning_status": "Original Distribution.fit discards warnflag; no claim of optimizer convergence."
+    },
+    "status": "completed",
+    "finished_at_utc": "2026-10-24T03:48:13.284555+00:00",
+    "elapsed_seconds": 0.8287169000032009
+  }
+}

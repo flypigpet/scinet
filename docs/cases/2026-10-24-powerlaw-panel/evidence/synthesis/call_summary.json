@@ -1,0 +1,71 @@
+{
+  "publication": {
+    "redacted": true,
+    "source_run": "panel-powerlaw-20261024-v3-synthesis3",
+    "original_artifact": "synthesis/call.json",
+    "original_sha256": "8c544cc9775594ec6ca83f5f5acdc8b2a06644a0b19b4d04aa7a9bf936a5241a",
+    "method": "Selected fields only; omit invocation, cwd, context environment names and thread identifier. Raw logs remain local."
+  },
+  "summary": {
+    "protocol_version": 1,
+    "engine": "Codex CLI",
+    "model_requested": "gpt-6.1-sol",
+    "model_resolved": null,
+    "backend_model_status": "unknown",
+    "model_resolution_note": "Requested identifiers may be aliases. CLI events do not attest an immutable backend model version.",
+    "status": "completed",
+    "exit_code": 0,
+    "cli_version": "codex-cli 0.163.0-alpha.11.2",
+    "cli_executable_sha256": "c81ed464e5e7cafd09a5fa26af390c480bed8e9fab2a87a54b285fbd56e7122a",
+    "request_config": {
+      "suppress_unstable_features_warning": true,
+      "model_reasoning_effort": "medium",
+      "project_doc_max_bytes": 0,
+      "web_search": "disabled",
+      "features.view_image": false,
+      "features.shell_tool": false,
+      "features.apps": false,
+      "features.plugins": false,
+      "features.hooks": false,
+      "features.multi_agent": false,
+      "features.memories": false,
+      "features.browser_use": false,
+      "features.computer_use": false,
+      "features.image_generation": false,
+      "features.goals": false,
+      "features.sleep_tool": false,
+      "features.tool_suggest": false,
+      "features.workspace_dependencies": false,
+      "features.worktrees": false,
+      "features.skip_host_skill_discovery": true
+    },
+    "started_at_utc": "2026-10-24T04:06:22.165947+00:00",
+    "finished_at_utc": "2026-10-24T04:12:17.300402+00:00",
+    "elapsed_seconds": 355.1295586999986,
+    "timeout_seconds": 600,
+    "usage": [
+      {
+        "input_tokens": 295704,
+        "cached_input_tokens": 295424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5539,
+        "reasoning_output_tokens": 0
+      }
+    ],
+    "prompt_sha256": "ad39f3153b4ef51aecbd7c8d99f473d1c620fea06b2de6cefc7e4f48823ae1b0",
+    "schema_sha256": "b9ccea7da8236938ec1c7591d72a2ea0f3f52e204d47293f824a2160f94bad76",
+    "response_sha256": "71b40f33cc98a985d78e547d365fa2dcc3564e390c0dcd67d0e0569acbdc3312",
+    "events_sha256": "c6fa9923032eba890d04e50eb9dd57fda4ae9c05d31c1c0beddb6e5461028ca6",
+    "stderr_sha256": "c389903231f8aa82d2ef858b4c5d9be807237e4fb258fae23bd1f27fdb1e70ab",
+    "tool_calls_observed": false,
+    "fresh_call": true,
+    "session_mode": "fresh_ephemeral_no_resume",
+    "isolation_limit": "Fresh external empty cwd; known tools disabled by configuration and tool events rejected. Not a security sandbox or proof of absent backend instructions, training familiarity, or caching.",
+    "item_types": [
+      "agent_message"
+    ],
+    "turn_completed_count": 1,
+    "validation_errors": [],
+    "transport_diagnostics": []
+  }
+}

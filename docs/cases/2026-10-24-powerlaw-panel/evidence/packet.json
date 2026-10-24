@@ -1,0 +1,73 @@
+{
+  "format": "scinet.paper-packet.v1",
+  "paper": {
+    "title": "powerlaw: A Python Package for Analysis of Heavy-Tailed Distributions",
+    "doi": "10.1371/journal.pone.0085777"
+  },
+  "files": [
+    {
+      "role": "paper",
+      "source_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0085777&type=printable",
+      "include_in_review": false,
+      "sha256": "578d1c7bfa991141f00575acea8a243cbf534608c6e1cb497705a7064bb54799",
+      "path": "inputs/paper.pdf",
+      "bytes": 448326
+    },
+    {
+      "role": "code",
+      "source_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0085777.s001&type=supplementary",
+      "include_in_review": true,
+      "sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+      "path": "inputs/author_powerlaw.py",
+      "bytes": 96837
+    },
+    {
+      "role": "code",
+      "source_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0085777.s002&type=supplementary",
+      "include_in_review": true,
+      "sha256": "809d7a28227ede36ea90e1b611ef56a2575c3cd630b0c6894dd001e8554c3bdb",
+      "path": "inputs/author_figures.py",
+      "bytes": 18159
+    },
+    {
+      "role": "data",
+      "source_url": "https://raw.githubusercontent.com/powerlaw-devs/powerlaw/d2b563a7a08bad96b4085fa69f351e9d9a20b1e7/manuscript/blackouts.txt",
+      "include_in_review": true,
+      "sha256": "8187543b5700a75974661dd8349e172a83ce2d0972e79a81a7fcc06eafb96728",
+      "path": "inputs/blackouts.txt",
+      "bytes": 1367
+    },
+    {
+      "role": "data",
+      "source_url": "https://raw.githubusercontent.com/powerlaw-devs/powerlaw/d2b563a7a08bad96b4085fa69f351e9d9a20b1e7/manuscript/words.txt",
+      "include_in_review": true,
+      "sha256": "cef3521f0f1d817df43cf35ef1f717e6f72d71f549646a51ba04acdc45a9b160",
+      "path": "inputs/words.txt",
+      "bytes": 40029
+    },
+    {
+      "role": "data",
+      "source_url": "https://raw.githubusercontent.com/powerlaw-devs/powerlaw/d2b563a7a08bad96b4085fa69f351e9d9a20b1e7/manuscript/worm.txt",
+      "include_in_review": true,
+      "sha256": "8754d06905e1d2318e19ba3e8b936f653657893b9ff8ce9fbc51ad9b26f992ac",
+      "path": "inputs/worm.txt",
+      "bytes": 6975
+    },
+    {
+      "role": "license",
+      "source_url": "https://raw.githubusercontent.com/powerlaw-devs/powerlaw/d2b563a7a08bad96b4085fa69f351e9d9a20b1e7/LICENSE",
+      "include_in_review": true,
+      "sha256": "ec7e397e8ae8c4e0cf1571f61f435fbdec8f28080fce4befc96fd13554a726ef",
+      "path": "inputs/AUTHOR_LICENSE.txt",
+      "bytes": 1084
+    },
+    {
+      "role": "paper",
+      "source_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0085777&type=printable",
+      "include_in_review": true,
+      "sha256": "83b2ec926d17aa4eae8e47a336d0781fd6bb2775a0fd061cdcad32d7ff3647ef",
+      "path": "inputs/paper.txt",
+      "bytes": 49209
+    }
+  ]
+}

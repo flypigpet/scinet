@@ -1,0 +1,222 @@
+{
+  "summary": "所供论文与代码支持其主要工程贡献：将尾部范围选择、分布拟合、候选模型比较和可视化组织成统一接口，并明确讨论近似、参数限制与独立性假设。静态阅读也发现有限上界归一化、KS 拟合选项及嵌套比较参数处理方面的具体不一致。模拟验证覆盖有限，不能据此确认所有分布及选项的正确性。本审查仅依据所供文本，未运行代码、计算统计量或完成复现。",
+  "findings": [
+    {
+      "id": "F1",
+      "title": "统一接口和尾部诊断具有明确的实现支持",
+      "assessment": "supported",
+      "explanation": "Fit.find_xmin 逐一考察候选阈值并保存距离、指数及标准误；Fit.__getattr__ 按需构建分布，并向候选分布传递共同的拟合数据和范围。这支持论文关于简化分析流程、检查多个尾部起点和比较候选模型的工程主张。它不构成数值准确性、运行性能或相对其他软件优越性的验证。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第2页 Fit 与 Distribution 架构说明；第8页 Multiple Possible Fits；第10页 The Utility and Future of powerlaw"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.find_xmin；Fit.__getattr__；Fit.distribution_compare"
+        }
+      ],
+      "proposed_check": "对同一数据记录所有候选 xmin、尾部样本量及距离，独立核对最终选择；确认每次模型比较使用完全相同的观测和支持范围。"
+    },
+    {
+      "id": "F2",
+      "title": "有限 xmax 的概率归一化在多个实现路径中不一致",
+      "assessment": "concern",
+      "explanation": "论文宣称支持有上界的分布。代码确实剔除超过 xmax 的数据，但 Power_Law 等子类的连续 PDF 归一化常数没有使用 xmax，而 Distribution.cdf 使用了上界修正。对于离散幂律，PDF 的归一化使用 xmax+1，CDF 却使用 xmax，与包含 xmax 的数据筛选及 P(X<x) 约定不一致。另在离散 round 分支，注释称扩展上界，实际执行 self.xmax -= .5，可能导致上下积分端点数组被不同程度裁剪。这些是代码中可定位的不一致；对论文具体拟合值的影响尚未量化。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第4—5页 Identifying the Scaling Range 与图3；第10页关于支持有无 xmax 各子类型的说明"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.cdf 的 norm 上界修正；Distribution.pdf 的 discrete_approximation=='round' 分支；Power_Law._pdf_continuous_normalizer；Power_Law._pdf_discrete_normalizer；trim_to_range"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 3 单元：Fit(data, discrete=True, xmax=1000)"
+        }
+      ],
+      "proposed_check": "固定合法参数，分别核对有限区间上的 PDF 积分或 PMF 求和是否为1、CDF 增量是否等于概率质量，并检查 xmax 端点。对 round 分支显式包含 xmax 观测，检查返回长度、端点概率及调用后对象边界是否恢复。"
+    },
+    {
+      "id": "F3",
+      "title": "常用幂律拟合路径没有遵循 fit_method='KS'",
+      "assessment": "concern",
+      "explanation": "论文第9页将 fit_method='KS' 描述为通过最小化 KS 距离估计参数。Distribution.fit 实现了该分支，但 Power_Law.fit 在无 xmax 的连续情形，以及启用离散近似的情形，直接使用似然估计公式，没有先检查 fit_method。只要结果满足参数范围，就不会进入通用 KS 优化器。因此改变 xmin 的选择距离与改变给定 xmin 下的参数估计方法需要区分；所供代码不能支持这两条快捷路径上的 KS 参数拟合承诺。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第9页 Maximum Likelihood and Independence Assumptions，fit_method='KS' 段"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Power_Law.fit 的前两个条件分支；Distribution.fit 的 fit_method=='KS' 分支"
+        }
+      ],
+      "proposed_check": "在固定 xmin、无 xmax 的同一数据上分别请求 Likelihood 和 KS，并独立扫描 alpha 对应的距离；选择两种目标最优点不同的数据，检查 KS 请求是否真正选择距离最小的参数。"
+    },
+    {
+      "id": "F4",
+      "title": "嵌套比较的显式设置可能被自动检测覆盖",
+      "assessment": "concern",
+      "explanation": "论文允许用户通过 nested 参数指定检验类型。代码条件为 '(dist1 in dist2) or (dist2 in dist1) and nested==None'，其中 None 检查只约束后半部分。当第一个名称包含于第二个名称时，显式 nested=False 仍会被设为 True；交换顺序则可能保留 False。该逻辑直接影响所调用的 p 值公式。此外，名称包含关系本身不是一般性的统计嵌套判据；幂律对应截断参数趋于零的边界情形，其检验校准仍需单独验证。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第8页 Nested Distributions"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.distribution_compare 的嵌套检测条件；模块级 distribution_compare 的同类条件；loglikelihood_ratio 的 nested 分支"
+        }
+      ],
+      "proposed_check": "分别交换 power_law 与 truncated_power_law 的顺序，并测试 nested=None、True、False。检查显式设置是否保留，以及同一种检验下 R 是否变号、p 是否不变；另用完整重拟合模拟评估边界零假设下的拒绝率。"
+    },
+    {
+      "id": "F5",
+      "title": "指数分布将合法的零对数似然改写为极小值",
+      "assessment": "concern",
+      "explanation": "Exponential.loglikelihoods 在连续且无 xmax 时直接计算对数密度，随后把所有等于0的结果替换成极小概率的对数。对数密度为0表示密度为1，并不表示概率下溢。该处理与 Exponential.pdf 的零概率保护含义不同，可能在特定参数、观测或计量单位下改变优化目标和分布比较。材料不足以证明论文展示的数据结果触发了这一条件。",
+      "evidence": [
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Exponential.loglikelihoods 中 loglikelihoods[loglikelihoods==0] 的赋值；Exponential.pdf"
+        },
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第5页以指数分布为最低限度替代模型的比较说明"
+        }
+      ],
+      "proposed_check": "以 Lambda=1、观测等于 xmin 为边界测试，检查 loglikelihoods 与 log(pdf) 是否一致；再检查邻近参数和数据单位变换是否造成异常的目标函数跳变。"
+    },
+    {
+      "id": "F6",
+      "title": "模拟验证设计清楚，但证据覆盖不足",
+      "assessment": "uncertain",
+      "explanation": "图S1说明与 validate 函数一致：每组10次、每次10000个观测，考察多个 alpha 和 xmin，并区分连续与精确离散幂律。这是可追踪的验证设计。然而生成与拟合均使用同一包，可能共享错误；实际循环没有包含 discrete_estimate，也没有覆盖有限 xmax、其他候选分布或比较检验的 p 值。所供材料未包含图S1图像、逐次模拟结果或 HDF 缓存，因此不能确认参数恢复表现。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第7页 Creating Simulated Data；第10页 Figure S1 图注"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Supporting Information 下 validate；n_trials=10、n_data=10000、theoretical_alphas、distribution_types；HDF 读取与保存分支"
+        }
+      ],
+      "proposed_check": "先按原网格记录逐次结果及随机种子，再用独立定义的生成器交叉验证；分别报告偏差、离散程度和失败率，并将近似离散、有限上界及候选模型比较作为独立扩展测试。"
+    },
+    {
+      "id": "F7",
+      "title": "论文承认模型不可区分，但相对拟合不能证明绝对适配或等价",
+      "assessment": "concern",
+      "explanation": "论文要求比较替代模型，并在第9页明确指出相关观测会影响推断、KS 拟合不能修复似然比检验的相关性问题，这是重要优点。不过，第6页以 p=0.426 描述词频的幂律与对数正态为同样好的拟合，只能支持未检出差异，不能证明等价或两者均充分描述数据。第5页偏重相对比较的建议，也不能排除所有候选分布都不适配。提供的一维数值序列不足以独立评估原始采样依赖结构。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第5页 Comparing Candidate Distributions；第6页词频比较 (0.928, 0.426)；第9页 Maximum Likelihood and Independence Assumptions"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "loglikelihood_ratio；Distribution_Fit.__getattr__ 的 name=='p' 分支"
+        },
+        {
+          "path": "inputs/words.txt",
+          "locator": "全文：仅包含词频数值，没有词项、文本位置或采样分组"
+        }
+      ],
+      "proposed_check": "在复现相对比较后，增加包含重新选择 xmin 和重新估参的绝对拟合检查；如取得采样结构，再采用保留依赖关系的重采样。将未显著区分、等价和绝对拟合合格分别报告。"
+    }
+  ],
+  "reproduction_targets": [
+    {
+      "id": "R1",
+      "description": "复现停电数据的基础拟合及单位处理",
+      "paper_expected": "第2—3页报告 alpha=2.273、sigma=0.167、xmin=230、D=0.061；幂律对指数分布的原始 R=12.755、p=0.152，第5页标准化 R=1.431。",
+      "procedure": "使用所供 blackouts 数值，严格遵循绘图脚本在图1之后除以1000的处理，再调用默认连续 Fit。记录阈值、尾部样本量、alpha、sigma、D、原始及标准化 R 和 p；另以原始单位拟合作为尺度一致性检查，区分输出差异与印刷舍入。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第2页基础示例；第3页 Identifying the Scaling Range；第5页标准化似然比示例"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 1 之后 blackouts = blackouts/10**3；Introduction 与 Comparing Candidate Distributions 单元"
+        },
+        {
+          "path": "inputs/blackouts.txt",
+          "locator": "全文单列观测，开头为570000、210882、190000"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "description": "复现阈值限制与图5的多个候选尾部",
+      "paper_expected": "第8页默认结果约为 (alpha,sigma,xmin)=(2.27,0.17,230)，sigma_threshold=.1 时约为 (1.78,0.06,50)；阈值为.001时回退至默认结果并设置 noise_flag=True。",
+      "procedure": "沿用停电数据的千人单位，分别测试无阈值、.1和.001，保存 xmins、Ds、sigmas 及合格候选集合。独立在合格集合中选最小距离，核对代码使用 mask=-good_values 的行为；该布尔负号表达式的实际行为应结合记录的 NumPy 版本检查，不能预设结果。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第8页 Restricted Parameter Range、Multiple Possible Fits、No Possible Fits；第9页图5图注"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.find_xmin 中 good_values、masked_array 与 noise_flag 分支"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 5 单元及 No Possible Fits 单元"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "description": "复现两个离散数据集的候选分布比较",
+      "paper_expected": "第6页线虫数据的幂律对指数比较为 (16.384,0.024)，对截断幂律为 (-0.081,0.687)；词频的幂律对对数正态比较为 (0.928,0.426)。",
+      "procedure": "按脚本剔除 worm 中的零值，对两个数据集分别设置 discrete=True，并保留默认离散近似配置。记录 xmin、样本量、全部拟合参数、逐点对数似然与最终比较值；交换分布顺序核对符号和 p 值。另将 estimate_discrete=False 作为敏感性检查，避免把该结果混作原始复现。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第6页 Generative Mechanisms 的三个数值示例"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "数据读取后的 worm = worm[worm>0]；Generative Mechanisms 与 Figure 4 单元"
+        },
+        {
+          "path": "inputs/worm.txt",
+          "locator": "全文单列观测，首两项为零"
+        },
+        {
+          "path": "inputs/words.txt",
+          "locator": "全文单列词频，前三项为14086、6414、6260"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "description": "复核图S1的参数恢复实验",
+      "paper_expected": "第10页图S1图注说明每个配置使用10组、每组10000个样本，展示拟合 alpha 与 xmin 的均值及标准差；具体数值未知，因为未提供图S1及其结果表。",
+      "procedure": "使用脚本列出的 alpha 网格、由对数间隔取整去重得到的 xmin 网格，以及 continuous、discrete 两种模式。明确指定随机种子，记录每次估计及失败情况，并禁止未经核验直接复用既有缓存。将原流程重复与独立生成器交叉验证分别报告；比较统计性质，不要求单次随机示例精确返回 (5.30,2.50)。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第7页 Creating Simulated Data；第10页 Figure S1 图注"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Supporting Information 的 validate、参数网格、df 聚合和四面板绘图单元"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "未使用工具、外部浏览、其他文件或此前对话；所有发现均来自所供文本的静态阅读，所有检查均为建议，未执行代码或统计计算。",
+    "论文仅以提取文本提供，不能核查图像细节；部分负号、公式及比较符号可能存在提取失真，因此未将可疑排版数值直接判为统计错误。",
+    "缺少 Code S3 笔记本、图S1、模拟缓存、随机种子、运行日志及锁定依赖版本。代码包含 Python 2 语法，绘图脚本还使用未在普通脚本中显式导入的交互式名称，原始执行环境需要重建。",
+    "提供的数据来源元信息指向固定仓库提交，而绘图脚本的下载地址指向 master；没有材料证明两者与发表时实际使用的数据逐字节一致。提供的哈希未被独立核验。",
+    "静态定位的不一致不自动证明论文全部数值或结论错误；其触发条件、影响范围和效应大小仍需测试。对架构和方法说明的肯定也不是复现成功。",
+    "未提供观测级来源、时间、网络邻接关系或文本采样结构，无法直接核查独立性、筛选偏差及数据生成机制。"
+  ]
+}

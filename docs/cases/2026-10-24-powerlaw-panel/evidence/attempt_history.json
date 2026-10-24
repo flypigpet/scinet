@@ -1,0 +1,200 @@
+{
+  "editorial_record": true,
+  "attempts": [
+    {
+      "run_id": "panel-powerlaw-20261024",
+      "state": "review_failed",
+      "description": "Review startup failed because a CLI configuration key was unsupported; no accepted review freeze or computation.",
+      "root_sha256": "76427b6ffe947b22fe8b2335f59008886bc224a5b09d239ca9801ea1e0eeeef9",
+      "calls": [
+        {
+          "path": "reviews/r1/call.json",
+          "sha256": "48dd0cf1972f60daff77ebabafaa8f4ce4a3e795c4c99f37e4d9184af4e64ba4",
+          "status": "cli_failed",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": null,
+          "events_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "74cb00300ed4a4c23ba979d30d34218cd356e4bfb55b81f10a3dc832d52c56c7",
+          "started_at_utc": "2026-10-24T03:28:14.881384+00:00",
+          "finished_at_utc": "2026-10-24T03:28:17.450765+00:00"
+        }
+      ]
+    },
+    {
+      "run_id": "panel-powerlaw-20261024-v2",
+      "state": "review_failed",
+      "description": "One response returned but was rejected because a startup warning appeared as an error event; no accepted review freeze or computation.",
+      "root_sha256": "93373817d6f90bcc341575a3e1e9d5ef268a9e33eca95a84570ad29fd09363bb",
+      "calls": [
+        {
+          "path": "reviews/r1/call.json",
+          "sha256": "09ec4267c6a28f8277023439a6b3ca4c495f124ab14f93d14755aafb41dc983c",
+          "status": "protocol_violation",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": "b0c2da9691858970ba75f1bc4ad890c2942f8ca4583b5d7bdebe2382081260c0",
+          "events_sha256": "c0443f1b2e0594be7987690d278eb32680c307b4769a3e49bb0243363cc545b6",
+          "stderr_sha256": "7fdf876d08260a6ccfca1d795eb284a735e0bdfc3f36e59eb03d3d03cc15ee89",
+          "started_at_utc": "2026-10-24T03:32:25.672243+00:00",
+          "finished_at_utc": "2026-10-24T03:34:03.579503+00:00"
+        }
+      ]
+    },
+    {
+      "run_id": "panel-powerlaw-20261024-v3",
+      "state": "synthesis_failed",
+      "description": "All three reviews and computation completed. Synthesis exceeded the CLI input character limit before a response.",
+      "root_sha256": "5b07e0672418e7f7da74decf3a8f48db9d1726e790de39a1fd27f720989b292b",
+      "calls": [
+        {
+          "path": "reviews/r1/call.json",
+          "sha256": "38b7e4ecdc14e995cb453763d5ec1e959acd8388652ddbbb34d422d98ef81730",
+          "status": "completed",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": "1eed6ff3a51187d97580031a1af881cea31db6af2e3b8237f5e9171269b49036",
+          "events_sha256": "c03a48f0d0b7b9623e3032c140cba6c4cf13ff91f0e45d2643e579d56ab82a51",
+          "stderr_sha256": "ff3902c36c914f6c1cb8c6dfecbe291eaf3ea5fd83d3b115c2b1468fd8dfaf1e",
+          "started_at_utc": "2026-10-24T03:41:00.742906+00:00",
+          "finished_at_utc": "2026-10-24T03:42:24.571436+00:00"
+        },
+        {
+          "path": "reviews/r2/call.json",
+          "sha256": "2551ba2911751e225c8d6d1caad9a3a72f2cbe48753ca887a761271c367a82ba",
+          "status": "completed",
+          "model_requested": "gpt-6-astra",
+          "response_sha256": "1323fcc60c495cdf5f40261098f068086fe9c37263f3b7d7f47850b10f3ac5c1",
+          "events_sha256": "ee0989b77a75fdcbf5616e12e716893366db63112b108676377dfb372105336f",
+          "stderr_sha256": "216451bb4921b8fa9c451fb735a21139a706347b592a05515492127288582f47",
+          "started_at_utc": "2026-10-24T03:42:24.611716+00:00",
+          "finished_at_utc": "2026-10-24T03:44:51.187665+00:00"
+        },
+        {
+          "path": "reviews/r3/call.json",
+          "sha256": "68d92396b14a47cc2ccb32294661fd2bde4a4abf6fe1c651514da562546692c4",
+          "status": "completed",
+          "model_requested": "gpt-6-sol",
+          "response_sha256": "57f862d77f35311b4c02fba808b7d967983e8ea01061efb3189843e4833ccd28",
+          "events_sha256": "77d114705e6959b05f332d07b1664b9855d15e78c9f4e614f9a979d334b7cb9d",
+          "stderr_sha256": "2f34f24b4eb33a333b574d444df18d34cd97b3c77e7e594b3f6d06a94333388f",
+          "started_at_utc": "2026-10-24T03:44:51.220620+00:00",
+          "finished_at_utc": "2026-10-24T03:45:53.963935+00:00"
+        },
+        {
+          "path": "synthesis/call.json",
+          "sha256": "ddd9cd242ce065ee522d392dc383ba68e1f0714e65bdd654e14fb1ad4f109faa",
+          "status": "cli_failed",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": null,
+          "events_sha256": "f201819c1af51022d23c3811e515e36871bf2b2d1941fbddc31148cf2c2d4790",
+          "stderr_sha256": "188d552320840b0e0d373e442be7b4483475102689f2c1d178df1525b34634c1",
+          "started_at_utc": "2026-10-24T03:48:49.110330+00:00",
+          "finished_at_utc": "2026-10-24T03:48:54.393878+00:00"
+        }
+      ]
+    },
+    {
+      "run_id": "panel-powerlaw-20261024-v3-synthesis2",
+      "state": "synthesis_failed",
+      "description": "Only synthesis retried with an explicit 17-file computation evidence selection. A full response returned but the validator rejected a recovered connection diagnostic; the attempt remains failed.",
+      "root_sha256": "7710a2ecf7e70da36964c91a183a550373f47884bddf704588d1f47772dbca26",
+      "calls": [
+        {
+          "path": "reviews/r1/call.json",
+          "sha256": "38b7e4ecdc14e995cb453763d5ec1e959acd8388652ddbbb34d422d98ef81730",
+          "status": "completed",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": "1eed6ff3a51187d97580031a1af881cea31db6af2e3b8237f5e9171269b49036",
+          "events_sha256": "c03a48f0d0b7b9623e3032c140cba6c4cf13ff91f0e45d2643e579d56ab82a51",
+          "stderr_sha256": "ff3902c36c914f6c1cb8c6dfecbe291eaf3ea5fd83d3b115c2b1468fd8dfaf1e",
+          "started_at_utc": "2026-10-24T03:41:00.742906+00:00",
+          "finished_at_utc": "2026-10-24T03:42:24.571436+00:00"
+        },
+        {
+          "path": "reviews/r2/call.json",
+          "sha256": "2551ba2911751e225c8d6d1caad9a3a72f2cbe48753ca887a761271c367a82ba",
+          "status": "completed",
+          "model_requested": "gpt-6-astra",
+          "response_sha256": "1323fcc60c495cdf5f40261098f068086fe9c37263f3b7d7f47850b10f3ac5c1",
+          "events_sha256": "ee0989b77a75fdcbf5616e12e716893366db63112b108676377dfb372105336f",
+          "stderr_sha256": "216451bb4921b8fa9c451fb735a21139a706347b592a05515492127288582f47",
+          "started_at_utc": "2026-10-24T03:42:24.611716+00:00",
+          "finished_at_utc": "2026-10-24T03:44:51.187665+00:00"
+        },
+        {
+          "path": "reviews/r3/call.json",
+          "sha256": "68d92396b14a47cc2ccb32294661fd2bde4a4abf6fe1c651514da562546692c4",
+          "status": "completed",
+          "model_requested": "gpt-6-sol",
+          "response_sha256": "57f862d77f35311b4c02fba808b7d967983e8ea01061efb3189843e4833ccd28",
+          "events_sha256": "77d114705e6959b05f332d07b1664b9855d15e78c9f4e614f9a979d334b7cb9d",
+          "stderr_sha256": "2f34f24b4eb33a333b574d444df18d34cd97b3c77e7e594b3f6d06a94333388f",
+          "started_at_utc": "2026-10-24T03:44:51.220620+00:00",
+          "finished_at_utc": "2026-10-24T03:45:53.963935+00:00"
+        },
+        {
+          "path": "synthesis/call.json",
+          "sha256": "f9e3be3ec7b6bb309e53b35e167a88ddbdd65acfef5f660f7f6e5c398de46748",
+          "status": "protocol_violation",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": "8c00083be1b9cfbdc7a0010af8f450d723bbb7fc768c17f607340a7f0d783be1",
+          "events_sha256": "6fda4db0c11b6c139e883b94f8144d31180eb3b47dfd7e75c98c69e8c695b3c6",
+          "stderr_sha256": "d3ff9d0f92344ef4f133e0f339acfda5fe0cf82178fbbaad26573d9dee5de6c8",
+          "started_at_utc": "2026-10-24T03:56:05.316740+00:00",
+          "finished_at_utc": "2026-10-24T04:01:46.610391+00:00"
+        }
+      ]
+    },
+    {
+      "run_id": "panel-powerlaw-20261024-v3-synthesis3",
+      "state": "complete",
+      "description": "Only synthesis retried after narrowly supporting documented recovered-connection diagnostics. Completed with no such diagnostic. Original reviews and computation were reused byte-for-byte.",
+      "root_sha256": "75da6b7b5a05564ac37489328ef0a4eb0685373efd6bae998e864a570913c1f8",
+      "calls": [
+        {
+          "path": "reviews/r1/call.json",
+          "sha256": "38b7e4ecdc14e995cb453763d5ec1e959acd8388652ddbbb34d422d98ef81730",
+          "status": "completed",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": "1eed6ff3a51187d97580031a1af881cea31db6af2e3b8237f5e9171269b49036",
+          "events_sha256": "c03a48f0d0b7b9623e3032c140cba6c4cf13ff91f0e45d2643e579d56ab82a51",
+          "stderr_sha256": "ff3902c36c914f6c1cb8c6dfecbe291eaf3ea5fd83d3b115c2b1468fd8dfaf1e",
+          "started_at_utc": "2026-10-24T03:41:00.742906+00:00",
+          "finished_at_utc": "2026-10-24T03:42:24.571436+00:00"
+        },
+        {
+          "path": "reviews/r2/call.json",
+          "sha256": "2551ba2911751e225c8d6d1caad9a3a72f2cbe48753ca887a761271c367a82ba",
+          "status": "completed",
+          "model_requested": "gpt-6-astra",
+          "response_sha256": "1323fcc60c495cdf5f40261098f068086fe9c37263f3b7d7f47850b10f3ac5c1",
+          "events_sha256": "ee0989b77a75fdcbf5616e12e716893366db63112b108676377dfb372105336f",
+          "stderr_sha256": "216451bb4921b8fa9c451fb735a21139a706347b592a05515492127288582f47",
+          "started_at_utc": "2026-10-24T03:42:24.611716+00:00",
+          "finished_at_utc": "2026-10-24T03:44:51.187665+00:00"
+        },
+        {
+          "path": "reviews/r3/call.json",
+          "sha256": "68d92396b14a47cc2ccb32294661fd2bde4a4abf6fe1c651514da562546692c4",
+          "status": "completed",
+          "model_requested": "gpt-6-sol",
+          "response_sha256": "57f862d77f35311b4c02fba808b7d967983e8ea01061efb3189843e4833ccd28",
+          "events_sha256": "77d114705e6959b05f332d07b1664b9855d15e78c9f4e614f9a979d334b7cb9d",
+          "stderr_sha256": "2f34f24b4eb33a333b574d444df18d34cd97b3c77e7e594b3f6d06a94333388f",
+          "started_at_utc": "2026-10-24T03:44:51.220620+00:00",
+          "finished_at_utc": "2026-10-24T03:45:53.963935+00:00"
+        },
+        {
+          "path": "synthesis/call.json",
+          "sha256": "8c544cc9775594ec6ca83f5f5acdc8b2a06644a0b19b4d04aa7a9bf936a5241a",
+          "status": "completed",
+          "model_requested": "gpt-6.1-sol",
+          "response_sha256": "71b40f33cc98a985d78e547d365fa2dcc3564e390c0dcd67d0e0569acbdc3312",
+          "events_sha256": "c6fa9923032eba890d04e50eb9dd57fda4ae9c05d31c1c0beddb6e5461028ca6",
+          "stderr_sha256": "c389903231f8aa82d2ef858b4c5d9be807237e4fb258fae23bd1f27fdb1e70ab",
+          "started_at_utc": "2026-10-24T04:06:22.165947+00:00",
+          "finished_at_utc": "2026-10-24T04:12:17.300402+00:00"
+        }
+      ]
+    }
+  ],
+  "scope": "All listed local attempts are preserved. The final bundle archives v3 and synthesis2; the two startup attempts are separate local bundles. Reused calls listed in continuations are not new model calls. Local roots are unsigned integrity references, not trusted timestamps."
+}

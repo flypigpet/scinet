@@ -1,0 +1,433 @@
+{
+  "summary": "本次独立自动综合涵盖全部20项原始发现，不替代原评审或人工专家验证。所供计算支持选定停电数据路径的阈值诊断，并确认有限上界幂律归一化、连续幂律KS选项和嵌套设置覆盖问题。其他疑点主要获得源码支持，尚无针对性运行验证。原评审之间未见明确不兼容立场；评价侧重点不同不构成分歧。",
+  "groups": [
+    {
+      "id": "G1",
+      "title": "统一分析接口与尾部阈值诊断",
+      "relationship": "agreement",
+      "explanation": "三位评审均肯定流程及诊断信息的实现，同时明确区分工程设计与数值正确性。选定计算进一步支持停电数据的诊断路径。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F1",
+          "verdict": "supported",
+          "verification_basis": "computation",
+          "rationale": "导出的候选表保留阈值、指数、距离和标准误；独立计算确认xmin=50与230处的局部最小值，尾部样本量分别为152和59。这支持诊断透明性的发现，不证明所有功能正确。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/author_results.json",
+              "locator": "$.blackouts_xmin_candidates；$.fits.blackouts_default；$.fits.blackouts_sigma_0_1"
+            },
+            {
+              "path": "checks/artifacts/verification/independent_continuous.json",
+              "locator": "$.candidate_scan中xmin=48、50、50.462、219、230、234的记录；$.results"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F1",
+          "verdict": "supported",
+          "verification_basis": "computation",
+          "rationale": "源码支持按需构建分布及共用尾部范围；独立核对的152个停电候选阈值与选定连续幂律拟合字段均在1e-12容差内一致。没有测试用户体验、性能优势或全部候选分布。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Fit.__getattr__；Fit.distribution_compare"
+            },
+            {
+              "path": "checks/artifacts/verification/independent_comparison.json",
+              "locator": "$.candidate_scan.same_candidate_count；$.selected_fits；$.all_within_tolerance；$.scope"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r3",
+          "finding_id": "F1",
+          "verdict": "supported",
+          "verification_basis": "computation",
+          "rationale": "选定停电连续幂律路径的候选扫描与独立公式一致；默认xmin=230、alpha约2.272637、D约0.060674，作者比较结果亦保留逐点同尾部计算依据。这支持流程存在及这些路径的结果，不能外推全部接口。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/independent_comparison.json",
+              "locator": "$.selected_fits[0:5]；$.candidate_scan；$.scope"
+            },
+            {
+              "path": "checks/artifacts/verification/exponential_precision.json",
+              "locator": "$.author.pointwise_loglikelihoods；$.author.xmin；$.author.tail_n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "title": "有限上界的概率归一化与端点一致性",
+      "relationship": "agreement",
+      "explanation": "三位评审的连续模型疑虑一致；r1和r2还讨论离散端点，r2另指出round分支。计算仅直接检查固定参数的连续及离散Power_Law。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F2",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "C1在xmin=1、xmax=10、alpha=2时得到连续PDF积分0.9，而CDF在上界为1；离散PMF总和约1，但左CDF最大差约0.006453，确认所述两类幂律不一致。其他子类及对实际拟合和比较的影响未计算。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[0]，test=C1：continuous、discrete、scope"
+            },
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Exponential._pdf_continuous_normalizer；Distribution.cdf"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F2",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "C1确认连续幂律质量缺失及离散幂律CDF端点不一致。round分支确实执行xmax减0.5，但所供检查未运行包含上端点的该分支，也未检查返回长度或边界恢复；不能把这部分当作已计算确认。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[0].continuous；$.checks[0].discrete；$.checks[0].scope"
+            },
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Distribution.pdf：discrete_approximation=='round'分支"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r3",
+          "finding_id": "F3",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "固定参数连续幂律积分0.9直接支持归一化疑虑；指数分布归一化常数缺少xmax修正可由源码定位，但没有相应积分或截断拟合实验。效应大小不能推广到全部连续模型。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[0].continuous.pdf_integral；$.checks[0].continuous.author_cdf；$.checks[0].scope"
+            },
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Power_Law._pdf_continuous_normalizer；Exponential._pdf_continuous_normalizer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "title": "幂律快捷路径忽略KS参数拟合请求",
+      "relationship": "agreement",
+      "explanation": "两位评审提出相同控制流问题。固定阈值连续路径得到直接验证，离散路径及自动阈值选择未在该检查中执行。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F3",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "C2中固定xmin=230的Likelihood与KS请求均返回alpha约2.272637、D约0.060674；独立最小化同一左经验CDF目标得到alpha约2.203524、D约0.040363。连续路径疑虑获确认，离散近似与外层xmin选择仍只有源码依据。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[1]，test=C2：likelihood、requested_ks、independent_bounded_minimization、independent_dense_grid、scope"
+            },
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Power_Law.fit前两个分支"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F3",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "C2的独立优化及密集网格显示KS请求未取所定义距离目标的最优参数，支持连续快捷路径未遵循选项的发现。这不反驳默认MLE；离散快捷路径未运行验证。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[1].requested_ks；$.checks[1].independent_bounded_minimization；$.checks[1].D_improvement；$.checks[1].scope"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "title": "显式嵌套设置被分布名称顺序覆盖",
+      "relationship": "agreement",
+      "explanation": "两位评审均指出显式nested=False可能被覆盖；r2还要求边界零假设的校准。控制流验证与统计校准属于不同范围。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F4",
+          "verdict": "supported",
+          "verification_basis": "computation",
+          "rationale": "C4覆盖两种顺序及None、True、False。在power_law位于首位且显式False时，面向对象与函数式接口仍返回嵌套p约0.382195；反向显式False返回非嵌套p约0.532438，直接确认顺序相关覆盖。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[3]，test=C4：rows[2]、rows[5]及scope"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F4",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "C4确认显式设置被覆盖及p值路径改变，但只是控制流检查。没有在截断参数边界零假设下完整重拟合模拟，故名称推断的一般有效性及检验拒绝率校准仍未解决。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/concern_checks.json",
+              "locator": "$.checks[3].rows[2]；$.checks[3].rows[5]；$.checks[3].scope"
+            },
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "loglikelihood_ratio：nested分支的chi2计算"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "title": "合法零对数密度被替换",
+      "relationship": "agreement",
+      "explanation": "两位评审提出相同源码缺陷。指数精度扩展检查没有针对Lambda=1且观测等于xmin的触发条件。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F5",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "源码明确把等于0的对数密度替换为极小概率的对数；这足以支持该条件分支的缺陷判断。未提供边界连续性测试，触发频率及对论文结果的影响未知。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Exponential.loglikelihoods：loglikelihoods[loglikelihoods==0]赋值"
+            },
+            {
+              "path": "checks/artifacts/verification/extended_checks.py",
+              "locator": "case=='exponential_precision'分支"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F5",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "直接对数密度计算后的零值替换与PDF中的零概率保护不同，支持评审指出的错误处理。停电指数精度检查只比较数值优化与解析速率，没有检验该触发点或单位变换造成的跳变。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Exponential.loglikelihoods与Exponential.pdf的零值处理"
+            },
+            {
+              "path": "checks/artifacts/verification/exponential_precision.json",
+              "locator": "$.analytic_lambda；$.author_lambda；$.analytic_lambda_with_author_likelihoods"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G6",
+      "title": "理论CCDF绘图丢弃指定坐标轴",
+      "relationship": "agreement",
+      "explanation": "r1与r3提出同一接口问题；r2未提及，不能据此推断其立场。没有提供双坐标轴运行检查。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F6",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "Distribution.plot_ccdf接收ax却固定向plot_cdf传递None，直接支持接口疑虑。当前轴恰好匹配时仍可能正常作图，不能据此判定已发表图错误。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Distribution.plot_ccdf：return self.plot_cdf(data, ax=None, survival=survival, **kwargs)"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r3",
+          "finding_id": "F5",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "源码丢弃ax，与论文及图2、图4脚本指定坐标轴的用法不一致。所供计算未检查曲线实际位置或返回轴，发表图的具体生成效果仍未验证。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Distribution.plot_ccdf"
+            },
+            {
+              "path": "inputs/author_figures.py",
+              "locator": "Figure 2与Figure 4中的理论plot_ccdf(ax=...)调用"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G7",
+      "title": "合成参数恢复验证的覆盖与独立性",
+      "relationship": "agreement",
+      "explanation": "两位评审均认可验证设计可追踪，但不确认实际恢复表现。后续选定检查没有重建图S1。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F7",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "validate及循环确实采用同一包生成与拟合，设置每组10次、每次10000个样本，仅循环continuous和discrete。覆盖不足的判断有源码依据；新增独立停电拟合不等于独立合成生成器验证，图S1恢复表现仍未测试。",
+          "evidence": [
+            {
+              "path": "inputs/author_figures.py",
+              "locator": "Supporting Information：validate；n_trials、n_data、distribution_types及HDF汇总循环"
+            },
+            {
+              "path": "checks/artifacts/execution.json",
+              "locator": "$.scope；$.stages"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F6",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "原实验循环不包含discrete_estimate、有限xmax、替代分布或p值校准，支持覆盖有限的发现。所供后续计算仍没有逐次模拟结果、独立生成器交叉验证或图S1数值，不能确认其参数恢复质量。",
+          "evidence": [
+            {
+              "path": "inputs/author_figures.py",
+              "locator": "Supporting Information：distribution_types=['continuous','discrete']及validate调用"
+            },
+            {
+              "path": "checks/artifacts/verification/extended_checks.py",
+              "locator": "主流程四个case列表及各case实现"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G8",
+      "title": "相对比较、等价解释及独立性限制",
+      "relationship": "agreement",
+      "explanation": "r1强调独立性讨论的优点，r2强调解释风险，但两者均认为未显著区分不证明等价、绝对适配或生成机制，并无不兼容立场。",
+      "positions": [
+        {
+          "reviewer_id": "r1",
+          "finding_id": "F8",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "词频比较重现R约0.928018、p约0.425846、尾部2958项，与未显著区分的表述相容；论文确实明示独立性限制。但计算未做等价检验、绝对拟合检查或依赖结构分析，不能验证两模型均良好或机制成立。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/words_lognormal.json",
+              "locator": "$.comparison.R；$.comparison.p；$.comparison.tail_n；$.comparison.optimizer_warning_status"
+            },
+            {
+              "path": "inputs/paper.txt",
+              "locator": "PDF第6页Generative Mechanisms；第9页Maximum Likelihood and Independence Assumptions"
+            }
+          ]
+        },
+        {
+          "reviewer_id": "r2",
+          "finding_id": "F7",
+          "verdict": "partly_supported",
+          "verification_basis": "computation",
+          "rationale": "复算词频p约0.425846，保留了评审所针对的不显著比较情境；它没有新增等价或绝对适配证据。线虫相对比较也不能确认生成机制，且未检查原始采样依赖；解释限制有文本依据，相关科学问题仍未测试。",
+          "evidence": [
+            {
+              "path": "checks/artifacts/verification/words_lognormal.json",
+              "locator": "$.comparison.R；$.comparison.p；$.comparison.tail_n"
+            },
+            {
+              "path": "checks/artifacts/verification/worm_comparisons.json",
+              "locator": "$.power_vs_exponential；$.power_vs_truncated"
+            },
+            {
+              "path": "inputs/paper.txt",
+              "locator": "PDF第5页Comparing Candidate Distributions；第6页词频比较；第9页独立性讨论"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G9",
+      "title": "None参数下界的环境相关错误风险",
+      "relationship": "single_reviewer",
+      "explanation": "仅r3提出该发现；后续没有运行论文所示parameter_range字典。",
+      "positions": [
+        {
+          "reviewer_id": "r3",
+          "finding_id": "F2",
+          "verdict": "unresolved",
+          "verification_basis": "source_inspection",
+          "rationale": "源码检查上界是否为None，却直接比较下界，确认存在未保护的None比较。其是否在发表时环境报错未获验证；现代兼容运行也没有测试该参数字典，不能将Python 3潜在错误归为已确认的历史运行失败。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Distribution.in_range：result *= r[k][0] < getattr(self, k)"
+            },
+            {
+              "path": "inputs/paper.txt",
+              "locator": "PDF第8页Restricted Parameter Range：sigma下界为None的字典示例"
+            },
+            {
+              "path": "checks/artifacts/verification/author_driver.py",
+              "locator": "fit_case调用列表，未包含parameter_range测试"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G10",
+      "title": "gamma面向对象入口缺少构造类",
+      "relationship": "single_reviewer",
+      "explanation": "仅r3提出该发现。源码可直接核查入口不一致，所供计算没有调用gamma。",
+      "positions": [
+        {
+          "reviewer_id": "r3",
+          "finding_id": "F4",
+          "verdict": "supported",
+          "verification_basis": "source_inspection",
+          "rationale": "supported_distributions把gamma映射为None，而__getattr__将映射值作为构造函数调用，支持该面向对象入口不可用的判断。函数式gamma实现不能补足此入口；未提供实际异常记录或函数式拟合验证。",
+          "evidence": [
+            {
+              "path": "inputs/author_powerlaw.py",
+              "locator": "Fit.__init__：supported_distributions['gamma']=None；Fit.__getattr__：dist(data=...)；gamma_likelihoods"
+            },
+            {
+              "path": "inputs/paper.txt",
+              "locator": "PDF第5页supported_distributions名称可用于distribution_compare的说明"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "本综合仅阅读消息内提供的材料与计算记录，没有调用工具、重新运行计算、访问外部文件或独立核验哈希；模型评审意见本身不作为验证。",
+    "计算针对历史Code S1的公开兼容适配版本，未重建发表时环境。compatibility.json的changes及compatibility.diff披露了Python 3转换、None判断修改和mask=-good_values改为mask=~good_values；因此受限阈值路径的运行成功不能证明原始NumPy布尔负号行为正确。",
+    "独立计算限于停电数据的连续幂律、指定左经验CDF距离及解析指数比较。其1e-12一致性衡量这些实现间的数值对应，不是科学准确率，也不是一般KS检验校准。",
+    "默认停电sigma复算约0.165683，论文报告0.167，存在小差异且原因未确定。指数解析MLE与作者优化比较的p分别约0.151855和0.152293；exponential_precision.json显示似然增益仅约0.00003017，不应夸大为结论逆转。",
+    "线虫对指数比较重现约(16.384325, 0.024184)；对截断幂律得到约(-0.070652, 0.706989)，与论文(-0.081, 0.687)未逐值一致，但均未显著区分。优化器警告状态未保留，不能确认全局收敛或归因差异。",
+    "有限上界计算只覆盖固定参数Power_Law，未重建图3、其他分布的截断拟合或round端点行为；KS计算未执行离散分支及外层阈值优化；嵌套控制流检查没有校准边界零假设下的p值。",
+    "零对数密度、CCDF坐标轴、gamma入口和None下界没有针对性运行结果；相关源码判断均与计算验证明确区分。",
+    "未重建图S1、全部图形或模拟网格，也未检验绝对拟合、模型等价、采样依赖或生成机制。单列数据及所供来源记录不能独立证明与发表时输入完全一致。",
+    "定向及扩展检查记录为复用先前案例的检查，并非本评审组独立设计。清单哈希仅为完整性记录，不构成可信签名或时间锚。",
+    "本综合不构成全文复现、当前软件版本认证、发表决定或人工专家验证的替代；评审一致与未提及均不作为科学真实性证据。"
+  ]
+}

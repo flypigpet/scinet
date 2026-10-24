@@ -3,3 +3,6 @@ include requirements.txt requirements-lock.txt run.ps1
 include scripts/acquire.py
 include docs/AI_USAGE.md docs/ASSETS.md docs/REPRODUCIBILITY.md
 include docs/VALIDATION.md
+include docs/PANELS.md
+include examples/powerlaw/acquire.py examples/powerlaw/recompute.py examples/powerlaw/README.md
+include examples/powerlaw/synthesis-evidence.json

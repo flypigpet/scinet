@@ -1,0 +1,3872 @@
+{
+  "publication": {
+    "redacted": false,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/independent_comparison.json",
+    "original_sha256": "33da8f0174247e17df830d561db86d879425d1c6a73d2bc75b1cb45f50c30b6a",
+    "omitted_json_pointers": [],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "absolute_tolerance": 1e-12,
+    "relative_tolerance": 0,
+    "selected_fits": [
+      {
+        "case": "unconstrained_minD",
+        "field": "xmin",
+        "independent": 230.0,
+        "author": 230.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "unconstrained_minD",
+        "field": "alpha",
+        "independent": 2.272637219830288,
+        "author": 2.272637219830288,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "unconstrained_minD",
+        "field": "sigma",
+        "independent": 0.16568325372336856,
+        "author": 0.16568325372336856,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "unconstrained_minD",
+        "field": "D",
+        "independent": 0.060673796294438476,
+        "author": 0.060673796294438476,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "unconstrained_minD",
+        "field": "n_tail",
+        "independent": 59,
+        "author": 59.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "fixed_xmin_1",
+        "field": "xmin",
+        "independent": 1.0,
+        "author": 1.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "fixed_xmin_1",
+        "field": "alpha",
+        "independent": 1.220176593367261,
+        "author": 1.220176593367261,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "fixed_xmin_1",
+        "field": "sigma",
+        "independent": 0.01515758178683864,
+        "author": 0.01515758178683864,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "fixed_xmin_1",
+        "field": "D",
+        "independent": 0.3760150485037172,
+        "author": 0.37601504850371725,
+        "absolute_difference": 5.551115123125783e-17,
+        "within_1e_12": true
+      },
+      {
+        "case": "fixed_xmin_1",
+        "field": "n_tail",
+        "independent": 211,
+        "author": 211.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "xmin_range_250_300",
+        "field": "xmin",
+        "independent": 272.0,
+        "author": 272.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "xmin_range_250_300",
+        "field": "alpha",
+        "independent": 2.2734437311817217,
+        "author": 2.2734437311817213,
+        "absolute_difference": 4.440892098500626e-16,
+        "within_1e_12": true
+      },
+      {
+        "case": "xmin_range_250_300",
+        "field": "sigma",
+        "independent": 0.18380577024890213,
+        "author": 0.18380577024890207,
+        "absolute_difference": 5.551115123125783e-17,
+        "within_1e_12": true
+      },
+      {
+        "case": "xmin_range_250_300",
+        "field": "D",
+        "independent": 0.07116321047123031,
+        "author": 0.07116321047123036,
+        "absolute_difference": 5.551115123125783e-17,
+        "within_1e_12": true
+      },
+      {
+        "case": "xmin_range_250_300",
+        "field": "n_tail",
+        "independent": 48,
+        "author": 48.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.1",
+        "field": "xmin",
+        "independent": 50.0,
+        "author": 50.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.1",
+        "field": "alpha",
+        "independent": 1.7831398653341153,
+        "author": 1.7831398653341153,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.1",
+        "field": "sigma",
+        "independent": 0.0635210309493271,
+        "author": 0.0635210309493271,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.1",
+        "field": "D",
+        "independent": 0.09982978545280219,
+        "author": 0.09982978545280224,
+        "absolute_difference": 5.551115123125783e-17,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.1",
+        "field": "n_tail",
+        "independent": 152,
+        "author": 152.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.001",
+        "field": "xmin",
+        "independent": 230.0,
+        "author": 230.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.001",
+        "field": "alpha",
+        "independent": 2.272637219830288,
+        "author": 2.272637219830288,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.001",
+        "field": "sigma",
+        "independent": 0.16568325372336856,
+        "author": 0.16568325372336856,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.001",
+        "field": "D",
+        "independent": 0.060673796294438476,
+        "author": 0.060673796294438476,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      },
+      {
+        "case": "sigma_lt_0.001",
+        "field": "n_tail",
+        "independent": 59,
+        "author": 59.0,
+        "absolute_difference": 0.0,
+        "within_1e_12": true
+      }
+    ],
+    "candidate_scan": {
+      "same_candidate_count": true,
+      "checks": [
+        {
+          "index": 0,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 0,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 0,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 0,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 1,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 1,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 1,
+          "field": "sigma",
+          "absolute_difference": 1.734723475976807e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 1,
+          "field": "D",
+          "absolute_difference": 3.3306690738754696e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 2,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 2,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 2,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 2,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 3,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 3,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 3,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 3,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 4,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 4,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 4,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 4,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 5,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 5,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 5,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 5,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 6,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 6,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 6,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 6,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 7,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 7,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 7,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 7,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 8,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 8,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 8,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 8,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 9,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 9,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 9,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 9,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 10,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 10,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 10,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 10,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 11,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 11,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 11,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 11,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 12,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 12,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 12,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 12,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 13,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 13,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 13,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 13,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 14,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 14,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 14,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 14,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 15,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 15,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 15,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 15,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 16,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 16,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 16,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 16,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 17,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 17,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 17,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 17,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 18,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 18,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 18,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 18,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 19,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 19,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 19,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 19,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 20,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 20,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 20,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 20,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 21,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 21,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 21,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 21,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 22,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 22,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 22,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 22,
+          "field": "D",
+          "absolute_difference": 1.6653345369377348e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 23,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 23,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 23,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 23,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 24,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 24,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 24,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 24,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 25,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 25,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 25,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 25,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 26,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 26,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 26,
+          "field": "sigma",
+          "absolute_difference": 2.0816681711721685e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 26,
+          "field": "D",
+          "absolute_difference": 1.6653345369377348e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 27,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 27,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 27,
+          "field": "sigma",
+          "absolute_difference": 2.0816681711721685e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 27,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 28,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 28,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 28,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 28,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 29,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 29,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 29,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 29,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 30,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 30,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 30,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 30,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 31,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 31,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 31,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 31,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 32,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 32,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 32,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 32,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 33,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 33,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 33,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 33,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 34,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 34,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 34,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 34,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 35,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 35,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 35,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 35,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 36,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 36,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 36,
+          "field": "sigma",
+          "absolute_difference": 2.0816681711721685e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 36,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 37,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 37,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 37,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 37,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 38,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 38,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 38,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 38,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 39,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 39,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 39,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 39,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 40,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 40,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 40,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 40,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 41,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 41,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 41,
+          "field": "sigma",
+          "absolute_difference": 2.0816681711721685e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 41,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 42,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 42,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 42,
+          "field": "sigma",
+          "absolute_difference": 2.0816681711721685e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 42,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 43,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 43,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 43,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 43,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 44,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 44,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 44,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 44,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 45,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 45,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 45,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 45,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 46,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 46,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 46,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 46,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 47,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 47,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 47,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 47,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 48,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 48,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 48,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 48,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 49,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 49,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 49,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 49,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 50,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 50,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 50,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 50,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 51,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 51,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 51,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 51,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 52,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 52,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 52,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 52,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 53,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 53,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 53,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 53,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 54,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 54,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 54,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 54,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 55,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 55,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 55,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 55,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 56,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 56,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 56,
+          "field": "sigma",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 56,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 57,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 57,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 57,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 57,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 58,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 58,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 58,
+          "field": "sigma",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 58,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 59,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 59,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 59,
+          "field": "sigma",
+          "absolute_difference": 4.163336342344337e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 59,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 60,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 60,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 60,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 60,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 61,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 61,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 61,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 61,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 62,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 62,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 62,
+          "field": "sigma",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 62,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 63,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 63,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 63,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 63,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 64,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 64,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 64,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 64,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 65,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 65,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 65,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 65,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 66,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 66,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 66,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 66,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 67,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 67,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 67,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 67,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 68,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 68,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 68,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 68,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 69,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 69,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 69,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 69,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 70,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 70,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 70,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 70,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 71,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 71,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 71,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 71,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 72,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 72,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 72,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 72,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 73,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 73,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 73,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 73,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 74,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 74,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 74,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 74,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 75,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 75,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 75,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 75,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 76,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 76,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 76,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 76,
+          "field": "D",
+          "absolute_difference": 1.6653345369377348e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 77,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 77,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 77,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 77,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 78,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 78,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 78,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 78,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 79,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 79,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 79,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 79,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 80,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 80,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 80,
+          "field": "sigma",
+          "absolute_difference": 1.3877787807814457e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 80,
+          "field": "D",
+          "absolute_difference": 1.6653345369377348e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 81,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 81,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 81,
+          "field": "sigma",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 81,
+          "field": "D",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 82,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 82,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 82,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 82,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 83,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 83,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 83,
+          "field": "sigma",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 83,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 84,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 84,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 84,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 84,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 85,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 85,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 85,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 85,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 86,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 86,
+          "field": "alpha",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 86,
+          "field": "sigma",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 86,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 87,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 87,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 87,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 87,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 88,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 88,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 88,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 88,
+          "field": "D",
+          "absolute_difference": 1.6653345369377348e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 89,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 89,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 89,
+          "field": "sigma",
+          "absolute_difference": 4.163336342344337e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 89,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 90,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 90,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 90,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 90,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 91,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 91,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 91,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 91,
+          "field": "D",
+          "absolute_difference": 1.6653345369377348e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 92,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 92,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 92,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 92,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 93,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 93,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 93,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 93,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 94,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 94,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 94,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 94,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 95,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 95,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 95,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 95,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 96,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 96,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 96,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 96,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 97,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 97,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 97,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 97,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 98,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 98,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 98,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 98,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 99,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 99,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 99,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 99,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 100,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 100,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 100,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 100,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 101,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 101,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 101,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 101,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 102,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 102,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 102,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 102,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 103,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 103,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 103,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 103,
+          "field": "D",
+          "absolute_difference": 2.7755575615628914e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 104,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 104,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 104,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 104,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 105,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 105,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 105,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 105,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 106,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 106,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 106,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 106,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 107,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 107,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 107,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 107,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 108,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 108,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 108,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 108,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 109,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 109,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 109,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 109,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 110,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 110,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 110,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 110,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 111,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 111,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 111,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 111,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 112,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 112,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 112,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 112,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 113,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 113,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 113,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 113,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 114,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 114,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 114,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 114,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 115,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 115,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 115,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 115,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 116,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 116,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 116,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 116,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 117,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 117,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 117,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 117,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 118,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 118,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 118,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 118,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 119,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 119,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 119,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 119,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 120,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 120,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 120,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 120,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 121,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 121,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 121,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 121,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 122,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 122,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 122,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 122,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 123,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 123,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 123,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 123,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 124,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 124,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 124,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 124,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 125,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 125,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 125,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 125,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 126,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 126,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 126,
+          "field": "sigma",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 126,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 127,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 127,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 127,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 127,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 128,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 128,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 128,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 128,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 129,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 129,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 129,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 129,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 130,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 130,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 130,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 130,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 131,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 131,
+          "field": "alpha",
+          "absolute_difference": 4.440892098500626e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 131,
+          "field": "sigma",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 131,
+          "field": "D",
+          "absolute_difference": 2.220446049250313e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 132,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 132,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 132,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 132,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 133,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 133,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 133,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 133,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 134,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 134,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 134,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 134,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 135,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 135,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 135,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 135,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 136,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 136,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 136,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 136,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 137,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 137,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 137,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 137,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 138,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 138,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 138,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 138,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 139,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 139,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 139,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 139,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 140,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 140,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 140,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 140,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 141,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 141,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 141,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 141,
+          "field": "D",
+          "absolute_difference": 1.1102230246251565e-16,
+          "within_1e_12": true
+        },
+        {
+          "index": 142,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 142,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 142,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 142,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 143,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 143,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 143,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 143,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 144,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 144,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 144,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 144,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 145,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 145,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 145,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 145,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 146,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 146,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 146,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 146,
+          "field": "D",
+          "absolute_difference": 5.551115123125783e-17,
+          "within_1e_12": true
+        },
+        {
+          "index": 147,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 147,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 147,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 147,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 148,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 148,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 148,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 148,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 149,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 149,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 149,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 149,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 150,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 150,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 150,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 150,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 151,
+          "field": "xmin",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 151,
+          "field": "alpha",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 151,
+          "field": "sigma",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        },
+        {
+          "index": 151,
+          "field": "D",
+          "absolute_difference": 0.0,
+          "within_1e_12": true
+        }
+      ]
+    },
+    "all_within_tolerance": true,
+    "scope": "Continuous power-law fits only. Independent analytic exponential MLE and the author numerical optimizer may differ; both results are retained. No whole-paper or modern-package certification."
+  }
+}

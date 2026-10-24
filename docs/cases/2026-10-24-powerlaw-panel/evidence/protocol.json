@@ -1,0 +1,49 @@
+{
+  "format": "scinet.panel.v1",
+  "created_at_utc": "2026-10-24T03:41:00.333343+00:00",
+  "paper": {
+    "title": "powerlaw: A Python Package for Analysis of Heavy-Tailed Distributions",
+    "doi": "10.1371/journal.pone.0085777"
+  },
+  "reviewers": [
+    {
+      "id": "r1",
+      "model": "gpt-6.1-sol",
+      "provider": "Codex CLI"
+    },
+    {
+      "id": "r2",
+      "model": "gpt-6-astra",
+      "provider": "Codex CLI"
+    },
+    {
+      "id": "r3",
+      "model": "gpt-6-sol",
+      "provider": "Codex CLI"
+    }
+  ],
+  "review_mode": "issue-uncued, isolated contexts, identical source packet",
+  "sequence": [
+    "packet_frozen",
+    "reviews_frozen",
+    "checks_started",
+    "checks_completed",
+    "synthesis_completed"
+  ],
+  "selection_disclosure": "Same paper previously audited. The coordinator knows prior findings; selection and check design are not blinded. Reviewers receive no previous reviews, issue list or computed results. Reused and additional checks run only after all original responses freeze. Only supplied text/code/data are model-visible; PDF figures are archived but not shown. This is a purposive software-paper case, not an accuracy benchmark.",
+  "independence_limit": "Distinct requested models and isolated sessions do not establish independent training, providers or errors.",
+  "security_limit": "Known CLI tools are disabled and tool events rejected; this is not a proof of hidden provider context isolation.",
+  "input_limit": "Only explicitly selected UTF-8 files are visible to reviewers; binary files are archived but not rendered to them.",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.18.1",
+      "pandas": "3.0.1",
+      "matplotlib": "3.11.2",
+      "pypdf": "6.14.2",
+      "mpmath": "1.3.0"
+    }
+  }
+}

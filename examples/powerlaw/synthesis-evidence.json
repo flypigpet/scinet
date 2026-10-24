@@ -1,0 +1,19 @@
+[
+  "checks/artifacts/execution.json",
+  "checks/artifacts/manifest.json",
+  "checks/artifacts/verification/author_driver.py",
+  "checks/artifacts/verification/author_results.json",
+  "checks/artifacts/verification/blackouts_discrete_auto.json",
+  "checks/artifacts/verification/concern_checks.json",
+  "checks/artifacts/verification/concern_checks.py",
+  "checks/artifacts/verification/exponential_precision.json",
+  "checks/artifacts/verification/extended_checks.py",
+  "checks/artifacts/verification/extended_execution.json",
+  "checks/artifacts/verification/independent_comparison.json",
+  "checks/artifacts/verification/independent_continuous.json",
+  "checks/artifacts/verification/independent_continuous.py",
+  "checks/artifacts/verification/runtime/compatibility.diff",
+  "checks/artifacts/verification/runtime/compatibility.json",
+  "checks/artifacts/verification/words_lognormal.json",
+  "checks/artifacts/verification/worm_comparisons.json"
+]

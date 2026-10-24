@@ -1,0 +1,117 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "summary": {
+      "type": "string"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "relationship": {
+            "type": "string",
+            "enum": [
+              "agreement",
+              "disagreement",
+              "different_scope",
+              "single_reviewer"
+            ]
+          },
+          "explanation": {
+            "type": "string"
+          },
+          "positions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reviewer_id": {
+                  "type": "string"
+                },
+                "finding_id": {
+                  "type": "string"
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "supported",
+                    "refuted",
+                    "partly_supported",
+                    "unresolved",
+                    "not_tested"
+                  ]
+                },
+                "verification_basis": {
+                  "type": "string",
+                  "enum": [
+                    "computation",
+                    "source_inspection",
+                    "insufficient_evidence"
+                  ]
+                },
+                "rationale": {
+                  "type": "string"
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "locator": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "locator"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "reviewer_id",
+                "finding_id",
+                "verdict",
+                "verification_basis",
+                "rationale",
+                "evidence"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "relationship",
+          "explanation",
+          "positions"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "summary",
+    "groups",
+    "limitations"
+  ]
+}
