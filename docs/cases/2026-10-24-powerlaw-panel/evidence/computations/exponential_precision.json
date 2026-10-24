@@ -1,0 +1,39 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/exponential_precision.json",
+    "original_sha256": "285455b8b27b80d86f61efe56b226edc3ec6a55613f41116f6d9f9a46a6e25bc",
+    "omitted_json_pointers": [
+      "/author/pointwise_loglikelihoods"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "case": "exponential_precision",
+    "started_at_utc": "2026-10-24T03:48:09.106020+00:00",
+    "analytic_lambda": 0.002031590264467944,
+    "author_lambda": 0.0020336453562810547,
+    "author": {
+      "R": 12.754562675882063,
+      "p": 0.1522925560442657,
+      "xmin": 230.0,
+      "tail_n": 59,
+      "alpha": 2.272637219830288,
+      "alternative_parameters": {
+        "parameter1": 0.0020336453562810547
+      },
+      "optimizer_warning_status": "Original Distribution.fit discards warnflag; no claim of optimizer convergence."
+    },
+    "analytic_lambda_with_author_likelihoods": {
+      "raw_R": 12.754532509760832,
+      "normalized_R": 1.4330114375291714,
+      "p": 0.1518545687419923,
+      "exponential_loglikelihood_gain": 3.0166121234742604e-05
+    },
+    "status": "completed",
+    "finished_at_utc": "2026-10-24T03:48:09.793857+00:00",
+    "elapsed_seconds": 0.687963000003947
+  }
+}

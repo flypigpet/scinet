@@ -1,0 +1,153 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/independent_continuous.json",
+    "original_sha256": "3f6e7d36882fd359741e25e3f04c06cf22a9540024d3dbd3ad3ffef2c2d7354c",
+    "omitted_json_pointers": [
+      "/provenance/input_path",
+      "/provenance/script_path",
+      "/provenance/executable",
+      "/candidate_scan"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "method": {
+      "independence": "Standard-library implementation. No author module, author output, or model response read.",
+      "scale": "blackouts.txt positive observations divided by 1000",
+      "tail_support": "X >= xmin",
+      "candidate_xmin": "Every distinct observed positive scaled value except the largest; ascending order; first minimum on exact D ties",
+      "alpha": "1 + n / sum(log(X / xmin))",
+      "sigma": "(alpha - 1) / sqrt(n)",
+      "distance": "max absolute difference between analytic continuous Pareto CDF and empirical P(X < x), evaluated at distinct tail observations",
+      "exponential": "Support [xmin,infinity); lambda MLE = n / sum(X - xmin)",
+      "ratio": "sum(log f_power(X) - log f_exponential(X))",
+      "normalized_ratio": "R / sqrt(n * population_variance(log f_power - log f_exponential))",
+      "p": "erfc(abs(normalized_R) / sqrt(2))"
+    },
+    "provenance": {
+      "input_sha256": "8187543b5700a75974661dd8349e172a83ce2d0972e79a81a7fcc06eafb96728",
+      "script_sha256": "ab77e054e70b79f680cadb7782bbc30837a3c72c85f35a7906c22a3f3a6fab08",
+      "review_ordering": "Enforced by caller, no historical review marker copied",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "third_party_dependencies": "none; Python standard library only",
+      "start_utc": "2026-10-24T03:47:55.789279+00:00",
+      "end_utc": "2026-10-24T03:47:55.955705+00:00",
+      "elapsed_seconds": 0.1656756000011228
+    },
+    "input_summary": {
+      "n_raw": 211,
+      "n_positive_used": 211,
+      "n_zero_removed": 0,
+      "min_scaled": 1.0,
+      "max_scaled": 7500.0,
+      "n_distinct_scaled": 153,
+      "n_xmin_candidates": 152
+    },
+    "results": {
+      "unconstrained_minD": {
+        "xmin": 230.0,
+        "n_tail": 59,
+        "alpha": 2.272637219830288,
+        "sigma": 0.16568325372336856,
+        "D": 0.060673796294438476,
+        "D_plus": 0.060673796294438476,
+        "D_minus": 0.03491485512811074,
+        "power_law_vs_exponential": {
+          "exponential_rate_mle": 0.0020315902644679443,
+          "power_law_loglikelihood": -411.98271574515564,
+          "exponential_loglikelihood": -424.7372482549164,
+          "R": 12.754532509760784,
+          "normalized_R": 1.4330114375291656,
+          "p_two_sided": 0.151854568741994,
+          "per_observation_logratio_population_variance": 1.3426962164140601
+        },
+        "eligible_candidate_count": 152,
+        "fallback_to_unconstrained_minD": false
+      },
+      "fixed_xmin_1": {
+        "xmin": 1.0,
+        "n_tail": 211,
+        "alpha": 1.220176593367261,
+        "sigma": 0.01515758178683864,
+        "D": 0.3760150485037172,
+        "D_plus": 0.3760150485037172,
+        "D_minus": 0.17648000656601737,
+        "power_law_vs_exponential": {
+          "exponential_rate_mle": 0.003954621783346252,
+          "power_law_loglikelihood": -1488.6333174764118,
+          "exponential_loglikelihood": -1378.435635902961,
+          "R": -110.19768157345075,
+          "normalized_R": -3.8327780525062196,
+          "p_two_sided": 0.00012670426026287432,
+          "per_observation_logratio_population_variance": 3.917735554145519
+        }
+      },
+      "xmin_range_250_300": {
+        "xmin": 272.0,
+        "n_tail": 48,
+        "alpha": 2.2734437311817217,
+        "sigma": 0.18380577024890213,
+        "D": 0.07116321047123031,
+        "D_plus": 0.07116321047123031,
+        "D_minus": 0.032400746068581565,
+        "power_law_vs_exponential": {
+          "exponential_rate_mle": 0.0017858696856099198,
+          "power_law_loglikelihood": -343.1687744328046,
+          "exponential_loglikelihood": -351.73678865155216,
+          "R": 8.568014218747615,
+          "normalized_R": 1.1684570991386989,
+          "p_two_sided": 0.2426224344565962,
+          "per_observation_logratio_population_variance": 1.1201948626869775
+        },
+        "eligible_candidate_count": 7,
+        "fallback_to_unconstrained_minD": false
+      },
+      "sigma_lt_0.1": {
+        "xmin": 50.0,
+        "n_tail": 152,
+        "alpha": 1.7831398653341153,
+        "sigma": 0.0635210309493271,
+        "D": 0.09982978545280219,
+        "D_plus": 0.09982978545280219,
+        "D_minus": 0.05203342006821969,
+        "power_law_vs_exponential": {
+          "exponential_rate_mle": 0.003408698230928227,
+          "power_law_loglikelihood": -977.8734702271943,
+          "exponential_loglikelihood": -1015.5765712770007,
+          "R": 37.70310104980638,
+          "normalized_R": 1.8148639511168991,
+          "p_two_sided": 0.06954481961918214,
+          "per_observation_logratio_population_variance": 2.8393727341811057
+        },
+        "eligible_candidate_count": 80,
+        "fallback_to_unconstrained_minD": false,
+        "sigma_threshold_strict": 0.1
+      },
+      "sigma_lt_0.001": {
+        "xmin": 230.0,
+        "n_tail": 59,
+        "alpha": 2.272637219830288,
+        "sigma": 0.16568325372336856,
+        "D": 0.060673796294438476,
+        "D_plus": 0.060673796294438476,
+        "D_minus": 0.03491485512811074,
+        "power_law_vs_exponential": {
+          "exponential_rate_mle": 0.0020315902644679443,
+          "power_law_loglikelihood": -411.98271574515564,
+          "exponential_loglikelihood": -424.7372482549164,
+          "R": 12.754532509760784,
+          "normalized_R": 1.4330114375291656,
+          "p_two_sided": 0.151854568741994,
+          "per_observation_logratio_population_variance": 1.3426962164140601
+        },
+        "eligible_candidate_count": 0,
+        "fallback_to_unconstrained_minD": true,
+        "sigma_threshold_strict": 0.001
+      }
+    }
+  }
+}

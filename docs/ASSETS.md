@@ -38,4 +38,10 @@ The case also preserves the actual generated adapter, seed coordinates, final ge
 
 The local historical README copy (`docs/LOCAL_MVP_HISTORY.md`) is for preserving the original workstation record and is excluded from publication. Its links and instructions are historical, not release documentation.
 
+### Curated multi-model panel case, 24 October 2026
+
+The [powerlaw panel case](cases/2026-10-24-powerlaw-panel/README.md) publishes three unchanged original reviews, one unchanged synthesis response, selected numerical records, path-redacted call summaries, relative-path freeze inventories, a local commitment, and a separate public-file inventory. [Its source map](cases/2026-10-24-powerlaw-panel/evidence/SOURCES.md) identifies the original artifact hashes and all transformations. The full local commitment describes files beyond this public subset; it does not imply those files are redistributed.
+
+The subject is Alstott, Bullmore and Plenz's 2014 paper, [DOI 10.1371/journal.pone.0085777](https://doi.org/10.1371/journal.pone.0085777), its publisher Code S1/S2, and public example data pinned to commit `d2b563a7a08bad96b4085fa69f351e9d9a20b1e7`. Original paper text, PDF, author source, data arrays, full prompts and raw client logs remain local. This case is repository documentation, excluded from wheel data and the source-distribution manifest. Source availability is not a blanket relicensing claim. The original supplement's MIT notice is retained with local acquisitions; SciNet's license does not replace upstream terms.
+
 Before adding an asset, record its origin, exact version, license, modifications and permitted distribution scope. Prefer existing appropriately licensed material and preserve attribution.

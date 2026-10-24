@@ -1,0 +1,55 @@
+{
+  "publication": {
+    "redacted": false,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/extended_execution.json",
+    "original_sha256": "a10dc156d98e10e1823e46ed9dfb50b9773e5a1d4357bd194dce17011d862c63",
+    "omitted_json_pointers": [],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "started_at_utc": "2026-10-24T03:48:08.890532+00:00",
+    "purpose": "Bounded extended checks reused from the previous SciNet case, not full sensitivity or simulation calibration",
+    "script_sha256": "c04bdd5dc5955b484f4cf14c627eee6f85718311bc6b3ac8274cb290ab4638f8",
+    "cases": [
+      {
+        "case": "exponential_precision",
+        "started_at_utc": "2026-10-24T03:48:08.890532+00:00",
+        "timeout_seconds": 120,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:48:09.906446+00:00",
+        "elapsed_seconds": 1.0152983000007225
+      },
+      {
+        "case": "worm_comparisons",
+        "started_at_utc": "2026-10-24T03:48:09.906446+00:00",
+        "timeout_seconds": 120,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:48:12.240795+00:00",
+        "elapsed_seconds": 2.333677100003115
+      },
+      {
+        "case": "words_lognormal",
+        "started_at_utc": "2026-10-24T03:48:12.241843+00:00",
+        "timeout_seconds": 120,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:48:13.400384+00:00",
+        "elapsed_seconds": 1.1597335999977076
+      },
+      {
+        "case": "blackouts_discrete_auto",
+        "started_at_utc": "2026-10-24T03:48:13.401845+00:00",
+        "timeout_seconds": 120,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:48:14.497049+00:00",
+        "elapsed_seconds": 1.0950930000035441
+      }
+    ],
+    "finished_at_utc": "2026-10-24T03:48:14.498058+00:00"
+  }
+}

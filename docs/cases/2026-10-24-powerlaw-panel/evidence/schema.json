@@ -1,0 +1,124 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "summary": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "assessment": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "concern",
+              "uncertain"
+            ]
+          },
+          "explanation": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "locator": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "locator"
+              ]
+            }
+          },
+          "proposed_check": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "assessment",
+          "explanation",
+          "evidence",
+          "proposed_check"
+        ]
+      }
+    },
+    "reproduction_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "paper_expected": {
+            "type": "string"
+          },
+          "procedure": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "locator": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "locator"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "paper_expected",
+          "procedure",
+          "evidence"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "summary",
+    "findings",
+    "reproduction_targets",
+    "limitations"
+  ]
+}

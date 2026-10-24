@@ -1,0 +1,36 @@
+{
+  "publication": {
+    "redacted": false,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/blackouts_discrete_auto.json",
+    "original_sha256": "48aca043ef5d4833869486806e26a45ee1821e488bd88c113643010548a55f6e",
+    "omitted_json_pointers": [],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "case": "blackouts_discrete_auto",
+    "started_at_utc": "2026-10-24T03:48:13.612921+00:00",
+    "fits": [
+      {
+        "estimate_discrete": true,
+        "xmin": 230.0,
+        "alpha": 2.2691222408581555,
+        "D": 0.060236329477861617,
+        "n": 59,
+        "elapsed_seconds": 0.43038179999712156
+      },
+      {
+        "estimate_discrete": false,
+        "xmin": 230.0,
+        "alpha": 2.2691417084814285,
+        "D": 0.060241929278511575,
+        "n": 59,
+        "elapsed_seconds": 0.32176389999949606
+      }
+    ],
+    "status": "completed",
+    "finished_at_utc": "2026-10-24T03:48:14.385337+00:00",
+    "elapsed_seconds": 0.7728013000014471
+  }
+}

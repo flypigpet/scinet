@@ -159,15 +159,18 @@ def verify_run(run):
     return errors
 
 def main():
-    parser=argparse.ArgumentParser(description='SciNet single-paper reproduction MVP')
+    parser=argparse.ArgumentParser(description='SciNet evidence checks and independent-context AI review panels')
     parser.add_argument('--workspace',type=Path,default=None,help='Workspace containing sources/vendor/output; defaults to current directory')
     sub=parser.add_subparsers(dest='command',required=True)
+    from .panel_cli import add_parser as add_panel_parser, main as panel_main
+    add_panel_parser(sub)
     p=sub.add_parser('init'); p.add_argument('--workspace',dest='init_workspace',type=Path,default=None)
     p=sub.add_parser('run'); p.add_argument('--ai',action='store_true',help='Make a fresh authenticated Codex review call'); p.add_argument('--model')
     for name in ('review','report','verify'):
         p=sub.add_parser(name); p.add_argument('run_dir',type=Path)
         if name=='review': p.add_argument('--model',required=True)
     args=parser.parse_args()
+    if args.command=='panel': return panel_main(args)
     root=(args.workspace or ROOT).expanduser().resolve()
     if args.command=='init':
         from .workspace import init_workspace

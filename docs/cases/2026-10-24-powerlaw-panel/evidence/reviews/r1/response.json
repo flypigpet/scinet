@@ -1,0 +1,227 @@
+{
+  "summary": "材料展示了将尾部范围选择、参数拟合、候选分布比较和绘图整合起来的清晰设计，并明确讨论独立性与模型选择的局限。静态阅读也发现若干实现与论文承诺不一致之处，主要涉及有限上界的归一化、KS拟合选项和嵌套比较设置。以下结论仅来自所供文本；未使用工具、执行代码或开展数值复现。",
+  "findings": [
+    {
+      "id": "F1",
+      "title": "分析流程透明，保留阈值选择的诊断信息",
+      "assessment": "supported",
+      "explanation": "论文没有仅凭双对数图判定幂律，而是要求选择尾部范围并比较替代分布。代码保留各候选xmin对应的距离、指数和标准误，支持检查多个局部最优解。这是方法透明性的优点，但不证明输出数值正确。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第3页，Identifying the Scaling Range；第8页，Multiple Possible Fits"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.find_xmin：self.xmins、self.alphas、self.sigmas及距离数组的赋值"
+        }
+      ],
+      "proposed_check": "对停电数据导出全部候选阈值及诊断量，核对论文图5的两个局部最小值，并同时报告相应尾部样本量。"
+    },
+    {
+      "id": "F2",
+      "title": "有限xmax下的概率归一化存在明确不一致",
+      "assessment": "concern",
+      "explanation": "论文声称支持有限上界及正确归一化。代码虽裁剪上界之外的数据，但连续Power_Law的PDF归一化常数完全不使用xmax；连续Exponential等多个子类也沿用仅考虑下界的常数。离散Power_Law的PDF通过xmax+1处理包含上端点的支持集，而通用CDF通过xmax归一化，端点约定不一致。这些静态观察提示有限上界下的参数估计、距离和比较可能受影响；具体影响尚待测试。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第4—5页，Identifying the Scaling Range与Continuous vs. Discrete Data；第10页，对分布各类子型支持的论述"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.cdf的norm计算；Power_Law._pdf_continuous_normalizer、Power_Law._pdf_discrete_normalizer；Exponential._pdf_continuous_normalizer"
+        }
+      ],
+      "proposed_check": "固定参数和有限上下界，分别检查连续PDF积分、离散PMF求和是否为1，并检查CDF与相应概率累计是否一致；随后比较修正前后的拟合和似然比。"
+    },
+    {
+      "id": "F3",
+      "title": "常见幂律路径忽略fit_method='KS'",
+      "assessment": "concern",
+      "explanation": "论文提供KS作为参数估计的替代方法，但Power_Law.fit在连续且无xmax，以及离散近似且无xmax时，直接采用解析似然估计。只要参数在允许范围内，就不会进入根据fit_method选择目标函数的Distribution.fit。因此这些路径中的KS选项没有按论文描述改变参数估计方法。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第9页，Maximum Likelihood and Independence Assumptions，fit_method='KS'说明"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Power_Law.fit的前两个分支；Distribution.fit中Likelihood与KS的目标函数分支"
+        }
+      ],
+      "proposed_check": "在固定xmin的非理想幂律样本上分别请求Likelihood和KS，并与独立的一维KS目标最小化比较；另行检查自动xmin选择时的行为。"
+    },
+    {
+      "id": "F4",
+      "title": "显式关闭嵌套比较可能被参数顺序覆盖",
+      "assessment": "concern",
+      "explanation": "条件表达式中and优先于or，使nested==None只约束第二个子串判断。当第一个分布名包含于第二个分布名时，即使传入nested=False，也会强制设置为True；交换分布顺序则可能保留False。这与论文所述用户可以指定嵌套设置不一致，并可能改变p值计算路径。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第8页，Nested Distributions，nested关键字说明"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.distribution_compare及模块级distribution_compare：if (dist1 in dist2) or (dist2 in dist1) and nested==None及对应条件"
+        }
+      ],
+      "proposed_check": "分别以两种顺序比较power_law与truncated_power_law，覆盖nested=None、True和False；核对显式设置均被遵守，交换顺序只改变R的符号。"
+    },
+    {
+      "id": "F5",
+      "title": "指数分布将合法的零对数密度替换为极小值",
+      "assessment": "concern",
+      "explanation": "Exponential.loglikelihoods在连续且无上界路径中，把等于0的对数密度替换为极小概率的对数。零对数密度本身合法，表示密度为1，并非数值下溢。例如Lambda=1且观测位于xmin时即可触发。此分支可能制造不连续的优化目标并影响分布比较，实际触发频率未知。",
+      "evidence": [
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Exponential.loglikelihoods：loglikelihoods[loglikelihoods==0] = log(10**float_info.min_10_exp)"
+        }
+      ],
+      "proposed_check": "对包含xmin的固定观测，以Lambda=1及其邻近值检查loglikelihoods与log(pdf)的一致性及连续性，再检查拟合目标是否出现异常跳变。"
+    },
+    {
+      "id": "F6",
+      "title": "理论CCDF绘图没有传递指定坐标轴",
+      "assessment": "concern",
+      "explanation": "Distribution.plot_ccdf接收ax，却调用plot_cdf时固定传入ax=None。论文多处依靠ax将经验曲线与理论曲线叠加。默认当前坐标轴可能恰好使例图正常，但多坐标轴情境下不能保证绘制到指定位置；这属于绘图接口问题，不能据此认定已发表图错误。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第3页，传递ax叠加曲线的说明及图2示例；第6页，图4绘图示例"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.plot_ccdf：return self.plot_cdf(data, ax=None, survival=survival, **kwargs)"
+        }
+      ],
+      "proposed_check": "创建两个坐标轴，令当前轴与传入ax不同，检查理论CCDF实际添加位置及返回轴对象。"
+    },
+    {
+      "id": "F7",
+      "title": "合成验证可检查参数恢复，但独立性与覆盖范围有限",
+      "assessment": "uncertain",
+      "explanation": "支持代码明确设置连续和离散幂律、每组10次及每次10000个观测，并汇总参数均值与标准差，提供了可审查的验证设计。不过生成与拟合均使用同一软件，存在共享实现错误相互掩盖的可能。该网格没有覆盖有限xmax、替代分布、似然比p值校准或discrete_estimate模式；未提供验证结果文件和图S1本体，无法判断实际恢复表现。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第7页，Creating Simulated Data；第10页，Figure S1说明"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Supporting Information：validate函数；n_trials、n_data、theoretical_xmins、theoretical_alphas和distribution_types；DataFrame汇总代码"
+        }
+      ],
+      "proposed_check": "先按原网格保留逐次结果，再采用独立生成器或直接定义的分位数参考交叉验证；另设有限上界及分布比较校准实验，避免将参数恢复图解释为全部功能验证。"
+    },
+    {
+      "id": "F8",
+      "title": "独立性限制表述审慎，但不显著差异不能证明等价",
+      "assessment": "supported",
+      "explanation": "论文明确指出拟合和似然比检验依赖观测独立性，并说明改用KS不能解决比较检验中的相关性问题，这是重要优点。论文同时把词频中不显著的比较描述为两种模型同样拟合良好；更严格的解释是现有检验未能区分。所供数据只有数值，无法直接核查词频、连接度或停电事件的依赖结构，也无法由相对优胜推出绝对拟合充分或生成机制成立。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第5页，比较检验与绝对拟合讨论；第6页，词频power_law与lognormal比较及生成机制论述；第9页，Maximum Likelihood and Independence Assumptions"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 4：词频分布比较；Generative Mechanisms：worm分布比较"
+        }
+      ],
+      "proposed_check": "复核时将结论表述为相对支持或未能区分，并报告尾部样本量；依赖结构和生成机制需要额外设计证据，当前数值文件不足以完成该检查。"
+    }
+  ],
+  "reproduction_targets": [
+    {
+      "id": "R1",
+      "description": "恢复停电数据的阈值、指数和候选分布比较",
+      "paper_expected": "第2—3页报告默认alpha约2.273、sigma约0.167、xmin为230、D约0.061，幂律对指数比较为R约12.755、p约0.152；第8页报告sigma_threshold=.1时xmin为50、alpha约1.78。",
+      "procedure": "仅在后续获准执行时，将所供停电数据按作者脚本除以1000，使用所供Code S1作为实际导入模块，记录环境版本、尾部样本量和完整候选阈值表；核对默认、固定xmin及sigma_threshold路径。先记录原始行为，再单独评估发现的问题，避免混淆原版复现与修正结果。",
+      "evidence": [
+        {
+          "path": "inputs/blackouts.txt",
+          "locator": "完整单列数据，首项570000"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 1之后的blackouts = blackouts/10**3；Identifying the Scaling Range及Figure 5代码块"
+        },
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第2—3页停电示例；第8页Restricted Parameter Range及Multiple Possible Fits"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "description": "复核词频和神经连接度的相对模型支持",
+      "paper_expected": "第6页报告worm的幂律对指数比较为(16.384, 0.024)，对截断幂律为(-0.081, 0.687)；词频的幂律对对数正态比较为(0.928, 0.426)。这些是相对比较结果，不是绝对拟合通过或机制确认。",
+      "procedure": "后续使用所供words原值和过滤零值后的worm，按作者脚本设discrete=True，记录自动xmin、尾部样本数、近似设置及各模型参数；核对R和p，并交换模型顺序检查一致性。对小xmin情形另比较精确离散拟合，作为敏感性检查。",
+      "evidence": [
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "数据载入处worm = worm[worm>0]；Generative Mechanisms及Figure 4代码块"
+        },
+        {
+          "path": "inputs/worm.txt",
+          "locator": "完整连接度列，开头含零值"
+        },
+        {
+          "path": "inputs/words.txt",
+          "locator": "完整词频列，首项14086"
+        },
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第6页，Generative Mechanisms"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "description": "检查有限上界的数学一致性及图3",
+      "paper_expected": "第4—5页图3比较词频在无上界与xmax=1000时的经验和理论CCDF，并声称支持正确归一化的有限范围分布。",
+      "procedure": "后续先固定xmin、xmax和参数，检查CDF、CCDF与PDF或PMF的累计关系及端点约定，再按图3脚本拟合words。分别记录原版曲线和采用一致有限支持集定义的参考曲线，检查归一化差异是否改变xmin及指数。",
+      "evidence": [
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 3：Fit(data, discrete=True, xmax=None)与xmax=1000"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.cdf；Power_Law的PDF归一化属性"
+        },
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第4页图3；第5页上界附近曲线形状说明"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "description": "重建图S1的参数恢复验证",
+      "paper_expected": "第10页描述每组10个、每个10000个观测的模拟数据，展示alpha与xmin恢复的均值及标准差，并明确无阈值以下数据时xmin估计不能低于真实下界。",
+      "procedure": "后续按validate及作者参数网格逐次生成和拟合，保存随机种子、每次估计、失败状态与汇总量；另用独立生成方式交叉检查。将参数恢复误差与Monte Carlo不确定性分别报告；当前未提供图S1数值，不能预设逐点通过标准。",
+      "evidence": [
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Supporting Information：validate及powerlaw_validation_%itrials_%idata.h5生成与绘图代码"
+        },
+        {
+          "path": "inputs/paper.txt",
+          "locator": "第7页模拟拟合示例；第10页Figure S1说明"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "本评审仅静态阅读用户提供的材料，没有运行代码、计算统计量、验证哈希或查看外部来源；所有检查步骤均为建议。",
+    "论文以提取文本提供，缺少原始图像、图S1本体、Code S3和模拟结果HDF文件；排版或OCR异常不能直接认定为原文错误。",
+    "作者脚本使用Python 2语法、交互式绘图环境中的未显式导入名称及未锁定版本的依赖；独立运行条件没有完整记录，不能把现代环境兼容问题直接归因于发表时实现。",
+    "绘图脚本导入名为powerlaw的模块，但未在脚本内固定其文件来源；后续复现须确认实际加载的是所供author_powerlaw.py内容。",
+    "所供数据快照与发表时实际输入是否逐字一致未知；单列数据缺少事件、词项和网络身份信息，限制了来源核查及独立性评估。",
+    "未量化所列实现问题对已发表数值和结论的影响；观察到代码分支不一致，不等于已证明所有论文结果失效。正面设计评价也不构成复现成功。"
+  ]
+}

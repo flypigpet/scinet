@@ -6,106 +6,112 @@
 [![Release](https://img.shields.io/badge/release-0.1.0a1-orange)](https://github.com/flypigpet/scinet/releases/tag/v0.1.0a1)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[How it fits together](#how-it-fits-together) · [Quick start](#quick-start) · [Example review](#example-review) · [Roadmap](#roadmap) · [中文](README.zh-CN.md)
+[Quick start](#quick-start) · [How it works](#how-it-works) · [Examples](#examples) · [Roadmap](#roadmap) · [中文](README.zh-CN.md)
 
-SciNet aims to let researchers evaluate a paper through its evidence and public review record, without relying on a journal's name as a proxy for quality. The goal is a decentralized alternative to journal-controlled evaluation: open criteria, reviews that can be checked, and decisions that can be challenged.
+SciNet gives several AI models the same paper, keeps their separate reviews, then checks their findings against data and code. You can read each original opinion, see where reviewers disagree, and follow a judgment back to its evidence.
 
-**Status: early prototype.** Today you can run numerical checks and an optional single-model review. AI review panels, blockchain records and community governance are planned; they are not implemented yet.
+The goal is to replace journal-controlled evaluation with an open alternative: public criteria, checkable reviews and a way to challenge decisions. AI panels do the reviewing; reproducible checks test their claims; blockchain is planned for a shared, verifiable review history.
 
-## How it fits together
+**The experimental panel has completed a real run: three models, 20 original findings, and evidence for each judgment.** [Read the case](docs/cases/2026-10-24-powerlaw-panel/README.md). Signatures, blockchain anchoring and community governance are still planned. Install from the development branch below; the `v0.1.0a1` release predates this workflow.
 
-- **AI review panels examine the work.** The planned panel has reviewers assess a paper separately, cite their evidence and retain disagreements. Model choice, instructions and evaluation criteria should be visible.
-- **Reproducible checks test the claims.** Data, code and recorded runs let others check whether a finding holds up. This is the part the current prototype exercises.
-- **Blockchain records the history.** The planned shared record links paper versions, signed reviews and challenges through content hashes. Full evidence stays off-chain. Recording a judgment does not make it correct.
+## How it works
 
-The aim is to make the yardstick itself open: people should be able to inspect the criteria, propose alternatives and appeal a judgment. AI agreement alone should not settle scientific questions, and token holdings should not determine scientific merit.
+1. **Give every reviewer the same sources.** Paper text, author code and data go into one hashed packet. Generic instructions do not suggest specific defects or provide earlier reviews and computed results.
+2. **Keep the reviews separate.** Each requested model gets a fresh session. All original responses are frozen before reproduction starts.
+3. **Run the checks.** An inspected script recomputes selected results and records its inputs, compatibility edits, environment and outputs.
+4. **Show the differences.** A separate synthesis call compares opinions with the evidence. Original reviews stay intact. Agreement, disagreement, different scope and untested findings remain visible.
 
-## Try the first piece
-
-The current alpha includes one runnable example: **Same Stats, Different Graphs (Datasaurus)**. It recomputes 65 statistics across 13 datasets, runs selected author functions, and saves the results and source references in a local HTML report. An optional AI review also saves the prompt, response and requested model.
-
-Once installed, the numerical demo runs offline without an AI account. It is the evidence component of the larger project.
+Every run keeps its prompts, responses, raw client records, sources and file hashes. The final evidence commitment provides a digest for later signing or anchoring. It is currently a local record, without a blockchain transaction or trusted timestamp.
 
 ## Quick start
 
-Requires Git and Python **3.12+**. Tested on Windows and Ubuntu with Python 3.12. Install from source:
+Use Git and **Python 3.12** for the powerlaw example. Install and sign in to Codex CLI separately. Model calls need network access and use your account's allowance.
 
 ```sh
-git clone https://github.com/flypigpet/scinet.git
+git clone --branch codex/ai-review-panel https://github.com/flypigpet/scinet.git
 cd scinet
 python -m venv .venv
 ```
 
-Activate the environment:
+Activate the environment on Windows:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-On Linux/macOS, use `source .venv/bin/activate` instead. Then run:
+On Linux/macOS, use `source .venv/bin/activate`. Then install and download the example's original materials:
 
 ```sh
-python -m pip install .
+python -m pip install ".[powerlaw]"
+python examples/powerlaw/acquire.py --output work/powerlaw-inputs
+```
+
+Replace `MODEL_A`, `MODEL_B` and `SYNTHESIS_MODEL` with model IDs available to your account. Use at least two distinct reviewer IDs:
+
+```sh
+scinet panel review --bundle work/powerlaw-inputs/bundle.json --output work/panel-01 --model MODEL_A --model MODEL_B
+scinet panel recompute work/panel-01 --script examples/powerlaw/recompute.py
+scinet panel synthesize work/panel-01 --model SYNTHESIS_MODEL --evidence-list examples/powerlaw/synthesis-evidence.json
+scinet panel verify work/panel-01
+```
+
+Open the printed `REPORT=` path in your browser. Each stage preserves its own records; a failed review blocks computation. Use a new output directory when retrying.
+
+The supplied [powerlaw evidence list](examples/powerlaw/synthesis-evidence.json) includes every computation JSON file, the compatibility diff and verification scripts. Duplicate input/source copies and raw logs stay out of the synthesis prompt; all original files remain saved locally. Another paper needs its own evidence list.
+
+See the [powerlaw example](examples/powerlaw/README.md) for input versions, check coverage and limits, or the [panel guide](docs/PANELS.md) for the one-command workflow and your own paper packets. SciNet is not yet on PyPI.
+
+## Examples
+
+| Example | What it exercises |
+| --- | --- |
+| [Three-model live review](docs/cases/2026-10-24-powerlaw-panel/README.md) | 20 original findings, three bounded numerical confirmations, mismatched numbers and untested questions |
+| [powerlaw](examples/powerlaw/README.md) | Original paper, published code and public data; separate model reviews followed by bounded reproduction |
+| [Datasaurus live review](docs/cases/2026-10-24-datasaurus-live-review/README.md) | Earlier guided, single-model review with published observations and evidence |
+
+For an offline numerical demo without an AI account:
+
+```sh
 scinet init --workspace demo
 scinet --workspace demo run
 scinet --workspace demo verify latest
 ```
 
-Open the printed `REPORT=` path in your browser. The report includes all 13 scatterplots, the calculated values, author-code results and links to the saved evidence. Reports are currently in Chinese.
-
-Each run gets its own folder under `demo/output/`. `verify latest` checks the most recent run's recorded files and evidence references. SciNet is not yet on PyPI.
-
-## Example review
-
-[Read a real run, including the unchanged AI response →](docs/cases/2026-10-24-datasaurus-live-review/README.md)
-
-The Datasaurus case shows what these checks can catch:
-
-- The datasets agree under some two-decimal conventions, but differ under ordinary rounding.
-- A captured project-page caption gives a positive correlation; the data and paper give a negative one.
-- The paper's prose reverses a temperature comparison used in its pseudocode and author code.
-
-The case links each observation to its source and records the model request, results and remaining questions. These are specific checks, not a full reproduction of the paper.
-
-## Add an AI review
-
-Install and sign in to the Codex CLI separately. From the cloned repository, download the paper inputs and start a new run:
-
-```sh
-python scripts/acquire.py --workspace demo
-scinet --workspace demo run --ai --model MODEL_ID
-```
-
-Replace `MODEL_ID` with a model available to your account. This step needs network access and uses your account's service allowance. Paper text, webpage text, author code, selected claims and calculation results are sent to the model service. See [what is sent and recorded](docs/AI_USAGE.md).
+This bundled Datasaurus demo recomputes 65 statistics across 13 datasets and runs selected author functions. Its optional `--ai` path supplies selected questions and computed results to one model. It remains available as a **legacy guided demo**; use `scinet panel` for review-before-computation experiments.
 
 ## Current scope
 
-The CLI is built around the bundled Datasaurus example; adding another paper requires its own checks and execution setup. The AI receives selected questions and computed results. This is a guided review, and its scientific judgments have not been independently validated by domain experts.
+- **Separate contexts, one provider.** The panel currently calls requested models through Codex CLI. Different IDs do not prove independent training or independent errors. The backend remains unknown unless the service reports it.
+- **Preserved evidence, fallible judgments.** Synthesis labels and disagreement groups are model interpretations. Reference checks cannot establish that a passage supports an opinion. Human scientific validation remains pending.
+- **Selected checks.** Each paper needs its own inspected reproduction script. The powerlaw example tests historical code and selected results, not every experiment or the current package.
+- **Local integrity.** Hashes detect changes against a saved reference. They do not establish authorship, scientific truth or a trusted timestamp. Subprocess timeouts are not a sandbox for arbitrary code.
 
-Only selected author functions run. The process has a timeout, **not a sandbox for arbitrary code**. File hashes help detect changes; they do not certify a paper's conclusions or provide a trusted timestamp. The prototype does not yet implement an AI review panel, blockchain or decentralized governance.
+Read [what the AI receives and records](docs/AI_USAGE.md) before submitting your own materials. Full local evidence may contain licensed text and private paths; a public case needs a separately reviewed publishing subset.
 
 ## Roadmap
 
-1. **Evidence that others can rerun.** Extend the current checks to more papers. Have AI reviewers assess the material before seeing computed results or suggested defects, then check their findings against the evidence.
-2. **Reviewers that can disagree.** Add separate reviews across models, retain their original assessments, and measure missed issues, false alarms and repeatability with domain-expert input. Multiple calls alone do not establish independence.
-3. **A shared review history.** Define a signed record format and test blockchain anchoring for paper versions, review records and challenges. Keep licensed source material off-chain and provide a way to verify records independently.
-4. **Open evaluation rules.** Make criteria and their changes public. Develop appeals, reviewer reputation and protections against collusion and duplicate identities. Test these before using the system for consequential decisions.
+- **Broaden the panel.** Add provider diversity and repeated runs; work with domain experts to measure missed issues, false alarms and useful disagreement.
+- **Expand reproduction.** Add papers and check adapters, with explicit coverage and remaining questions.
+- **Share verifiable history.** Add signed identities and test blockchain anchoring for paper versions, reviews, challenges and corrections. Keep full evidence off-chain.
+- **Open the yardstick.** Make evaluation criteria and their changes public, with appeals, reviewer reputation and defenses against collusion and duplicate identities.
 
-These are development directions, not shipped features. No chain or token scheme has been selected. The project has not demonstrated that it can replace journal evaluation or lower publishing costs.
+AI agreement should not settle a scientific question, and token holdings should not determine scientific merit. No chain or token scheme has been selected. Replacing journal evaluation and lowering publishing costs remain goals to test.
 
 ## Documentation
 
 | Guide | Contents |
 | --- | --- |
-| [Reproduce a run](docs/REPRODUCIBILITY.md) | Commands, output files and calculation details |
-| [AI review](docs/AI_USAGE.md) | Inputs, model records and limitations |
+| [AI panels](docs/PANELS.md) | Commands, evidence format, disagreements and integrity checks |
+| [powerlaw example](examples/powerlaw/README.md) | Source acquisition and bounded reproduction |
+| [AI usage](docs/AI_USAGE.md) | Inputs, model records and limitations |
+| [Datasaurus reproduction](docs/REPRODUCIBILITY.md) | Earlier demo commands and calculation details |
 | [Validation](docs/VALIDATION.md) | Recorded installation, test and CI results |
-| [Sources and licenses](docs/ASSETS.md) | Dataset, code and paper provenance |
+| [Sources and licenses](docs/ASSETS.md) | Bundled dataset, code and paper provenance |
 
 ## Contributing
 
-Good places to help: add a paper with public data and code, test an AI review against its sources, design panel comparisons, or work through the signed-record and appeal mechanisms. See [CONTRIBUTING.md](CONTRIBUTING.md) and [security guidance](SECURITY.md).
+Add a paper with public data and code, check a review against its sources, compare models, or help design signed records and appeals. See [CONTRIBUTING.md](CONTRIBUTING.md) and [security guidance](SECURITY.md).
 
 ## License
 
-SciNet is [MIT licensed](LICENSE). Bundled data and author code retain their original MIT notice; papers and webpages keep their own licenses. See the [asset register](docs/ASSETS.md), [changelog](CHANGELOG.md) and [citation metadata](CITATION.cff).
+SciNet is [MIT licensed](LICENSE). Third-party data, code and papers retain their own notices and rights. See the [asset register](docs/ASSETS.md), [changelog](CHANGELOG.md) and [citation metadata](CITATION.cff).

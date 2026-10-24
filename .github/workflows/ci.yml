@@ -26,6 +26,8 @@ jobs:
         run: scinet init --workspace .ci-work
       - name: Run tests
         run: python -m unittest discover -s tests -v
+      - name: Verify public panel case
+        run: python docs/cases/2026-10-24-powerlaw-panel/verify.py
       - name: Run deterministic audit
         run: scinet --workspace .ci-work run
       - name: Verify latest audit

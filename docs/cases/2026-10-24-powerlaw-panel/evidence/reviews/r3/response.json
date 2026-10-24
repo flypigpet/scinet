@@ -1,0 +1,162 @@
+{
+  "summary": "论文提出用统一的 Fit 和 Distribution 接口估计幂律尾部、选择 xmin，并比较候选分布。所附源码和数据为核查这些方法提供了具体材料；源码中也有几处与论文示例或功能声明直接相关的疑点。本审阅仅阅读了所供材料，未执行代码或计算，不能视为复现结果。",
+  "findings": [
+    {
+      "id": "F1",
+      "title": "尾部拟合与分布比较的流程有源码支撑",
+      "assessment": "supported",
+      "explanation": "论文描述逐个候选 xmin 拟合幂律，并选取与经验分布距离最小者。源码的 Fit.find_xmin 确实遍历候选值，保存拟合参数和距离，再选择最小值；Fit.distribution_compare 则用同一尾部数据计算逐点对数似然比。这支持功能设计的存在，尚不证明论文所报数值准确。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第3页“Identifying the Scaling Range”；第5页“Comparing Candidate Distributions”"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.find_xmin、Fit.distribution_compare"
+        }
+      ],
+      "proposed_check": "固定所供数据、源码版本及依赖环境，记录每个候选 xmin 的参数、距离、尾部样本数，再逐项核对论文表述和示例值。"
+    },
+    {
+      "id": "F2",
+      "title": "论文所示参数范围可能触发类型错误",
+      "assessment": "concern",
+      "explanation": "论文第8页用 None 表示 sigma 下界未设定；源码 Distribution.in_range 检查上界是否为 None，却直接计算下界与参数的大小关系。按所示字典进入该分支时，None 与数值的比较可能报错。此处是源码观察，实际报错及其环境依赖仍需运行确认。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第8页“Restricted Parameter Range”，parameter_range = {'alpha': [2.3, None], 'sigma': [None, .2]} 示例"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.in_range，result *= r[k][0] < getattr(self, k)"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "“Restricted Parameter Range”代码单元"
+        }
+      ],
+      "proposed_check": "按论文示例建立 Fit，记录异常或所得参数；另分别测试仅有下界、仅有上界及两界均为 None 的参数范围。"
+    },
+    {
+      "id": "F3",
+      "title": "带 xmax 的连续模型 PDF 归一化值得核查",
+      "assessment": "concern",
+      "explanation": "论文称支持带上界的分布拟合，且上界以上数据不参与拟合。源码 Distribution.cdf 对 xmax 调整了归一化；但 Power_Law 和 Exponential 的连续 PDF 归一化属性只使用 xmin，未见对 xmax 的对应调整。若如此，截断区间内 PDF 积分将小于 1，进而影响似然拟合和模型比较。影响幅度取决于上界及参数，尚未计算。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第3至5页“Identifying the Scaling Range”及 Figure 3；第10页“all the flavors within each one”"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.cdf、Distribution.pdf、Power_Law._pdf_continuous_normalizer、Exponential._pdf_continuous_normalizer"
+        }
+      ],
+      "proposed_check": "选定 xmin、xmax 和参数，对连续模型在截断区间数值积分 PDF，并与 CDF(xmax) 及独立写出的截断密度核对；随后比较带 xmax 拟合的参数和对数似然。"
+    },
+    {
+      "id": "F4",
+      "title": "gamma 被列为支持项，但面向对象入口没有类",
+      "assessment": "concern",
+      "explanation": "论文称 fit.supported_distributions 中的名称可用于 distribution_compare，并讨论 gamma 拟合的依赖。源码却将 Fit.supported_distributions['gamma'] 设为 None；Fit.__getattr__ 随后把该值当作构造函数调用。因此这一入口的 gamma 拟合看起来不可用。源码另有函数式 gamma_likelihoods，不足以证明 Fit 入口可用。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第5页“Any of these distribution names can be used by distribution_compare”；第10页“Dependencies”"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Fit.__init__ 中 supported_distributions 字典；Fit.__getattr__ 中 dist(data=self.data, ...)"
+        }
+      ],
+      "proposed_check": "用一组正值数据分别访问 fit.gamma 和调用 fit.distribution_compare('power_law', 'gamma')，记录结果，并与函数式 gamma 拟合入口区分。"
+    },
+    {
+      "id": "F5",
+      "title": "理论 CCDF 绘图未传递指定坐标轴",
+      "assessment": "concern",
+      "explanation": "论文和作图脚本都用 ax 将经验曲线与理论 CCDF 叠加。源码 Distribution.plot_ccdf 接收 ax，却调用 plot_cdf 时固定传入 ax=None。因此理论 CCDF 是否落在指定坐标轴上会受当前绘图状态影响，所示叠图的生成过程值得核查。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第3页 Figure 2 的 fig2 与 ax 示例"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.plot_ccdf，return self.plot_cdf(data, ax=None, survival=survival, **kwargs)"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "“Figure 2”和“Figure 4”代码单元中的 plot_ccdf(ax=...)"
+        }
+      ],
+      "proposed_check": "创建两个不同坐标轴，先切换当前坐标轴，再向指定的另一坐标轴调用理论 plot_ccdf；检查返回轴和两轴上的曲线数量。"
+    }
+  ],
+  "reproduction_targets": [
+    {
+      "id": "R1",
+      "description": "核对停电数据的自动 xmin、幂律参数及幂律与指数分布比较。",
+      "paper_expected": "论文第2至3页报告 xmin=230、alpha=2.273、sigma=0.167、D=0.061；第2页报告未标准化比较为 (12.755, 0.152)。这些是论文报告值，非本审阅结果。",
+      "procedure": "按作图脚本先将 blackouts.txt 的数值除以 1000，以随附源码创建 Fit；保存候选 xmin、尾部样本数、alpha、sigma、D 和两种分布的逐点对数似然，核对归一化与未归一化的 R。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第2至3页停电数据示例"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "Figure 1 之后的 blackouts = blackouts/10**3 及“Introduction”代码单元"
+        },
+        {
+          "path": "inputs/blackouts.txt",
+          "locator": "全文，每行一个停电影响人数"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "description": "核对论文 Figure S1 的合成数据参数恢复。",
+      "paper_expected": "论文第10页说明每种设置取 10 个、各含 10000 个观测的模拟数据集，并展示拟合 alpha 与 xmin 的均值和标准差；未在所供正文中给出逐点数值。",
+      "procedure": "依照随附 validate 函数和参数网格，分别生成连续及离散幂律样本并重新拟合；预先固定随机种子，保存各次拟合结果及汇总统计，再与 Figure S1 比较。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第7页“Creating Simulated Data”；第10页“Figure S1”说明"
+        },
+        {
+          "path": "inputs/author_figures.py",
+          "locator": "“Supporting Information”中的 validate 函数、n_trials=10、n_data=10000 及参数网格"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.generate_random、Power_Law.fit、Fit.find_xmin"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "description": "检验连续模型设置 xmax 后的概率归一化及比较结果。",
+      "paper_expected": "论文将 xmax 描述为拟合范围的上界，故该范围内的理论密度应构成归一化分布；具体拟合数值未给出。",
+      "procedure": "对给定 xmin<xmax 的 Power_Law 和 Exponential，分别积分 PDF、核对 CDF 端点，再用同一截断样本比较源码输出与独立的截断似然公式。",
+      "evidence": [
+        {
+          "path": "inputs/paper.txt",
+          "locator": "PDF 第3至5页有关 xmax 和截断范围的说明"
+        },
+        {
+          "path": "inputs/author_powerlaw.py",
+          "locator": "Distribution.cdf、Distribution.pdf、Power_Law._pdf_continuous_normalizer、Exponential._pdf_continuous_normalizer"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "审阅仅依据消息中提供的论文文本、源码及数据；未运行计算、代码或绘图，所有数值均为论文报告值。",
+    "所供材料没有 Figure S1 图像、已生成的验证结果文件或完整运行环境记录，无法核对合成实验的实际图形和数值。",
+    "作图脚本会在缺少本地数据时尝试下载文件；本审阅未访问这些地址。所供数据的来源链及其与论文使用版本是否完全一致，不能仅凭材料内容独立确认。",
+    "论文 PDF 的文本提取存在数学符号和换行失真；涉及公式的判断优先结合邻近文字与随附源码，仍需核对原版排版。"
+  ]
+}

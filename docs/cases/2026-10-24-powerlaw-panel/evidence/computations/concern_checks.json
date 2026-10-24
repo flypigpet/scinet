@@ -1,0 +1,489 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/concern_checks.json",
+    "original_sha256": "3d1bcd513d3bccfe2212317e743f7e2a4264db5b2dd79d4b1059ba075286e087",
+    "omitted_json_pointers": [
+      "/checks/1/empirical_points",
+      "/checks/1/empirical_left_cdf",
+      "/checks/2/counts/original_persons/noninteger_values",
+      "/checks/2/counts/scaled_thousands/noninteger_values",
+      "/checks/2/counts/rounded_thousands/noninteger_values",
+      "/checks/3/data",
+      "/checks/3/loglikelihoods"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "started_at_utc": "2026-10-24T03:47:56.147672+00:00",
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "numpy": "2.3.5",
+      "scipy": "1.18.1",
+      "mpmath": "1.3.0",
+      "source_sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+      "adapter_sha256": "3c4631be2ca87c6e2eab261f7a62bace27b33f845742c2dfe2922b093188a886",
+      "check_origin": "Directed tests reused from previous SciNet case; current reviews supplied no input to this script",
+      "script_sha256": "8d16449a99f233a913c8c0341c44d017e5d79c4d7a8726a7049123ae7ac4b302"
+    },
+    "per_test_timeout_seconds": 120,
+    "checks": [
+      {
+        "status": "measured",
+        "continuous": {
+          "xmin": 1,
+          "xmax": 10,
+          "alpha": 2,
+          "pdf_integral": 0.9,
+          "integral_error_estimate": 2.122033404629053e-11,
+          "points": [
+            1.0,
+            2.0,
+            5.0,
+            10.0
+          ],
+          "author_cdf": [
+            0.0,
+            0.5555555555555556,
+            0.888888888888889,
+            1.0
+          ],
+          "integrated_raw_pdf": [
+            0.0,
+            0.49999999999999994,
+            0.8,
+            0.9
+          ],
+          "normalized_integral": [
+            0.0,
+            0.5555555555555555,
+            0.888888888888889,
+            1.0
+          ],
+          "max_pdf_cdf_mass_discrepancy": 0.09999999999999998
+        },
+        "discrete": {
+          "support": [
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0,
+            9.0,
+            10.0
+          ],
+          "pmf": [
+            0.6452579827864142,
+            0.16131449569660355,
+            0.07169533142071269,
+            0.04032862392415089,
+            0.02581031931145657,
+            0.017923832855178172,
+            0.013168530260947229,
+            0.010082155981037722,
+            0.007966147935634743,
+            0.006452579827864143
+          ],
+          "pmf_total": 0.9999999999999999,
+          "points": [
+            1.0,
+            2.0,
+            5.0,
+            10.0
+          ],
+          "author_cdf": [
+            0.0,
+            0.6494486017331923,
+            0.9245622455229474,
+            1.0
+          ],
+          "independent_left_cdf": [
+            0.0,
+            0.6452579827864142,
+            0.9185964338278814,
+            0.9935474201721357
+          ],
+          "max_cdf_discrepancy": 0.006452579827864291
+        },
+        "scope": "Fixed-parameter Power_Law paths only. No xmax default fits are unaffected by this test; finite-xmax real-data figure and other subclasses not tested. No modern-version claim.",
+        "test": "C1",
+        "started_at_utc": "2026-10-24T03:47:58.633256+00:00",
+        "completed_at_utc": "2026-10-24T03:47:59.625088+00:00",
+        "elapsed_seconds": 0.9912110999939614,
+        "environment": {
+          "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "numpy": "2.3.5",
+          "scipy": "1.18.1",
+          "mpmath": "1.3.0",
+          "source_sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+          "adapter_sha256": "3c4631be2ca87c6e2eab261f7a62bace27b33f845742c2dfe2922b093188a886",
+          "check_origin": "Directed tests reused from previous SciNet case; current reviews supplied no input to this script",
+          "script_sha256": "8d16449a99f233a913c8c0341c44d017e5d79c4d7a8726a7049123ae7ac4b302"
+        },
+        "execution_status": "completed",
+        "returncode": 0
+      },
+      {
+        "status": "measured",
+        "dataset": "blackouts.txt divided by 1000",
+        "fixed_xmin": 230.0,
+        "n_tail": 59,
+        "likelihood": {
+          "alpha": 2.2726372198302887,
+          "xmin": 230.0,
+          "D": 0.06067379629443859,
+          "sigma": 0.16568325372336865,
+          "n": 59.0
+        },
+        "requested_ks": {
+          "alpha": 2.2726372198302887,
+          "xmin": 230.0,
+          "D": 0.06067379629443859,
+          "sigma": 0.16568325372336865,
+          "n": 59.0
+        },
+        "independent_bounded_minimization": {
+          "alpha": 2.2035235509367634,
+          "D": 0.04036278757497369,
+          "success": true,
+          "nfev": 37,
+          "bounds": [
+            1.000001,
+            6.0
+          ],
+          "objective": "max absolute difference from left ECDF at unique observed points"
+        },
+        "independent_dense_grid": {
+          "n": 10001,
+          "alpha": 2.2035007593,
+          "D": 0.040365067788476816
+        },
+        "D_improvement": 0.020311008719464896,
+        "scope": "Fixed xmin; outer xmin selection not tested here. Default MLE is not contradicted. Discrete fit_method branch not executed in this check.",
+        "test": "C2",
+        "started_at_utc": "2026-10-24T03:47:59.966192+00:00",
+        "completed_at_utc": "2026-10-24T03:48:00.901818+00:00",
+        "elapsed_seconds": 0.9361162999994121,
+        "environment": {
+          "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "numpy": "2.3.5",
+          "scipy": "1.18.1",
+          "mpmath": "1.3.0",
+          "source_sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+          "adapter_sha256": "3c4631be2ca87c6e2eab261f7a62bace27b33f845742c2dfe2922b093188a886",
+          "check_origin": "Directed tests reused from previous SciNet case; current reviews supplied no input to this script",
+          "script_sha256": "8d16449a99f233a913c8c0341c44d017e5d79c4d7a8726a7049123ae7ac4b302"
+        },
+        "execution_status": "completed",
+        "returncode": 0
+      },
+      {
+        "status": "measured",
+        "counts": {
+          "original_persons": {
+            "n": 211,
+            "n_noninteger": 0,
+            "n_tail": 59,
+            "n_tail_noninteger": 0
+          },
+          "scaled_thousands": {
+            "n": 211,
+            "n_noninteger": 38,
+            "n_tail": 59,
+            "n_tail_noninteger": 5
+          },
+          "rounded_thousands": {
+            "n": 211,
+            "n_noninteger": 0,
+            "n_tail": 59,
+            "n_tail_noninteger": 0
+          }
+        },
+        "quantization": "floor(raw_persons / 1000 + 0.5); nearest integer thousands, ties upward; threshold 230 after quantization",
+        "fits": [
+          {
+            "name": "persons_discrete_approx",
+            "discrete": true,
+            "estimate_discrete": true,
+            "alpha": 2.272633698954695,
+            "xmin": 230000.0,
+            "D": 0.06067335894897019,
+            "sigma": 0.16568279534440938,
+            "n": 59.0
+          },
+          {
+            "name": "persons_discrete_exact",
+            "discrete": true,
+            "estimate_discrete": false,
+            "alpha": 2.2726372198302887,
+            "xmin": 230000.0,
+            "D": 0.060674368568641945,
+            "sigma": 0.16568325372336865,
+            "n": 59.0
+          },
+          {
+            "name": "thousands_continuous",
+            "discrete": false,
+            "estimate_discrete": true,
+            "alpha": 2.2726372198302887,
+            "xmin": 230.0,
+            "D": 0.06067379629443859,
+            "sigma": 0.16568325372336865,
+            "n": 59.0
+          },
+          {
+            "name": "thousands_noninteger_discrete_approx",
+            "discrete": true,
+            "estimate_discrete": true,
+            "alpha": 2.2691222408581555,
+            "xmin": 230.0,
+            "D": 0.060236329477861617,
+            "sigma": 0.16522564243886612,
+            "n": 59.0
+          },
+          {
+            "name": "thousands_noninteger_discrete_exact",
+            "discrete": true,
+            "estimate_discrete": false,
+            "alpha": 2.2691417084814285,
+            "xmin": 230.0,
+            "D": 0.060241929278511575,
+            "sigma": 0.1652281769075394,
+            "n": 59.0
+          },
+          {
+            "name": "rounded_thousands_discrete_approx",
+            "discrete": true,
+            "estimate_discrete": true,
+            "alpha": 2.2691210151948953,
+            "xmin": 230.0,
+            "D": 0.06023597691712901,
+            "sigma": 0.16522548287110103,
+            "n": 59.0
+          },
+          {
+            "name": "rounded_thousands_discrete_exact",
+            "discrete": true,
+            "estimate_discrete": false,
+            "alpha": 2.269140477915173,
+            "xmin": 230.0,
+            "D": 0.060241575312147355,
+            "sigma": 0.1652280167014587,
+            "n": 59.0
+          }
+        ],
+        "scope": "Original-person and rounded-thousand models have different support and likelihood measures; alpha comparison is a sensitivity demonstration, not model equivalence. Continuous original-paper examples not invalidated.",
+        "test": "C3",
+        "started_at_utc": "2026-10-24T03:48:03.252679+00:00",
+        "completed_at_utc": "2026-10-24T03:48:04.029383+00:00",
+        "elapsed_seconds": 0.7757523000036599,
+        "environment": {
+          "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "numpy": "2.3.5",
+          "scipy": "1.18.1",
+          "mpmath": "1.3.0",
+          "source_sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+          "adapter_sha256": "3c4631be2ca87c6e2eab261f7a62bace27b33f845742c2dfe2922b093188a886",
+          "check_origin": "Directed tests reused from previous SciNet case; current reviews supplied no input to this script",
+          "script_sha256": "8d16449a99f233a913c8c0341c44d017e5d79c4d7a8726a7049123ae7ac4b302"
+        },
+        "execution_status": "completed",
+        "returncode": 0
+      },
+      {
+        "status": "compare_rows_for_explicit_false_override",
+        "dataset": "blackouts / 1000, continuous fixed xmin=230",
+        "n_tail": 59,
+        "parameters": {
+          "power_law": [
+            2.272637219830288
+          ],
+          "truncated_power_law": [
+            2.081142165588899,
+            0.00012826481454873977
+          ]
+        },
+        "rows": [
+          {
+            "first": "power_law",
+            "second": "truncated_power_law",
+            "requested_nested": null,
+            "object_interface": {
+              "R": -0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_same_argument": {
+              "R": -0.3818155129629215,
+              "p": 0.5324377585097059
+            },
+            "direct_nested_true": [
+              -0.3818155129629215,
+              0.3821945857238649
+            ],
+            "direct_nested_false": [
+              -0.3818155129629215,
+              0.5324377585097059
+            ],
+            "legacy_function_interface": {
+              "R": -0.3818155129629117,
+              "p": 0.3821945857238711
+            }
+          },
+          {
+            "first": "power_law",
+            "second": "truncated_power_law",
+            "requested_nested": true,
+            "object_interface": {
+              "R": -0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_same_argument": {
+              "R": -0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_nested_true": [
+              -0.3818155129629215,
+              0.3821945857238649
+            ],
+            "direct_nested_false": [
+              -0.3818155129629215,
+              0.5324377585097059
+            ],
+            "legacy_function_interface": {
+              "R": -0.3818155129629117,
+              "p": 0.3821945857238711
+            }
+          },
+          {
+            "first": "power_law",
+            "second": "truncated_power_law",
+            "requested_nested": false,
+            "object_interface": {
+              "R": -0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_same_argument": {
+              "R": -0.3818155129629215,
+              "p": 0.5324377585097059
+            },
+            "direct_nested_true": [
+              -0.3818155129629215,
+              0.3821945857238649
+            ],
+            "direct_nested_false": [
+              -0.3818155129629215,
+              0.5324377585097059
+            ],
+            "legacy_function_interface": {
+              "R": -0.3818155129629117,
+              "p": 0.3821945857238711
+            }
+          },
+          {
+            "first": "truncated_power_law",
+            "second": "power_law",
+            "requested_nested": null,
+            "object_interface": {
+              "R": 0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_same_argument": {
+              "R": 0.3818155129629215,
+              "p": 0.5324377585097059
+            },
+            "direct_nested_true": [
+              0.3818155129629215,
+              0.3821945857238649
+            ],
+            "direct_nested_false": [
+              0.3818155129629215,
+              0.5324377585097059
+            ],
+            "legacy_function_interface": {
+              "R": 0.3818155129629117,
+              "p": 0.3821945857238711
+            }
+          },
+          {
+            "first": "truncated_power_law",
+            "second": "power_law",
+            "requested_nested": true,
+            "object_interface": {
+              "R": 0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_same_argument": {
+              "R": 0.3818155129629215,
+              "p": 0.3821945857238649
+            },
+            "direct_nested_true": [
+              0.3818155129629215,
+              0.3821945857238649
+            ],
+            "direct_nested_false": [
+              0.3818155129629215,
+              0.5324377585097059
+            ],
+            "legacy_function_interface": {
+              "R": 0.3818155129629117,
+              "p": 0.3821945857238711
+            }
+          },
+          {
+            "first": "truncated_power_law",
+            "second": "power_law",
+            "requested_nested": false,
+            "object_interface": {
+              "R": 0.3818155129629215,
+              "p": 0.5324377585097059
+            },
+            "direct_same_argument": {
+              "R": 0.3818155129629215,
+              "p": 0.5324377585097059
+            },
+            "direct_nested_true": [
+              0.3818155129629215,
+              0.3821945857238649
+            ],
+            "direct_nested_false": [
+              0.3818155129629215,
+              0.5324377585097059
+            ],
+            "legacy_function_interface": {
+              "R": 0.3818155129629117,
+              "p": 0.5324377585097164
+            }
+          }
+        ],
+        "scope": "Control-flow/options correctness test, not a calibration test. nested=None intentionally enables name-based inference; explicit False is the tested override. Fitted truncation optimizer convergence not independently certified.",
+        "test": "C4",
+        "started_at_utc": "2026-10-24T03:48:04.331874+00:00",
+        "completed_at_utc": "2026-10-24T03:48:06.508561+00:00",
+        "elapsed_seconds": 2.1767187000004924,
+        "environment": {
+          "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "numpy": "2.3.5",
+          "scipy": "1.18.1",
+          "mpmath": "1.3.0",
+          "source_sha256": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+          "adapter_sha256": "3c4631be2ca87c6e2eab261f7a62bace27b33f845742c2dfe2922b093188a886",
+          "check_origin": "Directed tests reused from previous SciNet case; current reviews supplied no input to this script",
+          "script_sha256": "8d16449a99f233a913c8c0341c44d017e5d79c4d7a8726a7049123ae7ac4b302"
+        },
+        "execution_status": "completed",
+        "returncode": 0
+      }
+    ],
+    "completed_at_utc": "2026-10-24T03:48:06.676492+00:00"
+  }
+}

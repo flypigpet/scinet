@@ -1,0 +1,402 @@
+{
+  "publication_type": "Curated public case, not a complete SciNet run",
+  "publication_date": "2026-10-24",
+  "accepted_run_id": "panel-powerlaw-20261024-v3-synthesis3",
+  "local_root_sha256": "75da6b7b5a05564ac37489328ef0a4eb0685373efd6bae998e864a570913c1f8",
+  "local_commitment_public_path": "evidence/local_commitment.json",
+  "local_scope": "Complete local synthesis3 bundle with unchanged original reviews and computation and archived v3/synthesis2 predecessors; two earlier startup attempts are preserved separately.",
+  "model_identity_scope": "Requested identifiers only; immutable backend versions are unknown.",
+  "unchanged_review_sources": {
+    "evidence/reviews/r1/response.json": "reviews/r1/response.json",
+    "evidence/reviews/r2/response.json": "reviews/r2/response.json",
+    "evidence/reviews/r3/response.json": "reviews/r3/response.json"
+  },
+  "source_transform_map": "evidence/SOURCES.md",
+  "final_artifact_mapping": [
+    {
+      "public_path": "evidence/synthesis/response.json",
+      "original_run": "panel-powerlaw-20261024-v3-synthesis3",
+      "original_path": "synthesis/response.json",
+      "original_sha256": "71b40f33cc98a985d78e547d365fa2dcc3564e390c0dcd67d0e0569acbdc3312",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/synthesis/schema.json",
+      "original_run": "panel-powerlaw-20261024-v3-synthesis3",
+      "original_path": "synthesis_schema.json",
+      "original_sha256": "b9ccea7da8236938ec1c7591d72a2ea0f3f52e204d47293f824a2160f94bad76",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/synthesis/selection.json",
+      "original_run": "panel-powerlaw-20261024-v3-synthesis3",
+      "original_path": "synthesis_selection.json",
+      "original_sha256": "b37176fa502e124595a1c0912f459a08129711859e653e212e4bd6ee350c0122",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/timeline.jsonl",
+      "original_run": "panel-powerlaw-20261024-v3-synthesis3",
+      "original_path": "timeline.jsonl",
+      "original_sha256": "93d2a132dfca68a42bb92fb7b33c176be463af37df35f8866bfabcec48ceaeda",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/local_commitment.json",
+      "original_run": "panel-powerlaw-20261024-v3-synthesis3",
+      "original_path": "commitment.json",
+      "original_sha256": "0b9ad1121730f78bbb2a40ab075c2d20adeae4273ae1ffbd45cee8fe060aa13b",
+      "transformation": "none; byte-for-byte copy"
+    }
+  ],
+  "derived_records": [
+    {
+      "public_path": "evidence/computations/author_results.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/author_results.json",
+      "original_sha256": "d6fc17ca27bb537d798e8a0dcd181adb3a9ebb4610e65763c672c50f48d0fe99",
+      "omitted_json_pointers": [
+        "/blackouts_xmin_candidates"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/blackouts_discrete_auto.json",
+      "redacted": false,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/blackouts_discrete_auto.json",
+      "original_sha256": "48aca043ef5d4833869486806e26a45ee1821e488bd88c113643010548a55f6e",
+      "omitted_json_pointers": [],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/compatibility.json",
+      "redacted": false,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/runtime/compatibility.json",
+      "original_sha256": "c98981dc8fd412fa96e8e2426479b2cc21248e6711153874ccd5b902453ba949",
+      "omitted_json_pointers": [],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/concern_checks.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/concern_checks.json",
+      "original_sha256": "3d1bcd513d3bccfe2212317e743f7e2a4264db5b2dd79d4b1059ba075286e087",
+      "omitted_json_pointers": [
+        "/checks/1/empirical_points",
+        "/checks/1/empirical_left_cdf",
+        "/checks/2/counts/original_persons/noninteger_values",
+        "/checks/2/counts/scaled_thousands/noninteger_values",
+        "/checks/2/counts/rounded_thousands/noninteger_values",
+        "/checks/3/data",
+        "/checks/3/loglikelihoods"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/execution.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/execution.json",
+      "original_sha256": "40ff4b4a0e89071867407d936f5b8e8dcbe2ae486431025c88f3d5c6e417e0f3",
+      "omitted_json_pointers": [
+        "/command"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/exponential_precision.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/exponential_precision.json",
+      "original_sha256": "285455b8b27b80d86f61efe56b226edc3ec6a55613f41116f6d9f9a46a6e25bc",
+      "omitted_json_pointers": [
+        "/author/pointwise_loglikelihoods"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/extended_execution.json",
+      "redacted": false,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/extended_execution.json",
+      "original_sha256": "a10dc156d98e10e1823e46ed9dfb50b9773e5a1d4357bd194dce17011d862c63",
+      "omitted_json_pointers": [],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/independent_comparison.json",
+      "redacted": false,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/independent_comparison.json",
+      "original_sha256": "33da8f0174247e17df830d561db86d879425d1c6a73d2bc75b1cb45f50c30b6a",
+      "omitted_json_pointers": [],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/independent_continuous.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/independent_continuous.json",
+      "original_sha256": "3f6e7d36882fd359741e25e3f04c06cf22a9540024d3dbd3ad3ffef2c2d7354c",
+      "omitted_json_pointers": [
+        "/provenance/input_path",
+        "/provenance/script_path",
+        "/provenance/executable",
+        "/candidate_scan"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/runner_execution.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/execution.json",
+      "original_sha256": "28238385d76ba560480cde29b2a415647a61c8eb0c3bee80d4dc3ba53b1177e8",
+      "omitted_json_pointers": [
+        "/input_directory",
+        "/output_directory",
+        "/environment/executable",
+        "/stages/0/command",
+        "/stages/1/command",
+        "/stages/2/command",
+        "/stages/3/command"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/words_lognormal.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/words_lognormal.json",
+      "original_sha256": "478041ae5644ef6b89ec99109a46b79ee0d8544a651ef813bb155845a5177824",
+      "omitted_json_pointers": [
+        "/comparison/pointwise_loglikelihoods"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/computations/worm_comparisons.json",
+      "redacted": true,
+      "derived_json": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "checks/artifacts/verification/worm_comparisons.json",
+      "original_sha256": "2736a71cf00b9a2eb34417768bb8fb4b3edd9971f77172d20956647fd8904963",
+      "omitted_json_pointers": [
+        "/power_vs_exponential/pointwise_loglikelihoods",
+        "/power_vs_truncated/pointwise_loglikelihoods"
+      ],
+      "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+    },
+    {
+      "public_path": "evidence/reviews/r1/call_summary.json",
+      "redacted": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "reviews/r1/call.json",
+      "original_sha256": "38b7e4ecdc14e995cb453763d5ec1e959acd8388652ddbbb34d422d98ef81730",
+      "method": "Selected fields only; omit local paths, invocation, cwd, context environment names and thread identifier. Raw logs are not published."
+    },
+    {
+      "public_path": "evidence/reviews/r2/call_summary.json",
+      "redacted": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "reviews/r2/call.json",
+      "original_sha256": "2551ba2911751e225c8d6d1caad9a3a72f2cbe48753ca887a761271c367a82ba",
+      "method": "Selected fields only; omit local paths, invocation, cwd, context environment names and thread identifier. Raw logs are not published."
+    },
+    {
+      "public_path": "evidence/reviews/r3/call_summary.json",
+      "redacted": true,
+      "source_run": "panel-powerlaw-20261024-v3",
+      "original_artifact": "reviews/r3/call.json",
+      "original_sha256": "68d92396b14a47cc2ccb32294661fd2bde4a4abf6fe1c651514da562546692c4",
+      "method": "Selected fields only; omit local paths, invocation, cwd, context environment names and thread identifier. Raw logs are not published."
+    },
+    {
+      "public_path": "evidence/synthesis/call_summary.json",
+      "redacted": true,
+      "source_run": "panel-powerlaw-20261024-v3-synthesis3",
+      "original_artifact": "synthesis/call.json",
+      "original_sha256": "8c544cc9775594ec6ca83f5f5acdc8b2a06644a0b19b4d04aa7a9bf936a5241a",
+      "method": "Selected fields only; omit invocation, cwd, context environment names and thread identifier. Raw logs remain local."
+    }
+  ],
+  "exclusions": [
+    "paper PDF and full text",
+    "original author source and datasets",
+    "full prompts",
+    "raw client events and stderr logs",
+    "local absolute paths and session identifiers"
+  ],
+  "public_files": {
+    "evidence/attempt_history.json": {
+      "sha256": "cc2d956e711b4a3dd421e01aa6500a97df6e6888a927fc5b844e2fede0db3870",
+      "bytes": 11131
+    },
+    "evidence/computations/author_results.json": {
+      "sha256": "c38ea35b9fd5bb305584bfcf1c23640b807a60a13d7af55d765c0f5a2180eaa9",
+      "bytes": 5399
+    },
+    "evidence/computations/blackouts_discrete_auto.json": {
+      "sha256": "d214d6d1374bd2ec4db0911da1c7227e9b7a2a508283a9a67323e8c184e14bb7",
+      "bytes": 1274
+    },
+    "evidence/computations/compatibility.json": {
+      "sha256": "1513036694a4c180d38f6c9e53cfd4bfa259d99f7b3e1041211495e9c6ea4bb1",
+      "bytes": 2129
+    },
+    "evidence/computations/concern_checks.json": {
+      "sha256": "65feecf55cfff6239744bc216fc9a3454f499c985bccaa3bf28c77d941236186",
+      "bytes": 17717
+    },
+    "evidence/computations/execution.json": {
+      "sha256": "08a46644548ba298822f3bc4d3379cc330bb544a86684f0bce8b742f0fbfa35b",
+      "bytes": 1481
+    },
+    "evidence/computations/exponential_precision.json": {
+      "sha256": "1e9eeb82fb5508c8ea48a897272df927cf666a7299643f0aeefb0b578e3ac4ce",
+      "bytes": 1553
+    },
+    "evidence/computations/extended_execution.json": {
+      "sha256": "7185a15bd7da962fd36727c6c0f247f658a92c3792a9b16f4fe4e08162d4618d",
+      "bytes": 2227
+    },
+    "evidence/computations/independent_comparison.json": {
+      "sha256": "8fb593ea28d446b0d99e5ad1d5fa1a8371474daa90ae83f17bc1a8b0dc842d93",
+      "bytes": 98125
+    },
+    "evidence/computations/independent_continuous.json": {
+      "sha256": "b4e9d776edc42ee1d4ca75c038c2bc91aaa5ac6104d6da71fcaa30e52a01d1c5",
+      "bytes": 6540
+    },
+    "evidence/computations/runner_execution.json": {
+      "sha256": "452d4613f7475fa29c7432eea0eb87233ccc25a89edc893615dac79cc4a9d5e3",
+      "bytes": 4573
+    },
+    "evidence/computations/words_lognormal.json": {
+      "sha256": "cd1a90f19224140d4819e82e5c4b0b93b5c0c6acc141c922f70ac85f3049d225",
+      "bytes": 1267
+    },
+    "evidence/computations/worm_comparisons.json": {
+      "sha256": "cc16a695aaa3ff79e7803d312a3eb16e2c56ee1fcbfd76933fe5958d3690ef4b",
+      "bytes": 1732
+    },
+    "evidence/freezes/checks_freeze.json": {
+      "sha256": "8202e53d581f69db526e91f569a286d03d0e2f3c62c919bca500db435a350ac3",
+      "bytes": 8570
+    },
+    "evidence/freezes/computation_inventory.json": {
+      "sha256": "13eca74d9e11744e00fc859d7ff1190a288670ba76be6e1574ec2e1afce83f22",
+      "bytes": 5060
+    },
+    "evidence/freezes/input_freeze.json": {
+      "sha256": "5a535be2506a8979fa87382b5bcae9b57bcf7d5846c6cc7e549f045f05ed5781",
+      "bytes": 3919
+    },
+    "evidence/freezes/reviews_freeze.json": {
+      "sha256": "ed352d882543161f24c3b7c7ff6bbb126bcbc05a9a2f6af63a03420887208895",
+      "bytes": 2394
+    },
+    "evidence/local_commitment.json": {
+      "sha256": "0b9ad1121730f78bbb2a40ab075c2d20adeae4273ae1ffbd45cee8fe060aa13b",
+      "bytes": 60601
+    },
+    "evidence/packet.json": {
+      "sha256": "b877a3b83f02e1bbcb52620c92027eef7166a7c02a40bede76022fa4c41e49dc",
+      "bytes": 3008
+    },
+    "evidence/protocol.json": {
+      "sha256": "96db02535948e11b3c58ebb0d91027258ad1be3fb0216129329d908cb507e9de",
+      "bytes": 1967
+    },
+    "evidence/review_instructions_prefix.provenance.json": {
+      "sha256": "78800427214be00fc5093e16e05695badba19332a23bf99e404c5a2150ffd302",
+      "bytes": 315
+    },
+    "evidence/review_instructions_prefix.txt": {
+      "sha256": "b047df7ef755d7ccc198ee3608bb572989737f23379c104865f2a7f33f3d9e3b",
+      "bytes": 1017
+    },
+    "evidence/reviews/r1/call_summary.json": {
+      "sha256": "afb05db739487f6c68d3d5752e38ce0843ffea5e46af763ad20953e212eb25be",
+      "bytes": 3017
+    },
+    "evidence/reviews/r1/response.json": {
+      "sha256": "1eed6ff3a51187d97580031a1af881cea31db6af2e3b8237f5e9171269b49036",
+      "bytes": 14690
+    },
+    "evidence/reviews/r2/call_summary.json": {
+      "sha256": "4a3e603a52f0eb876504d27d5e35024a3ec1da74b5154a0e269e2197925ca219",
+      "bytes": 3018
+    },
+    "evidence/reviews/r2/response.json": {
+      "sha256": "1323fcc60c495cdf5f40261098f068086fe9c37263f3b7d7f47850b10f3ac5c1",
+      "bytes": 15612
+    },
+    "evidence/reviews/r3/call_summary.json": {
+      "sha256": "fbe69114b361f2b151235e46cb702b302d86498b13aad6887097d3a454de6fbf",
+      "bytes": 3017
+    },
+    "evidence/reviews/r3/response.json": {
+      "sha256": "57f862d77f35311b4c02fba808b7d967983e8ea01061efb3189843e4833ccd28",
+      "bytes": 9628
+    },
+    "evidence/schema.json": {
+      "sha256": "c63e9e0c268b0c73ee571d38cf07b7caa64901653ad87cd0ef2120f0468d3c20",
+      "bytes": 2793
+    },
+    "evidence/SOURCES.md": {
+      "sha256": "925eb3c12bb66d6d2fb9f955a6787cc3d4245c9a1f3ca29843ad2756c019064d",
+      "bytes": 7444
+    },
+    "evidence/synthesis/call_summary.json": {
+      "sha256": "38c27963b901060a93f6af2dd0126ccce5f517c0707cc9b61b2f199bc1e9efc0",
+      "bytes": 2976
+    },
+    "evidence/synthesis/response.json": {
+      "sha256": "71b40f33cc98a985d78e547d365fa2dcc3564e390c0dcd67d0e0569acbdc3312",
+      "bytes": 22252
+    },
+    "evidence/synthesis/schema.json": {
+      "sha256": "b9ccea7da8236938ec1c7591d72a2ea0f3f52e204d47293f824a2160f94bad76",
+      "bytes": 3014
+    },
+    "evidence/synthesis/selection.json": {
+      "sha256": "b37176fa502e124595a1c0912f459a08129711859e653e212e4bd6ee350c0122",
+      "bytes": 8122
+    },
+    "evidence/timeline.jsonl": {
+      "sha256": "93d2a132dfca68a42bb92fb7b33c176be463af37df35f8866bfabcec48ceaeda",
+      "bytes": 6924
+    },
+    "README.md": {
+      "sha256": "2692239f3c256d8d5b7af43f777a6549cd35851fc4c1c47d2f12abcdebf02a97",
+      "bytes": 12102
+    },
+    "README.zh-CN.md": {
+      "sha256": "3bc6377c1d8a29b14f983ddb0242f14bb4c96b99a365b2dd57989d6a46f93b93",
+      "bytes": 10545
+    },
+    "verify.py": {
+      "sha256": "afc35b8b9e97e5fd0cb4dece31c4ea6f2ac3b82831d318404d0f33e311410ee9",
+      "bytes": 1372
+    }
+  },
+  "public_inventory_sha256": "3ecf9fe918ec8ad241402be423b5a3cb15a3d07452916c8bb25e2fdf01f6dbeb",
+  "public_inventory_encoding": "SHA-256 of public_files encoded as UTF-8 JSON with sorted keys, compact separators, literal Unicode, no NaN. publication.json itself is excluded to avoid a circular digest.",
+  "integrity_limit": "Unsigned references; changes can be detected against a separately held digest. No scientific validation, author identity, trusted time or blockchain attestation."
+}

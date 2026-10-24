@@ -10,6 +10,7 @@ dist/
 *.egg-info/
 .ci-work/
 demo/
+work/
 docs/LOCAL_MVP_HISTORY.md
 docs/superpowers/
 .env

@@ -1,0 +1,36 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/execution.json",
+    "original_sha256": "40ff4b4a0e89071867407d936f5b8e8dcbe2ae486431025c88f3d5c6e417e0f3",
+    "omitted_json_pointers": [
+      "/command"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "status": "completed",
+    "started_at_utc": "2026-10-24T03:47:45.088795+00:00",
+    "script_sha256": "ebcc590a5c2decb22c6fdba4f77f625e53a7a656689868a7575182dcc61fe9e6",
+    "reviews_freeze_sha256": "ed352d882543161f24c3b7c7ff6bbb126bcbc05a9a2f6af63a03420887208895",
+    "timeout_seconds": 900,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.3.5",
+        "scipy": "1.18.1",
+        "pandas": "3.0.1",
+        "matplotlib": "3.11.2",
+        "pypdf": "6.14.2",
+        "mpmath": "1.3.0"
+      }
+    },
+    "scope": "Operator-selected trusted local script; no model-generated command execution; not a security sandbox.",
+    "exit_code": 0,
+    "finished_at_utc": "2026-10-24T03:48:14.875659+00:00",
+    "elapsed_seconds": 29.593999999997322
+  }
+}

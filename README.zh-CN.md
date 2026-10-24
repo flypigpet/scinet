@@ -6,106 +6,112 @@
 [![版本](https://img.shields.io/badge/release-0.1.0a1-orange)](https://github.com/flypigpet/scinet/releases/tag/v0.1.0a1)
 [![MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[如何协作](#如何协作) · [快速开始](#快速开始) · [真实案例](#真实案例) · [路线图](#路线图) · [English](README.md)
+[快速开始](#快速开始) · [如何工作](#如何工作) · [示例](#示例) · [路线图](#路线图) · [English](README.md)
 
-SciNet 希望让论文凭研究证据和公开评审获得认可，减少对期刊名气的依赖。我们要做的是一套去中心化的学术评价机制：评价标准公开，评审意见可以核验，判断可以被质疑和修正。
+SciNet 把同一篇论文交给多个 AI 模型，分别保留评审意见，再用数据和代码逐项核验。你可以看到每位评审的原话、它们的分歧，以及判断所依据的证据。
 
-**当前阶段：早期原型。** 已实现数值复算和可选的单模型评审。AI 评审团、区块链记录和社区治理仍在计划中，尚未实现。
+我们要替代的是由期刊主导的评价机制：标准公开，评审可核验，判断可以被质疑和修正。AI 评审团负责审查，复算检验具体结论，区块链将用于共同维护可验证的评审历史。
 
-## 如何协作
+**实验性 AI 评审团已跑通：三个模型、20 条原始意见、逐项证据核验。** [查看真实案例](docs/cases/2026-10-24-powerlaw-panel/README.zh-CN.md)。签名、链上存证和社区治理仍在计划中。评审团请从下方开发分支安装；已有的 `v0.1.0a1` release 尚不包含该功能。
 
-- **AI 评审团审查研究。** 计划让多位评审分别阅读材料、引用证据，并保留分歧。模型、提示词和评价标准应当公开。
-- **复算检验具体结论。** 通过数据、代码和运行记录，让其他人检查评审意见是否站得住脚。当前原型验证的就是这一部分。
-- **区块链记录评审历史。** 计划用内容哈希关联论文版本、签名评审和质疑记录，完整证据保存在链下。记录一项判断，不等于证明它正确。
+## 如何工作
 
-我们希望把“标尺”本身也开放出来：任何人都能检查规则、提出不同标准，并对判断发起申诉。AI 意见一致不应直接决定科学结论，持币数量也不应决定学术价值。
+1. **给每位评审相同材料。** 把论文文本、作者代码和数据固定为一份带哈希的材料包。通用提示词不预告具体缺陷，也不提供此前评审和复算结果。
+2. **分别评审，保存原话。** 每个请求的模型使用新会话。全部原始回答冻结后，才允许启动复算。
+3. **用数据核对判断。** 运行经过检查的复算脚本，保存输入、兼容性修改、环境和实际输出。
+4. **把分歧摆出来。** 另一次模型调用结合证据整理意见，原始评审保持不变。一致、冲突、讨论范围不同和未核验的问题分别呈现。
 
-## 先跑通第一步
-
-当前 alpha 版本仅内置一个可运行示例：**Same Stats, Different Graphs（Datasaurus）**。它复算 13 组数据的 65 个统计量，运行选定的作者函数，把结果与来源放进本地 HTML 报告。可选的 AI 评审还会保存提示词、回答和请求的模型。
-
-安装后，数值演示可以离线运行，无需 AI 账号。这是整个项目中的证据核验部分。
+每次运行都保存提示词、回答、原始客户端记录、来源和文件哈希。最终证据摘要可供后续签名或链上存证使用；目前仍是本地记录，没有链上交易或可信时间戳。
 
 ## 快速开始
 
-需要 Git 和 Python **3.12+**。已在 Windows、Ubuntu 的 Python 3.12 环境验证。从源码安装：
+powerlaw 示例使用 Git 和 **Python 3.12**。另行安装并登录 Codex CLI；模型调用需要联网，并使用你的服务额度。
 
 ```sh
-git clone https://github.com/flypigpet/scinet.git
+git clone --branch codex/ai-review-panel https://github.com/flypigpet/scinet.git
 cd scinet
 python -m venv .venv
 ```
 
-激活环境：
+Windows 激活环境：
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-Linux/macOS 使用 `source .venv/bin/activate`。然后运行：
+Linux/macOS 使用 `source .venv/bin/activate`。然后安装并下载原始材料：
 
 ```sh
-python -m pip install .
+python -m pip install ".[powerlaw]"
+python examples/powerlaw/acquire.py --output work/powerlaw-inputs
+```
+
+将 `MODEL_A`、`MODEL_B` 和 `SYNTHESIS_MODEL` 替换为你账号可用的模型 ID，评审者至少使用两个不同的 ID：
+
+```sh
+scinet panel review --bundle work/powerlaw-inputs/bundle.json --output work/panel-01 --model MODEL_A --model MODEL_B
+scinet panel recompute work/panel-01 --script examples/powerlaw/recompute.py
+scinet panel synthesize work/panel-01 --model SYNTHESIS_MODEL --evidence-list examples/powerlaw/synthesis-evidence.json
+scinet panel verify work/panel-01
+```
+
+用浏览器打开命令打印的 `REPORT=` 路径。每一步分别留存记录；评审失败会阻止后续复算，重试请使用新的输出目录。
+
+附带的 [powerlaw 证据清单](examples/powerlaw/synthesis-evidence.json)包含全部计算 JSON 文件、兼容性差异和核验脚本。综合提示词不重复放入输入副本、源码副本和原始日志，所有原始文件仍在本地完整保存。换一篇论文，需要准备对应的证据清单。
+
+[powerlaw 示例说明](examples/powerlaw/README.md)列出输入版本、核验范围和限制；[评审团指南](docs/PANELS.md)介绍一条命令运行全流程，以及如何接入自己的论文材料。项目尚未发布到 PyPI。
+
+## 示例
+
+| 示例 | 用途 |
+| --- | --- |
+| [三个模型的真实评审](docs/cases/2026-10-24-powerlaw-panel/README.zh-CN.md) | 20 条原始意见、三项有界数值支持，以及没有复现的数字和未测问题 |
+| [powerlaw](examples/powerlaw/README.md) | 原始论文、发表时的代码和公开数据；先分别评审，再做限定范围的复算 |
+| [Datasaurus 真实评审](docs/cases/2026-10-24-datasaurus-live-review/README.zh-CN.md) | 早期带提示的单模型评审，已公开具体观察和证据 |
+
+无需 AI 账号的离线数值演示：
+
+```sh
 scinet init --workspace demo
 scinet --workspace demo run
 scinet --workspace demo verify latest
 ```
 
-用浏览器打开命令打印的 `REPORT=` 路径。报告中有 13 组散点图、全部计算值、作者代码运行结果，以及对应的证据文件链接。目前报告使用中文。
-
-每次运行都会在 `demo/output/` 下创建独立目录。`verify latest` 检查最近一次运行的文件和证据引用。项目尚未发布到 PyPI。
-
-## 真实案例
-
-[查看一次实际运行，包括未经改写的 AI 回答 →](docs/cases/2026-10-24-datasaurus-live-review/README.zh-CN.md)
-
-Datasaurus 案例展示了这套检查能发现什么：
-
-- 同一批数据在某些两位小数规则下相同，按常规四舍五入却有差异。
-- 保存的项目网页说明给出正相关系数，数据和论文给出的都是负值。
-- 论文正文中的温度比较方向，与伪代码和作者代码相反。
-
-案例页列出了每项观察的来源、模型请求、实际结果和待确认问题。这些是具体检查，尚未覆盖整篇论文的全部实验。
-
-## 加入 AI 评审
-
-另行安装并登录 Codex CLI。在克隆的仓库目录中下载论文材料，再启动一次新运行：
-
-```sh
-python scripts/acquire.py --workspace demo
-scinet --workspace demo run --ai --model MODEL_ID
-```
-
-把 `MODEL_ID` 替换为你账号可用的模型。这一步需要联网并使用你的服务额度。论文文本、网页文本、作者代码、选定的问题和计算结果会发送给模型服务，详见[发送内容与保存记录](docs/AI_USAGE.md)。
+内置 Datasaurus 演示复算 13 组数据的 65 个统计量，并运行选定的作者函数。它的可选 `--ai` 路径会把选定的问题和计算结果提供给一个模型，保留为**旧版带提示演示**。先评审、后复算的实验使用 `scinet panel`。
 
 ## 当前支持到哪一步
 
-CLI 目前围绕内置的 Datasaurus 案例编写，接入另一篇论文需要另做检查和运行适配。AI 会看到选定的问题和计算结果，属于带提示的评审；科学判断尚未经独立领域专家验证。
+- **会话分开，供应商相同。** 评审团目前通过 Codex CLI 调用所选模型。不同 ID 不能证明训练过程或错误彼此独立；服务没有报告的实际后端保持未知。
+- **证据保留，判断仍可出错。** 综合阶段的标签和分组也是模型解释。引用校验不能证明原文支持某项判断，独立领域专家验证仍待完成。
+- **核验范围明确。** 每篇论文需要相应的复算脚本。powerlaw 示例检查历史代码及部分结果，没有覆盖全部实验或现代版本。
+- **本地完整性可检查。** 哈希可以与保存的参考值核对，但不能证明作者身份、科学结论或可信时间。进程超时也不是执行任意代码的安全沙箱。
 
-程序只运行选定的作者函数，有超时限制，**没有执行任意代码的安全沙箱**。文件哈希用于检查内容变化，不能证明论文结论，也不提供可信时间戳。原型尚未实现 AI 评审团、区块链或去中心化治理。
+提交自己的材料前，请阅读[模型会收到和保存什么](docs/AI_USAGE.md)。完整本地证据可能包含受许可约束的全文和私有路径；公开案例需要单独检查发布范围。
 
 ## 路线图
 
-1. **别人也能重跑的证据。** 将检查扩展到更多论文。让 AI 先阅读材料，不提前给出复算结果或提示具体缺陷，再逐项核对它提出的判断。
-2. **允许分歧的评审团。** 加入不同模型的分别评审，保留原始意见，并结合领域专家的核验，测量漏报、误报和重复评审的稳定性。多次调用本身不能证明独立性。
-3. **共同维护的评审历史。** 定义带签名的记录格式，试验论文版本、评审和质疑记录的链上存证。原始材料按许可保存在链下，并提供独立校验记录的方法。
-4. **公开的评价规则。** 公布标准及其修改过程，设计申诉、评审者信誉和防串通、防重复身份机制。在用于重要决策前验证这些机制。
+- **扩展评审团。** 接入不同供应商，增加重复评审，并结合领域专家测量漏报、误报和分歧的价值。
+- **扩展复算。** 加入更多论文和核验脚本，写清已经覆盖及尚未检验的部分。
+- **共同维护评审历史。** 加入签名身份，试验论文版本、评审、质疑和修正的链上存证，完整证据保留在链下。
+- **开放评价标尺。** 公开评价规则及修改过程，建立申诉、评审者信誉和防串通、防重复身份机制。
 
-这些是开发方向，并非已上线功能。尚未选择具体链或代币方案，也尚未证明这套系统能够替代期刊评价或降低出版成本。
+AI 意见一致不应直接决定科学结论，持币数量也不应决定学术价值。尚未选择具体链或代币方案，替代期刊评价和降低出版成本仍是需要验证的目标。
 
 ## 文档
 
 | 文档 | 内容 |
 | --- | --- |
-| [复现说明](docs/REPRODUCIBILITY.md) | 命令、输出文件和计算细节 |
-| [AI 评审说明](docs/AI_USAGE.md) | 输入内容、模型记录和限制 |
+| [AI 评审团](docs/PANELS.md) | 命令、证据格式、分歧和完整性校验 |
+| [powerlaw 示例](examples/powerlaw/README.md) | 原始材料下载和限定范围的复算 |
+| [AI 使用说明](docs/AI_USAGE.md) | 输入内容、模型记录和限制 |
+| [Datasaurus 复现说明](docs/REPRODUCIBILITY.md) | 早期演示的命令和计算细节 |
 | [验证记录](docs/VALIDATION.md) | 已执行的安装、测试和 CI 检查 |
-| [来源与许可](docs/ASSETS.md) | 数据、代码和论文的出处 |
+| [来源与许可](docs/ASSETS.md) | 内置数据、代码和论文的出处 |
 
 ## 参与开发
 
-可以从一篇有公开数据和代码的论文开始，也可以核验 AI 的判断、设计评审团对照实验，或参与签名记录和申诉机制的设计。参见[贡献指南](CONTRIBUTING.md)和[安全说明](SECURITY.md)。
+可以加入一篇有公开数据和代码的论文、核验评审引用、比较模型，也可以参与签名记录和申诉机制的设计。参见[贡献指南](CONTRIBUTING.md)和[安全说明](SECURITY.md)。
 
 ## 许可
 
-SciNet 使用 [MIT 许可](LICENSE)。附带数据和作者代码保留原 MIT 声明；论文和网页沿用各自的许可。另见[素材清单](docs/ASSETS.md)、[变更记录](CHANGELOG.md)和[引用信息](CITATION.cff)。
+SciNet 使用 [MIT 许可](LICENSE)。第三方数据、代码和论文保留各自的声明与权利。另见[素材清单](docs/ASSETS.md)、[变更记录](CHANGELOG.md)和[引用信息](CITATION.cff)。

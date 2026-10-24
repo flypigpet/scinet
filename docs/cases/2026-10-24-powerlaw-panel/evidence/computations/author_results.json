@@ -1,0 +1,190 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/verification/author_results.json",
+    "original_sha256": "d6fc17ca27bb537d798e8a0dcd181adb3a9ebb4610e65763c672c50f48d0fe99",
+    "omitted_json_pointers": [
+      "/blackouts_xmin_candidates"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "dataset_inventory": {
+      "blackouts_n": 211,
+      "words_n": 18855,
+      "worm_positive_n": 253
+    },
+    "fits": {
+      "blackouts_default": {
+        "alpha": 2.272637219830288,
+        "D": 0.060673796294438476,
+        "sigma": 0.16568325372336856,
+        "xmin": 230.0,
+        "xmax": null,
+        "n": 59.0,
+        "n_tail": 59.0,
+        "noise_flag": false,
+        "fixed_xmin": false,
+        "discrete": false,
+        "elapsed_seconds": 0.013189399993279949,
+        "options": {}
+      },
+      "blackouts_xmin_1": {
+        "alpha": 1.220176593367261,
+        "D": 0.37601504850371725,
+        "sigma": 0.01515758178683864,
+        "xmin": 1.0,
+        "xmax": null,
+        "n": 211.0,
+        "n_tail": 211.0,
+        "noise_flag": null,
+        "fixed_xmin": true,
+        "discrete": false,
+        "elapsed_seconds": 0.00019669999892357737,
+        "options": {
+          "xmin": 1.0
+        }
+      },
+      "blackouts_xmin_range_250_300": {
+        "alpha": 2.2734437311817213,
+        "D": 0.07116321047123036,
+        "sigma": 0.18380577024890207,
+        "xmin": 272.0,
+        "xmax": null,
+        "n": 48.0,
+        "n_tail": 48.0,
+        "noise_flag": false,
+        "fixed_xmin": false,
+        "discrete": false,
+        "elapsed_seconds": 0.00040949999674921855,
+        "options": {
+          "xmin": [
+            250.0,
+            300.0
+          ]
+        }
+      },
+      "blackouts_discrete_estimate": {
+        "alpha": 2.2691222408581555,
+        "D": 0.060236329477861617,
+        "sigma": 0.16522564243886612,
+        "xmin": 230.0,
+        "xmax": null,
+        "n": 59.0,
+        "n_tail": 59.0,
+        "noise_flag": null,
+        "fixed_xmin": true,
+        "discrete": true,
+        "elapsed_seconds": 1.8148695999989286,
+        "options": {
+          "xmin": 230.0,
+          "discrete": true,
+          "estimate_discrete": true
+        }
+      },
+      "blackouts_discrete_exact": {
+        "alpha": 2.2691417084814285,
+        "D": 0.060241929278511575,
+        "sigma": 0.1652281769075394,
+        "xmin": 230.0,
+        "xmax": null,
+        "n": 59.0,
+        "n_tail": 59.0,
+        "noise_flag": null,
+        "fixed_xmin": true,
+        "discrete": true,
+        "elapsed_seconds": 1.6289060999988578,
+        "options": {
+          "xmin": 230.0,
+          "discrete": true,
+          "estimate_discrete": false
+        }
+      },
+      "blackouts_sigma_0_1": {
+        "alpha": 1.7831398653341153,
+        "D": 0.09982978545280224,
+        "sigma": 0.0635210309493271,
+        "xmin": 50.0,
+        "xmax": null,
+        "n": 152.0,
+        "n_tail": 152.0,
+        "noise_flag": false,
+        "fixed_xmin": false,
+        "discrete": false,
+        "elapsed_seconds": 0.0076693000009981915,
+        "options": {
+          "sigma_threshold": 0.1
+        }
+      },
+      "blackouts_sigma_0_001": {
+        "alpha": 2.272637219830288,
+        "D": 0.060673796294438476,
+        "sigma": 0.16568325372336856,
+        "xmin": 230.0,
+        "xmax": null,
+        "n": 59.0,
+        "n_tail": 59.0,
+        "noise_flag": true,
+        "fixed_xmin": false,
+        "discrete": false,
+        "elapsed_seconds": 0.007476600003428757,
+        "options": {
+          "sigma_threshold": 0.001
+        }
+      },
+      "words_discrete": {
+        "alpha": 1.9501572269094178,
+        "D": 0.009228863880260563,
+        "sigma": 0.017470140234510236,
+        "xmin": 7.0,
+        "xmax": null,
+        "n": 2958.0,
+        "n_tail": 2958.0,
+        "noise_flag": false,
+        "fixed_xmin": false,
+        "discrete": true,
+        "elapsed_seconds": 0.02607680000073742,
+        "options": {
+          "discrete": true
+        }
+      },
+      "worm_discrete": {
+        "alpha": 3.0680986449882477,
+        "D": 0.03206983575160183,
+        "sigma": 0.19541695362102,
+        "xmin": 4.0,
+        "xmax": null,
+        "n": 112.0,
+        "n_tail": 112.0,
+        "noise_flag": false,
+        "fixed_xmin": false,
+        "discrete": true,
+        "elapsed_seconds": 0.0012406000023474917,
+        "options": {
+          "discrete": true
+        }
+      }
+    },
+    "errors": [],
+    "comparisons": {
+      "power_vs_exponential": {
+        "R": 12.754562675882063,
+        "p": 0.1522925560442657
+      },
+      "power_vs_exponential_normalized": {
+        "R": 1.4314804849576266,
+        "p": 0.1522925560442657
+      },
+      "power_vs_lognormal": {
+        "R": -0.2408874810905708,
+        "p": 0.6776157621753663
+      }
+    },
+    "lognormal_parameters": {
+      "mu": 0.15397199468293227,
+      "sigma": 2.2998071946032397
+    }
+  }
+}

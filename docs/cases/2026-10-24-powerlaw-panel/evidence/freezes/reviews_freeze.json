@@ -1,0 +1,68 @@
+{
+  "frozen_at_utc": "2026-10-24T03:45:54.004766+00:00",
+  "reviewers": {
+    "r1": {
+      "model": "gpt-6.1-sol",
+      "response_sha256": "1eed6ff3a51187d97580031a1af881cea31db6af2e3b8237f5e9171269b49036"
+    },
+    "r2": {
+      "model": "gpt-6-astra",
+      "response_sha256": "1323fcc60c495cdf5f40261098f068086fe9c37263f3b7d7f47850b10f3ac5c1"
+    },
+    "r3": {
+      "model": "gpt-6-sol",
+      "response_sha256": "57f862d77f35311b4c02fba808b7d967983e8ea01061efb3189843e4833ccd28"
+    }
+  },
+  "input_freeze_sha256": "5a535be2506a8979fa87382b5bcae9b57bcf7d5846c6cc7e549f045f05ed5781",
+  "files": {
+    "reviews/r1/call.json": {
+      "sha256": "38b7e4ecdc14e995cb453763d5ec1e959acd8388652ddbbb34d422d98ef81730",
+      "bytes": 4696
+    },
+    "reviews/r1/events.jsonl": {
+      "sha256": "c03a48f0d0b7b9623e3032c140cba6c4cf13ff91f0e45d2643e579d56ab82a51",
+      "bytes": 15746
+    },
+    "reviews/r1/response.json": {
+      "sha256": "1eed6ff3a51187d97580031a1af881cea31db6af2e3b8237f5e9171269b49036",
+      "bytes": 14690
+    },
+    "reviews/r1/stderr.log": {
+      "sha256": "ff3902c36c914f6c1cb8c6dfecbe291eaf3ea5fd83d3b115c2b1468fd8dfaf1e",
+      "bytes": 158
+    },
+    "reviews/r2/call.json": {
+      "sha256": "2551ba2911751e225c8d6d1caad9a3a72f2cbe48753ca887a761271c367a82ba",
+      "bytes": 4697
+    },
+    "reviews/r2/events.jsonl": {
+      "sha256": "ee0989b77a75fdcbf5616e12e716893366db63112b108676377dfb372105336f",
+      "bytes": 16649
+    },
+    "reviews/r2/response.json": {
+      "sha256": "1323fcc60c495cdf5f40261098f068086fe9c37263f3b7d7f47850b10f3ac5c1",
+      "bytes": 15612
+    },
+    "reviews/r2/stderr.log": {
+      "sha256": "216451bb4921b8fa9c451fb735a21139a706347b592a05515492127288582f47",
+      "bytes": 158
+    },
+    "reviews/r3/call.json": {
+      "sha256": "68d92396b14a47cc2ccb32294661fd2bde4a4abf6fe1c651514da562546692c4",
+      "bytes": 4694
+    },
+    "reviews/r3/events.jsonl": {
+      "sha256": "77d114705e6959b05f332d07b1664b9855d15e78c9f4e614f9a979d334b7cb9d",
+      "bytes": 10476
+    },
+    "reviews/r3/response.json": {
+      "sha256": "57f862d77f35311b4c02fba808b7d967983e8ea01061efb3189843e4833ccd28",
+      "bytes": 9628
+    },
+    "reviews/r3/stderr.log": {
+      "sha256": "2f34f24b4eb33a333b574d444df18d34cd97b3c77e7e594b3f6d06a94333388f",
+      "bytes": 461
+    }
+  }
+}

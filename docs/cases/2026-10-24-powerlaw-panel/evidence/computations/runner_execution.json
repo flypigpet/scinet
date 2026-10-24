@@ -1,0 +1,101 @@
+{
+  "publication": {
+    "redacted": true,
+    "derived_json": true,
+    "source_run": "panel-powerlaw-20261024-v3",
+    "original_artifact": "checks/artifacts/execution.json",
+    "original_sha256": "28238385d76ba560480cde29b2a415647a61c8eb0c3bee80d4dc3ba53b1177e8",
+    "omitted_json_pointers": [
+      "/input_directory",
+      "/output_directory",
+      "/environment/executable",
+      "/stages/0/command",
+      "/stages/1/command",
+      "/stages/2/command",
+      "/stages/3/command"
+    ],
+    "method": "Wrap parsed original JSON under result; omit listed local-path fields and observation-level arrays. No numerical values in retained fields are changed. A completed execution is not a scientific pass."
+  },
+  "result": {
+    "started_at_utc": "2026-10-24T03:47:48.846775+00:00",
+    "status": "completed",
+    "paper": {
+      "title": "powerlaw: A Python Package for Analysis of Heavy-Tailed Distributions",
+      "doi": "10.1371/journal.pone.0085777",
+      "code_version": "Original PLOS Code S1 and Code S2, published 2014",
+      "data_repository_commit": "d2b563a7a08bad96b4085fa69f351e9d9a20b1e7"
+    },
+    "input_sha256": {
+      "paper.txt": "83b2ec926d17aa4eae8e47a336d0781fd6bb2775a0fd061cdcad32d7ff3647ef",
+      "author_powerlaw.py": "547c0e2d33b09ca8078e8d2abde686412ea1f548bb1a8e5b4d019006d929a105",
+      "author_figures.py": "809d7a28227ede36ea90e1b611ef56a2575c3cd630b0c6894dd001e8554c3bdb",
+      "blackouts.txt": "8187543b5700a75974661dd8349e172a83ce2d0972e79a81a7fcc06eafb96728",
+      "words.txt": "cef3521f0f1d817df43cf35ef1f717e6f72d71f549646a51ba04acdc45a9b160",
+      "worm.txt": "8754d06905e1d2318e19ba3e8b936f653657893b9ff8ce9fbc51ad9b26f992ac",
+      "paper.pdf": "578d1c7bfa991141f00575acea8a243cbf534608c6e1cb497705a7064bb54799",
+      "AUTHOR_LICENSE.txt": "ec7e397e8ae8c4e0cf1571f61f435fbdec8f28080fce4befc96fd13554a726ef"
+    },
+    "runner_sha256": "ebcc590a5c2decb22c6fdba4f77f625e53a7a656689868a7575182dcc61fe9e6",
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.3.5",
+        "scipy": "1.18.1",
+        "mpmath": "1.3.0",
+        "pandas": "3.0.1",
+        "matplotlib": "3.11.2",
+        "pypdf": "6.14.2"
+      }
+    },
+    "stages": [
+      {
+        "script": "author_driver.py",
+        "started_at_utc": "2026-10-24T03:47:49.282521+00:00",
+        "timeout_seconds": 180,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:47:55.690147+00:00",
+        "elapsed_seconds": 6.407018199999584
+      },
+      {
+        "script": "independent_continuous.py",
+        "started_at_utc": "2026-10-24T03:47:55.691215+00:00",
+        "timeout_seconds": 180,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:47:56.036185+00:00",
+        "elapsed_seconds": 0.3450704000060796
+      },
+      {
+        "script": "concern_checks.py",
+        "started_at_utc": "2026-10-24T03:47:56.037243+00:00",
+        "timeout_seconds": 540,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:48:06.767363+00:00",
+        "elapsed_seconds": 10.730677899999137
+      },
+      {
+        "script": "extended_checks.py",
+        "started_at_utc": "2026-10-24T03:48:06.769363+00:00",
+        "timeout_seconds": 540,
+        "exit_code": 0,
+        "status": "completed",
+        "finished_at_utc": "2026-10-24T03:48:14.509058+00:00",
+        "elapsed_seconds": 7.73954539999977
+      }
+    ],
+    "review_gate": "Caller must freeze all reviews before invoking this runner; the runner does not fabricate or copy review evidence.",
+    "check_origin": "Directed and extended checks are reused from the previous single-review SciNet case, not independently designed by this panel.",
+    "scope": "Nine selected author fits, independent continuous checks, four directed historical-code checks and four bounded extended checks. Not all paper figures, simulations, or current package versions.",
+    "security_limit": "Pinned inspected historical source plus timeouts; not a secure arbitrary-code sandbox.",
+    "preprocessing": {
+      "blackouts": "raw values / 1000 as Code S2",
+      "words": "raw counts",
+      "worm": "positive values only as Code S2"
+    },
+    "original_inputs_unchanged": true,
+    "finished_at_utc": "2026-10-24T03:48:14.545128+00:00"
+  }
+}
