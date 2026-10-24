@@ -1,6 +1,6 @@
 # Contributing
 
-SciNet is an alpha, single-paper prototype. Its current purpose is to make a limited numerical audit inspectable and repeatable. See [the scope and limitations](README.md) before proposing broader claims or new cases.
+SciNet is working toward open research evaluation with AI review panels, reproducible evidence and blockchain records. The current alpha implements the first evidence workflow around one paper; panels, on-chain records and governance are not implemented yet. See the [roadmap](README.md#roadmap) and [current scope](README.md#current-scope) to distinguish the project's direction from what can run today.
 
 ## Set up and check a change
 
