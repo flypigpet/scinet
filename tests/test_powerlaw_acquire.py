@@ -51,7 +51,7 @@ class PowerlawAcquisitionTests(unittest.TestCase):
 
     def test_success_writes_original_material_packet_without_review_or_computation(self):
         bundle_path = self.invoke()
-        self.assertEqual(bundle_path, self.output / 'bundle.json')
+        self.assertEqual(bundle_path, (self.output / 'bundle.json').resolve())
         bundle = self.read('bundle.json')
         self.assertEqual(bundle['paper']['doi'], '10.1371/journal.pone.0085777')
         self.assertEqual(len(bundle['files']), 8)

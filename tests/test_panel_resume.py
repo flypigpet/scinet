@@ -63,7 +63,7 @@ class PanelResumeTests(unittest.TestCase):
         before = inventory(source)
         root = read_json(source / 'commitment.json')['root_sha256']
         target = self.root / 'continuation'
-        self.assertEqual(fork_for_synthesis(source, target), target)
+        self.assertEqual(fork_for_synthesis(source, target), target.resolve())
         self.assertEqual(inventory(source), before)
         self.assertEqual(inventory(target / 'parent_bundle'), before)
         self.assertTrue((target / 'parent_bundle/empty_diagnostics').is_dir())
