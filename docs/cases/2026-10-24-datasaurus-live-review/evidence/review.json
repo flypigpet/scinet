@@ -1,0 +1,108 @@
+{
+  "summary": "C1有条件支持：13组数据的五项统计量在floor或向零截断口径下各自一致，但普通四舍五入后不一致。C2支持：网站将相关系数写为正值，论文图6写为负值，不能将网站符号问题归于论文。C3有条件支持：经兼容性修改的有限smoke测试支持统计接受准则得到保持。C4未验证：现有材料不构成完整论文复现。小数显示口径差异不足以推翻论文的主要科学结论。",
+  "findings": [
+    {
+      "id": "F1",
+      "claim_id": "C1",
+      "status": "qualified",
+      "title": "有条件支持：两位小数一致取决于统计与量化口径",
+      "explanation": "结果包含13组、每组142点，共1846行；论文第3页的182点指示例1，不应套用于图6。统计采用样本标准差，分母为n−1；总体标准差分母为n，本例应由样本标准差乘sqrt(141/142)得到，不能混用。按mean_x、mean_y、sd_x、sd_y、r顺序，floor到两位统一为[54.26,47.83,16.76,26.93,-0.07]，向零截断统一为[54.26,47.83,16.76,26.93,-0.06]。负数的floor与向零截断不同；图6所列数值与后者一致，但仅凭图注不能确定其生成方式。普通四舍五入采用ROUND_HALF_UP时，五项指标均出现两个不同结果，因此若将claim解释为普通四舍五入后完全相同，则不支持。各指标实际跨度均小于0.01，支持近似一致而非精确相等。两条计算路径的最大差为7.11e-15，支持数值交叉核对，不能视为独立研究验证。",
+      "evidence": [
+        {
+          "path": "paper.txt",
+          "locator": "PDF第3页，Example 1及Figure 6图注"
+        },
+        {
+          "path": "metrics.json",
+          "locator": "$.rows；$.dataset_count；$.stats[*].n；$.standard_deviation；$.ranges"
+        },
+        {
+          "path": "metrics.json",
+          "locator": "$.precision.floor_2dp；$.precision.truncate_2dp；$.precision.round_2dp；$.crosscheck"
+        },
+        {
+          "path": "author_code.py",
+          "locator": "get_values；is_error_still_ok"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "claim_id": "C2",
+      "status": "supported",
+      "title": "支持：网站相关系数为正值，论文原文为负值",
+      "explanation": "网站Fig 5图注实际写的是“Pearson’s R=0.06”，没有显式加号，但数值含义为正，故支持claim的实质内容。13组计算结果均为负，范围约为−0.06945至−0.06034，因此网站正号含义与结果不符。论文第3页Figure 6明确写为−0.06，不存在同一符号错误；其与floor得到−0.07之间的差别属于量化口径问题。网站错误应限定为网站图注问题，不能据此认定论文相关方向错误。",
+      "evidence": [
+        {
+          "path": "author_page.txt",
+          "locator": "Fig 5图注，Pearson’s R=0.06"
+        },
+        {
+          "path": "paper.txt",
+          "locator": "PDF第3页，Figure 6图注，Pearson’s r = -0.06"
+        },
+        {
+          "path": "metrics.json",
+          "locator": "$.ranges.r；$.precision.floor_2dp.unique_values.r；$.precision.truncate_2dp.unique_values.r"
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "claim_id": "C3",
+      "status": "qualified",
+      "title": "有条件支持：有限执行保持了作者的floor接受准则",
+      "explanation": "代码get_values计算样本标准差，is_error_still_ok比较floor(统计量×100)，run_pattern仅在该检验通过时更新状态。提供的smoke结果记录1000次提案，其中687次接受、313次拒绝，142个点发生位移，坐标有限，初末五项floor值相同，author_constraint_passed为true。平均圆距离由9.62647降至9.45505，只能说明此次运行有所靠近目标，不能证明圆形收敛。测试提取了部分函数，将两处链式赋值改为.loc，并以自建循环替代完整入口，跳过绘图、CLI和资源加载，因此支持的是这一受限执行。另有原文表述不一致：论文第3页称温度小于随机数时接受较差解，而第2页伪代码及perturb实际使用随机数小于温度；smoke不能消除此文字矛盾，也未验证全部方法参数。",
+      "evidence": [
+        {
+          "path": "author_code.py",
+          "locator": "get_values；is_error_still_ok；perturb中的do_bad；run_pattern中的状态更新条件"
+        },
+        {
+          "path": "author_smoke.json",
+          "locator": "$.extracted_author_functions；$.compatibility_modifications；$.harness_changes"
+        },
+        {
+          "path": "author_smoke.json",
+          "locator": "$.iterations_completed；$.accepted_proposals；$.rejected_proposals；$.moved_points；$.finite_coordinates；$.author_constraint_passed；$.initial_floor_2dp；$.final_floor_2dp"
+        },
+        {
+          "path": "author_smoke.json",
+          "locator": "$.mean_circle_distance_before；$.mean_circle_distance_after；$.limitations"
+        },
+        {
+          "path": "paper.txt",
+          "locator": "PDF第2页伪代码第10行；PDF第3页首段"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "claim_id": "C4",
+      "status": "not_tested",
+      "title": "未验证：全部实验、动画、原始随机序列与性能未复现",
+      "explanation": "材料明确将C4列为范围控制项，而非原型已经提出的成功断言。smoke仅覆盖dino到circle的一次固定种子、1000次提案执行，full_figure_reproduction为false，并省略中间动画。未提供非参数统计、Simpson悖论、克隆数据、箱线图等全部实验的复现结果，也没有原始随机序列匹配证据。1.462秒的smoke耗时与论文示例1的20万次迭代、笔记本约10分钟不具直接可比性，不能验证或否定其性能主张。",
+      "evidence": [
+        {
+          "path": "claims.json",
+          "locator": "$[3].claim；$[3].locator"
+        },
+        {
+          "path": "author_smoke.json",
+          "locator": "$.seed；$.iterations_completed；$.target；$.full_figure_reproduction；$.harness_changes；$.elapsed_seconds"
+        },
+        {
+          "path": "paper.txt",
+          "locator": "PDF第3页Example 1运行时间及Examples 2–4；PDF第4页Examples 4–6"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "本审计仅阅读用户提供的文本和计算结果，未调用工具、重新运行计算、读取其他文件或独立验证所列哈希。",
+    "未提供逐点数据及可直接检查的图像、动画；统计结果与视觉差异的对应关系未独立验证。总体标准差仅说明换算关系，未另行执行数值复核。",
+    "多个计算实现对同一数据的一致性属于数值交叉核对，不代表不同研究团队、独立数据或独立实验的验证。",
+    "smoke包含兼容性修改和测试框架替换，只覆盖单次有限运行；完整软件入口、跨环境轨迹、收敛性及全部论文实验均未验证。",
+    "本审计由单一模型完成，没有人类专家复核，仍可能存在解释或遗漏错误。"
+  ]
+}

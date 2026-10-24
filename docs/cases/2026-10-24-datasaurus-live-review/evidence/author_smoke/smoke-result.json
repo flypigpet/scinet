@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "seed": 20261023,
+  "iterations_completed": 1000,
+  "rows": 142,
+  "target": "circle",
+  "accepted_proposals": 687,
+  "rejected_proposals": 313,
+  "moved_points": 142,
+  "max_point_displacement": 1.093609035309461,
+  "finite_coordinates": true,
+  "author_constraint_passed": true,
+  "author_get_values_crosscheck": {
+    "passed": true,
+    "max_abs_error": 7.105427357601002e-15,
+    "tolerance": 1e-10
+  },
+  "metric_order": [
+    "mean_x",
+    "mean_y",
+    "sd_x",
+    "sd_y",
+    "r"
+  ],
+  "initial_stats": [
+    54.26327323943662,
+    47.832252816901416,
+    16.76514203911679,
+    26.935403486939116,
+    -0.06447185270095158
+  ],
+  "final_stats": [
+    54.26299733816264,
+    47.83476111818705,
+    16.76708401829902,
+    26.930127221397164,
+    -0.060557252100308885
+  ],
+  "initial_floor_2dp": [
+    54.26,
+    47.83,
+    16.76,
+    26.93,
+    -0.07
+  ],
+  "final_floor_2dp": [
+    54.26,
+    47.83,
+    16.76,
+    26.93,
+    -0.07
+  ],
+  "mean_circle_distance_before": 9.626466015989623,
+  "mean_circle_distance_after": 9.455052975996075,
+  "full_figure_reproduction": false,
+  "numpy_version": "2.3.5",
+  "pandas_version": "3.0.1"
+}

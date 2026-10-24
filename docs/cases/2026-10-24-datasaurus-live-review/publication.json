@@ -1,0 +1,129 @@
+{
+  "publication_type": "Curated public case, not a complete SciNet run",
+  "run_id": "run-20261023T235520Z-2ce51f",
+  "publication_date": "2026-10-24",
+  "original_run_source_commit": "e6db99da565473785632096471ea3e8d2f53648b",
+  "original_run_manifest_sha256": "da87b563631277e614164e14c5b6afe068dbe68b0c6e885d98bb669c6075dbcc",
+  "files_derived_from_local_run": [
+    {
+      "public_path": "evidence/review.json",
+      "original_run_path": "review.json",
+      "original_sha256": "dc6631a090addf7afd6f9decf9787efde8523d38e6f6f9777173cd7ab955f9dd",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/metrics.json",
+      "original_run_path": "metrics.json",
+      "original_sha256": "f20300af6500d025ae5250699eeabd57e74940f040f5ab6487defb6f4f4d5c4f",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/claims.json",
+      "original_run_path": "claims.json",
+      "original_sha256": "28d3a5d1468b96bc60830c6e7c285426936ec40d83cc034cdb32d37d68560310",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/review_schema.json",
+      "original_run_path": "review_schema.json",
+      "original_sha256": "0cff1cd77c21871282b9fc65c9dec2fa30a170bc92e53789bbba89e904066141",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/review_provenance.json",
+      "original_run_path": "review_provenance.json",
+      "original_sha256": "d504be0d8f75e0eef16ad94680228a28a2c73b2b15cbc72b6a9f7c48fc49cf22",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/review_input_hashes.json",
+      "original_run_path": "review_input_hashes.json",
+      "original_sha256": "4667bfc32f33ce46a5c8f310dd7056f118befce580e948cc69696fbdabeeabc9",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/provenance.json",
+      "original_run_path": "provenance.json",
+      "original_sha256": "bc4e911772dd3ed611782f5720697ed889f3bf842b6add0961f3fc09db55483b",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/evidence_assessment.json",
+      "original_run_path": "evidence_assessment.json",
+      "original_sha256": "36dc0e8742f533d71e4bc1b9add44d4ce0fadb9918f45bbd839d9ba2ddaf48de",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/author_smoke/generated.csv",
+      "original_run_path": "author_smoke/generated.csv",
+      "original_sha256": "caad3360fdcd5ae13e8915a94b002bf76b9c7ac30121f39ad53b9b5adea21bea",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/author_smoke/adapter.py",
+      "original_run_path": "author_smoke/adapter.py",
+      "original_sha256": "42443db95feecbedb8cc8988a92fbaaa058c73382eda4d0167f08519fc2a090e",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/author_smoke/seed-original.csv",
+      "original_run_path": "author_smoke/seed-original.csv",
+      "original_sha256": "d3322531d257c8b6cdf750221f2965aa4618ab7064531b5dee830ed612f42204",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/author_smoke/smoke-result.json",
+      "original_run_path": "author_smoke/smoke-result.json",
+      "original_sha256": "aac84fbf29c57887bdd6a3e37817695d1176136153339be4348b75c820f3dbeb",
+      "transformation": "none; byte-for-byte copy"
+    },
+    {
+      "public_path": "evidence/author_smoke/AUTHOR_LICENSE.txt",
+      "original_run_path": "AUTHOR_LICENSE.txt",
+      "original_sha256": "b220c80423d61b0fd7e2dc9c12d519ca18ce12cbfec2d6ca48b21bdcaa76288e",
+      "transformation": "none; byte-for-byte copy, placed next to derived author code/data"
+    },
+    {
+      "public_path": "evidence/author_smoke.json",
+      "original_run_path": "author_smoke.json",
+      "original_sha256": "d7c9861d57a5f9eb4045d0d077a58ee14ec800da6dbb281763e9269ba75207d7",
+      "transformation": "Replace source_path, seed_data_path and all artifacts values with run-relative names; reserialize JSON. All other parsed values unchanged. author-original.py maps to the pinned fixture; log.txt is withheld, not a public link."
+    },
+    {
+      "public_path": "prompt-instructions.txt",
+      "original_run_path": "review_prompt.txt",
+      "original_sha256": "1c1c69181ff49642c468f101cb5cb0660d1f51ee6fe4a66339368df47e49edc5",
+      "transformation": "Exact bytes before the first evidence wrapper; full evidence payload omitted. This is not the full prompt."
+    },
+    {
+      "public_path": "evidence/call-record.json",
+      "original_run_path": null,
+      "transformation": "New summary of experiment_record.json, review_provenance.json, run.json and locally checked event stream. Removes absolute paths and thread ID; reports unknown backend and effective reasoning setting as null."
+    }
+  ],
+  "new_editorial_files": [
+    "README.md",
+    "README.zh-CN.md",
+    "evidence/source-map.json",
+    "publication.json",
+    "manifest.json"
+  ],
+  "excluded": [
+    "paper.pdf",
+    "paper.txt",
+    "author_page.html",
+    "author_page.txt",
+    "full review_prompt.txt",
+    "ai_events.jsonl",
+    "ai_stderr.log",
+    "raw author execution log",
+    "original report.html",
+    "original manifest.json",
+    "PDF screenshots",
+    "full-evidence ZIP",
+    "workstation paths and thread ID"
+  ],
+  "integrity_scope": "manifest.json hashes the PUBLIC bytes, excluding itself; review_input_hashes.json hashes the ORIGINAL model inputs. Do not compare a redacted file with its original hash and expect equality.",
+  "licensing": "Original SciNet documentation follows the root MIT license. Derived author adapter and numerical data retain AUTHOR_LICENSE.txt. Paper/page rights are separate; no relicensing or full-text redistribution is claimed.",
+  "verification_limit": "Hashes are not trusted signatures, proof of provider identity, scientific validity or independently trusted timestamps. This public subset cannot pass full-run scinet verify, because full-text inputs and raw logs are intentionally absent."
+}

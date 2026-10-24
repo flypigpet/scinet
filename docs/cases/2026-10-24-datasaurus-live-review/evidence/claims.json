@@ -1,0 +1,26 @@
+[
+  {
+    "id": "C1",
+    "claim": "Figure 6: 13 datasets share five summary statistics to two decimal places.",
+    "source": "paper.txt",
+    "locator": "PDF page 3, Figure 6"
+  },
+  {
+    "id": "C2",
+    "claim": "Author project webpage Figure 5 prints Pearson R=+0.06.",
+    "source": "author_page.txt",
+    "locator": "Fig 5 caption"
+  },
+  {
+    "id": "C3",
+    "claim": "The published algorithm can perturb data while preserving its statistical acceptance criterion.",
+    "source": "author_code.py",
+    "locator": "get_values, is_error_still_ok, perturb, run_pattern"
+  },
+  {
+    "id": "C4",
+    "claim": "All paper experiments, animations, original seed sequences and performance claims are reproduced.",
+    "source": "paper.txt",
+    "locator": "Scope control: this is not an assertion made by the prototype"
+  }
+]

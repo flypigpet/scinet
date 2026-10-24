@@ -1,0 +1,26 @@
+{
+  "algorithm": "SHA-256",
+  "scope": "File integrity only; no trusted signature, blockchain or external timestamp.",
+  "files": {
+    "evidence/author_smoke/adapter.py": "42443db95feecbedb8cc8988a92fbaaa058c73382eda4d0167f08519fc2a090e",
+    "evidence/author_smoke/AUTHOR_LICENSE.txt": "b220c80423d61b0fd7e2dc9c12d519ca18ce12cbfec2d6ca48b21bdcaa76288e",
+    "evidence/author_smoke/generated.csv": "caad3360fdcd5ae13e8915a94b002bf76b9c7ac30121f39ad53b9b5adea21bea",
+    "evidence/author_smoke/seed-original.csv": "d3322531d257c8b6cdf750221f2965aa4618ab7064531b5dee830ed612f42204",
+    "evidence/author_smoke/smoke-result.json": "aac84fbf29c57887bdd6a3e37817695d1176136153339be4348b75c820f3dbeb",
+    "evidence/author_smoke.json": "fff2f1c981b32dd23ef142618ac34b6074bddb40b6f8a3c1f721b50a3e94a126",
+    "evidence/call-record.json": "d36e1e4fd0ea4a31d4e308385cdbf15e59c34ddaad08fd2d68dd62390b7dac1b",
+    "evidence/claims.json": "28d3a5d1468b96bc60830c6e7c285426936ec40d83cc034cdb32d37d68560310",
+    "evidence/evidence_assessment.json": "36dc0e8742f533d71e4bc1b9add44d4ce0fadb9918f45bbd839d9ba2ddaf48de",
+    "evidence/metrics.json": "f20300af6500d025ae5250699eeabd57e74940f040f5ab6487defb6f4f4d5c4f",
+    "evidence/provenance.json": "bc4e911772dd3ed611782f5720697ed889f3bf842b6add0961f3fc09db55483b",
+    "evidence/review.json": "dc6631a090addf7afd6f9decf9787efde8523d38e6f6f9777173cd7ab955f9dd",
+    "evidence/review_input_hashes.json": "4667bfc32f33ce46a5c8f310dd7056f118befce580e948cc69696fbdabeeabc9",
+    "evidence/review_provenance.json": "d504be0d8f75e0eef16ad94680228a28a2c73b2b15cbc72b6a9f7c48fc49cf22",
+    "evidence/review_schema.json": "0cff1cd77c21871282b9fc65c9dec2fa30a170bc92e53789bbba89e904066141",
+    "evidence/source-map.json": "78938e2aba4d3f3e24957db90f03ffc33bf0d3e742fd0084e02f8cec99e5409c",
+    "prompt-instructions.txt": "881370b5ddea672193c6dbad492f6b78a0f2226f2486e0f8db6a76c821fcf009",
+    "publication.json": "32200a014569e3e708bb2226e53cae387056f87cb17911e85c715ed644e591b3",
+    "README.md": "34b2d20a382ab2e8d959d47a954ce56cecfcc1a611d6f1fd63ea188d9099e4a3",
+    "README.zh-CN.md": "bce2d41be9fcf286f40c04074d279d652821b002ca41688f8b3e0c47c5fb8799"
+  }
+}

@@ -23,6 +23,12 @@ The run stores the actual prompt, input hashes, structured response, call timing
 
 Authentication failures, launch errors, timeouts and invalid responses are errors, not successful reviews. SciNet does not substitute a canned response for an unavailable model. Preserve successful reviews by creating another run for a new review.
 
+## Published live example
+
+The [24 October 2026 case](cases/2026-10-24-datasaurus-live-review/README.md) records a subsequent fresh call explicitly requesting `gpt-6-astra` with Codex CLI `0.163.0-alpha.11.2`. It took 70.434398 seconds and returned four assessments. The resolved backend and effective reasoning setting remain unknown. The unchanged structured answer, computation results, exact instruction prefix, input hashes, source map and path-redacted call summary are public; the full prompt, paper/page text and raw event logs remain local. The public subset is not a complete replay bundle or a provider attestation.
+
+The coordinating assistant and a separate automated subagent checked the findings, including PDF pages for an additional wording discrepancy. This is automated follow-up, not human domain-expert validation, an independent-model ensemble or a measured accuracy rate. No further model call was made merely to prepare this publication.
+
 ## Interpretation limits
 
 - The scope is one known paper and one AI reviewer, not an ensemble, benchmark or blinded trial.

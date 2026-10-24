@@ -6,6 +6,8 @@
 
 **0.1.0a1 是研究软件预览版。** 人工科学验证状态为 **待完成**（`human_validation_pending`）。本项目不能证明 AI 同行评审可靠，也不作论文录用或发表决定。
 
+**真实评审公开案例（2026-10-24）：** [查看案例与证据](docs/cases/2026-10-24-datasaurus-live-review/README.zh-CN.md)。新调用明确请求 `gpt-6-astra`，服务端内部模型快照未返回。案例公开原始模型回答、数值结果、来源及局限：2 项有条件支持、1 项支持、1 项未验证。它仍是带检查提示的单篇论文演示，人类专家验证待完成。
+
 ## 覆盖范围
 
 目前只有一个案例：Matejka 与 Fitzmaurice 的 *Same Stats, Different Graphs*（CHI 2017）。参见[作者项目页](https://www.research.autodesk.com/publications/same-stats-different-graphs/)、[论文 DOI](https://doi.org/10.1145/3025453.3025912)及[固定版本作者仓库](https://github.com/jmatejka/same-stats-different-graphs/tree/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370)。
@@ -79,4 +81,4 @@ scinet --workspace demo run --ai --model MODEL_ID
 
 参见[贡献指南](CONTRIBUTING.md)、[安全说明](SECURITY.md)、[变更记录](CHANGELOG.md)和[引用元数据](CITATION.cff)。自动化检查用于验证实现，不代表科学验证；CI 成功运行前不宣称其通过。
 
-SciNet 原创代码和文档使用 [MIT 许可](LICENSE)，附带的数值素材与作者代码保留原 MIT 声明。论文和网页拥有独立权利，通过脚本下载至本地，不能套用本项目 MIT 许可。公开源码和软件包排除论文全文、网页快照、本地运行结果及原始 AI 日志；详见[素材清单](docs/ASSETS.md)。
+SciNet 原创代码和文档使用 [MIT 许可](LICENSE)，附带的数值素材与作者代码保留原 MIT 声明。论文和网页拥有独立权利，通过脚本下载至本地，不能套用本项目 MIT 许可。完整本地运行、论文全文、网页快照及原始 AI 日志不公开。公开案例另行列出经检查的结构化模型回答、数值材料和来源链接；详见[素材清单](docs/ASSETS.md)。

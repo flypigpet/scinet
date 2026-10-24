@@ -1,2 +1,3 @@
 * text=auto eol=lf
 scinet/data/* -text -whitespace
+docs/cases/2026-10-24-datasaurus-live-review/** -text -whitespace

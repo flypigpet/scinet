@@ -1,0 +1,53 @@
+{
+  "purpose": "Resolve the original model evidence names to public records or separately acquired sources.",
+  "sources": {
+    "paper.txt": {
+      "availability": "withheld full text; acquire the official PDF separately",
+      "url": "https://research.autodesk.com/app/uploads/2023/03/same-stats-different-graphs.pdf_rec2hRjLLGgM7Cn2T.pdf",
+      "derived_from": "paper.pdf",
+      "locators": [
+        "PDF page 2 pseudocode line 10",
+        "PDF page 3 first paragraph and Figure 6",
+        "PDF pages 3-4 examples"
+      ],
+      "sha256": "a2c1d4c8c823847dbb11df2ac582790abc813357a85c7aa08a256ebf60fead4d"
+    },
+    "author_page.txt": {
+      "availability": "withheld full text; link to live official page, which can change",
+      "url": "https://www.research.autodesk.com/publications/same-stats-different-graphs/",
+      "locator": "Fig 5 caption in the snapshot acquired at 2026-10-23T10:08:51.874654+00:00",
+      "sha256": "1b5cb95b7f08d2af9f2fad7915e2b4ed74184edd439ff348f9343dd5f7f7c2d7"
+    },
+    "author_code.py": {
+      "availability": "pinned MIT source; also bundled in scinet/data/author_code.py",
+      "url": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/samestats/samestats.py",
+      "locators": [
+        "get_values",
+        "is_error_still_ok",
+        "perturb (line 398)",
+        "run_pattern"
+      ],
+      "sha256": "dd2ae015b712f1c406ce8ada766b637840ed8cc930bb7d0f9eb47837ff71356c"
+    },
+    "claims.json": {
+      "public_path": "claims.json",
+      "byte_identical_to_model_input": true
+    },
+    "metrics.json": {
+      "public_path": "metrics.json",
+      "byte_identical_to_model_input": true
+    },
+    "author_smoke.json": {
+      "public_path": "author_smoke.json",
+      "byte_identical_to_model_input": false,
+      "original_sha256": "d7c9861d57a5f9eb4045d0d077a58ee14ec800da6dbb281763e9269ba75207d7",
+      "transformation": "Only workstation path values changed, plus JSON serialization; see ../publication.json."
+    }
+  },
+  "supplemental_artifact_mapping": {
+    "author_smoke/author-original.py": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/samestats/samestats.py",
+    "author_smoke/log.txt": "withheld raw local execution log",
+    "author_smoke/seed-original.csv": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/samestats/datasets/seed/Datasaurus_data.csv",
+    "DatasaurusDozen.tsv": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/samestats/datasets/generated/DatasaurusDozen.tsv"
+  }
+}

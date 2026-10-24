@@ -85,3 +85,5 @@ python -m unittest discover -s tests -v
 Do not report CI as passed unless the relevant workflow completed successfully. Human scientific validation remains pending (`human_validation_pending`), including checking citations and assessing whether the scope and conclusions are appropriate.
 
 Run directories can contain third-party full text, local paths and raw model logs. They are not public release artifacts. Do not redistribute the old full-evidence ZIP. Share only material whose rights and sensitive content you have checked, and distinguish the project MIT license from the paper/page rights described in [ASSETS.md](ASSETS.md).
+
+The [24 October 2026 public case](cases/2026-10-24-datasaurus-live-review/README.md) demonstrates this selection process. It publishes unchanged numerical results and the model answer alongside explicitly path-redacted metadata, original input hashes and a separate public-file manifest. Its instructions distinguish checking the public subset from reproducing the numerical run or making a new model call. Withheld full text and logs mean the subset alone cannot reproduce the exact historical prompt.

@@ -6,6 +6,8 @@
 
 Version **0.1.0a1** is a research software preview. Human scientific validation is **pending** (`human_validation_pending`). It does not establish that AI peer review is reliable and does not make publication or acceptance decisions.
 
+**Public live-review case (24 October 2026):** [Read the case and evidence](docs/cases/2026-10-24-datasaurus-live-review/README.md). A fresh call explicitly requested `gpt-6-astra`; the backend snapshot was not returned. The case publishes the unchanged model response, numerical results, source provenance and limitations: two qualified findings, one supported finding, and one not tested. It remains a guided, single-paper demonstration with human validation pending.
+
 ## What it covers
 
 The single reference case is Matejka and Fitzmaurice's *Same Stats, Different Graphs* (CHI 2017): [paper/project page](https://www.research.autodesk.com/publications/same-stats-different-graphs/), [DOI](https://doi.org/10.1145/3025453.3025912), [pinned author repository](https://github.com/jmatejka/same-stats-different-graphs/tree/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370).
@@ -79,4 +81,4 @@ Hashes detect changes relative to a manifest. A person who replaces both files a
 
 See [contribution guidance](CONTRIBUTING.md), [security guidance](SECURITY.md), [changes](CHANGELOG.md) and [citation metadata](CITATION.cff). Automated checks can support code review but cannot establish scientific validity. No CI result is claimed before its workflow has run successfully.
 
-SciNet's original code and documentation are [MIT licensed](LICENSE). Bundled numerical fixtures and author code retain their original MIT notice. The paper and project webpage have separate rights and are downloaded locally; SciNet's license does not relicense them. Public source and package releases exclude paper full text, website snapshots, local runs and raw AI logs. See the [asset register](docs/ASSETS.md).
+SciNet's original code and documentation are [MIT licensed](LICENSE). Bundled numerical fixtures and author code retain their original MIT notice. The paper and project webpage have separate rights and are downloaded locally; SciNet's license does not relicense them. Full local runs, paper full text, website snapshots and raw AI logs are excluded from publication. The public case is a separately inventoried subset with source links, numerical artifacts and a reviewed structured model response. See the [asset register](docs/ASSETS.md).

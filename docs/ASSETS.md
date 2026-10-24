@@ -30,6 +30,12 @@ Extracted `paper.txt` and `author_page.txt` are derived from those materials and
 
 The public repository, source release and wheel exclude the local `sources/`, `output/` and `vendor/` directories, paper PDFs/full text, webpage snapshots, raw model prompts/events/logs and historical full-evidence ZIP archives. Only the explicitly registered numerical fixtures and their original MIT notice belong in the package.
 
+### Curated public case, 24 October 2026
+
+The repository additionally includes [a documented live-review case](cases/2026-10-24-datasaurus-live-review/README.md), with an explicit [publication inventory](cases/2026-10-24-datasaurus-live-review/publication.json). It contains the unchanged structured model answer, numerical results, claims, schema, provenance, hashes, an instruction-only prompt prefix, a path-redacted execution record, a call summary and editorial source checks. This is a curated exception for listed records, not publication of `output/` or its full archive. Case files are repository documentation, not added to wheel package data or the explicit source-distribution manifest.
+
+The case also preserves the actual generated adapter, seed coordinates, final generated coordinates and numerical result JSON. The adapter is derived from the same pinned MIT author source: selected functions, two documented `.loc` edits and a bounded SciNet driver. The original [author MIT notice](cases/2026-10-24-datasaurus-live-review/evidence/author_smoke/AUTHOR_LICENSE.txt) is retained beside these artifacts. No copied paper figure or PDF screenshot is published. Paper/page evidence remains separately acquired and linked; the structured response uses limited short references, not redistributed full text. Original model-input hashes and public-file hashes are distinguished because path-redacted records have different bytes.
+
 The local historical README copy (`docs/LOCAL_MVP_HISTORY.md`) is for preserving the original workstation record and is excluded from publication. Its links and instructions are historical, not release documentation.
 
 Before adding an asset, record its origin, exact version, license, modifications and permitted distribution scope. Prefer existing appropriately licensed material and preserve attribution.

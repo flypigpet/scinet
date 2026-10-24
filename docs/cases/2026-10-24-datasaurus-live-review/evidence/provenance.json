@@ -1,0 +1,56 @@
+{
+  "acquired_at_utc": "2026-10-23T10:08:51.874654+00:00",
+  "upstream_commit": "b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370",
+  "doi": "10.1145/3025453.3025912",
+  "files": [
+    {
+      "path": "paper.pdf",
+      "url": "https://research.autodesk.com/app/uploads/2023/03/same-stats-different-graphs.pdf_rec2hRjLLGgM7Cn2T.pdf",
+      "sha256": "b2dc59a53071d5a13dac503fe98e2f6a5d92a1afc3a0148bd6047d79516ec0a9",
+      "bytes": 1722718
+    },
+    {
+      "path": "author_page.html",
+      "url": "https://www.research.autodesk.com/publications/same-stats-different-graphs/",
+      "sha256": "8a754975c4d2c4eaf12589184e8555e20ba6aed0b684406ada737c5514b80f96",
+      "bytes": 177424
+    },
+    {
+      "path": "DatasaurusDozen.tsv",
+      "url": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/samestats/datasets/generated/DatasaurusDozen.tsv",
+      "sha256": "62d417ba1fda3d4ea76f316827df88f9898c9436f70cb3b84130e93b64333096",
+      "bytes": 65893
+    },
+    {
+      "path": "author_code.py",
+      "url": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/samestats/samestats.py",
+      "sha256": "dd2ae015b712f1c406ce8ada766b637840ed8cc930bb7d0f9eb47837ff71356c",
+      "bytes": 21448
+    },
+    {
+      "path": "AUTHOR_LICENSE.txt",
+      "url": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/LICENSE",
+      "sha256": "b220c80423d61b0fd7e2dc9c12d519ca18ce12cbfec2d6ca48b21bdcaa76288e",
+      "bytes": 1086
+    },
+    {
+      "path": "AUTHOR_README.md",
+      "url": "https://github.com/jmatejka/same-stats-different-graphs/blob/b4d82f3a2ff8ef5849fecbdfab6dccafccbc1370/README.md",
+      "sha256": "6f5530581db891c10f1d2f27dad1b67de495dcd4d3556383bd43dad036360ab1",
+      "bytes": 2237
+    },
+    {
+      "path": "paper.txt",
+      "derived_from": "paper.pdf",
+      "sha256": "a2c1d4c8c823847dbb11df2ac582790abc813357a85c7aa08a256ebf60fead4d",
+      "bytes": 21158
+    },
+    {
+      "path": "author_page.txt",
+      "derived_from": "author_page.html",
+      "sha256": "1b5cb95b7f08d2af9f2fad7915e2b4ed74184edd439ff348f9343dd5f7f7c2d7",
+      "bytes": 12785
+    }
+  ],
+  "license_note": "Author repository has MIT license. Paper PDF retains its own ACM notice; no relicensing is asserted."
+}

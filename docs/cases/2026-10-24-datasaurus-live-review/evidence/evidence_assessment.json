@@ -1,0 +1,67 @@
+{
+  "method": "Automated source inspection by the coordinating assistant and a separate subagent; reference facts checked before reading the live review, then all four findings checked afterwards. Not human expert review or an independent-model voting ensemble.",
+  "review_sha256": "dc6631a090addf7afd6f9decf9787efde8523d38e6f6f9777173cd7ab955f9dd",
+  "input_hashes": {
+    "paper.txt": "a2c1d4c8c823847dbb11df2ac582790abc813357a85c7aa08a256ebf60fead4d",
+    "author_page.txt": "1b5cb95b7f08d2af9f2fad7915e2b4ed74184edd439ff348f9343dd5f7f7c2d7",
+    "author_code.py": "dd2ae015b712f1c406ce8ada766b637840ed8cc930bb7d0f9eb47837ff71356c",
+    "claims.json": "28d3a5d1468b96bc60830c6e7c285426936ec40d83cc034cdb32d37d68560310",
+    "metrics.json": "f20300af6500d025ae5250699eeabd57e74940f040f5ab6487defb6f4f4d5c4f",
+    "author_smoke.json": "d7c9861d57a5f9eb4045d0d077a58ee14ec800da6dbb281763e9269ba75207d7"
+  },
+  "checks": [
+    {
+      "claim": "C1",
+      "assessment": "Supported with qualification",
+      "evidence": [
+        "metrics.json precision and crosscheck",
+        "author_code.py get_values and is_error_still_ok",
+        "paper.pdf page 3 Figure 6"
+      ],
+      "detail": "Floor and truncation each agree across 13 datasets. Nearest rounding differs in all five metrics. Floor correlation is -0.07; truncation is -0.06."
+    },
+    {
+      "claim": "C2",
+      "assessment": "Supported",
+      "evidence": [
+        "author_page.txt line 106",
+        "paper.pdf page 3 Figure 6",
+        "metrics.json ranges.r"
+      ],
+      "detail": "Website prints R=0.06 without a plus glyph; its positive meaning conflicts with all negative dataset correlations. Paper Figure 6 prints -0.06."
+    },
+    {
+      "claim": "C3",
+      "assessment": "Supported with qualification",
+      "evidence": [
+        "author_smoke.json",
+        "author_code.py perturb and run_pattern"
+      ],
+      "detail": "1000 proposals, 687 accepted, 313 rejected, 142 points moved. Acceptance constraint passes. Selected extracted functions and adapted bounded loop, not a full original-package or convergence reproduction."
+    },
+    {
+      "claim": "C4",
+      "assessment": "Correctly marked not tested",
+      "evidence": [
+        "claims.json C4",
+        "author_smoke.json full_figure_reproduction",
+        "paper.pdf pages 3-4"
+      ],
+      "detail": "No evidence for all experiments, animations, historical random sequences or performance reproduction."
+    }
+  ],
+  "additional_observation": {
+    "finding": "F3 temperature-comparison wording inconsistency",
+    "pdf_visual_check": "Original PDF pages 2 and 3 were rendered using pdftoppm and inspected after the review. Page 3 prose states temp < random, whereas page 2 pseudocode line 10 states temp > RANDOM().",
+    "code_check": "author_code.py perturb: do_bad = np.random.random_sample() < temp (line 398). Other bounds and statistical acceptance checks still apply.",
+    "scope": "Confirmed internal wording/code inconsistency. Does not establish algorithm failure, invalidate the paper, or demonstrate novelty of this observation.",
+    "model_images_provided": false,
+    "rendered_from_pdf_sha256": "b2dc59a53071d5a13dac503fe98e2f6a5d92a1afc3a0148bd6047d79516ec0a9"
+  },
+  "outcome": "No unsupported numerical assertion or fabricated evidence locator identified in this limited check. This is not a measured accuracy rate.",
+  "limitations": [
+    "One known paper; guided prompt already cues precision and website distinctions.",
+    "Training-data familiarity cannot be excluded.",
+    "No human domain-expert validation or blinded benchmark."
+  ]
+}

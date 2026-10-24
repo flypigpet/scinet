@@ -1,0 +1,113 @@
+{
+  "source_path": "author_code.py",
+  "source_sha256": "dd2ae015b712f1c406ce8ada766b637840ed8cc930bb7d0f9eb47837ff71356c",
+  "seed_data_path": "author_smoke/seed-original.csv",
+  "seed_data_sha256": "d3322531d257c8b6cdf750221f2965aa4618ab7064531b5dee830ed612f42204",
+  "seed_data_canonical_sha256": "6bb3ef074b5dcee8cabeffe57f79ad5adf298d7cad0b496ef3d425f4f6086097",
+  "seed_data_canonicalization": "Replace CRLF with LF only; all other bytes unchanged",
+  "adapter_sha256": "f3a275e26ea7170aba649ca436f78ee20cc266baa3ded6cc8bd4921d83881f81",
+  "extracted_author_functions": [
+    "dist",
+    "distance_point_line",
+    "get_points_for_shape",
+    "get_values",
+    "is_error_still_ok",
+    "line_magnitude",
+    "perturb",
+    "s_curve"
+  ],
+  "compatibility_modifications": [
+    {
+      "before": "df['x'][row] = xm",
+      "after": "df.loc[row, 'x'] = xm",
+      "reason": "pandas 3 Copy-on-Write requires assignment to the DataFrame, not a chained Series"
+    },
+    {
+      "before": "df['y'][row] = ym",
+      "after": "df.loc[row, 'y'] = ym",
+      "reason": "pandas 3 Copy-on-Write requires assignment to the DataFrame, not a chained Series"
+    }
+  ],
+  "harness_changes": [
+    "Extract only named functions and LINE_SHAPES; skip package imports, plotting, CLI, and resource loader.",
+    "Use the author perturb and is_error_still_ok functions inside a bounded loop equivalent to run_pattern(iters=999): 1000 proposals.",
+    "Keep the author run_pattern temperature schedule (0.4 to 0), circle target, perturb defaults including shake=0.1, and decimals=2.",
+    "Verify and freeze the author dino seed in seed-original.csv; load that copy and omit all intermediate plots/animation frames; save final coordinates only.",
+    "Set NumPy random seed to 20261023; limit numerical-library threads to one and subprocess wall time to 30 seconds."
+  ],
+  "limitations": [
+    "A bounded execution of selected author functions; not a complete package, paper figure, animation, or convergence reproduction.",
+    "1000 proposals may retain much of the dinosaur shape; visible circular convergence is not the smoke-test criterion.",
+    "The author perturb retry loop remains unchanged and can retry internally; the subprocess timeout bounds total wall time.",
+    "The subprocess is not a security sandbox; execution is restricted to the reviewed source and seed digests.",
+    "A fixed seed is repeatable in the recorded environment; numerical-library version changes can change the trajectory."
+  ],
+  "timeout_seconds": 30,
+  "artifacts": {
+    "adapter.py": "author_smoke/adapter.py",
+    "author-original.py": "author_smoke/author-original.py",
+    "seed-original.csv": "author_smoke/seed-original.csv",
+    "log.txt": "author_smoke/log.txt",
+    "generated.csv": "author_smoke/generated.csv",
+    "smoke-result.json": "author_smoke/smoke-result.json"
+  },
+  "seed": 20261023,
+  "iterations_requested": 1000,
+  "full_figure_reproduction": false,
+  "elapsed_seconds": 1.4621758999928716,
+  "status": "passed",
+  "iterations_completed": 1000,
+  "rows": 142,
+  "target": "circle",
+  "accepted_proposals": 687,
+  "rejected_proposals": 313,
+  "moved_points": 142,
+  "max_point_displacement": 1.093609035309461,
+  "finite_coordinates": true,
+  "author_constraint_passed": true,
+  "author_get_values_crosscheck": {
+    "passed": true,
+    "max_abs_error": 7.105427357601002e-15,
+    "tolerance": 1e-10
+  },
+  "metric_order": [
+    "mean_x",
+    "mean_y",
+    "sd_x",
+    "sd_y",
+    "r"
+  ],
+  "initial_stats": [
+    54.26327323943662,
+    47.832252816901416,
+    16.76514203911679,
+    26.935403486939116,
+    -0.06447185270095158
+  ],
+  "final_stats": [
+    54.26299733816264,
+    47.83476111818705,
+    16.76708401829902,
+    26.930127221397164,
+    -0.060557252100308885
+  ],
+  "initial_floor_2dp": [
+    54.26,
+    47.83,
+    16.76,
+    26.93,
+    -0.07
+  ],
+  "final_floor_2dp": [
+    54.26,
+    47.83,
+    16.76,
+    26.93,
+    -0.07
+  ],
+  "mean_circle_distance_before": 9.626466015989623,
+  "mean_circle_distance_after": 9.455052975996075,
+  "numpy_version": "2.3.5",
+  "pandas_version": "3.0.1",
+  "returncode": 0
+}

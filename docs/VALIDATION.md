@@ -17,3 +17,7 @@ The local release check additionally installed the built package in a new Window
 These counts describe this specific run. A fixed seed does not guarantee identical trajectories across all future library versions or platforms.
 
 The optional AI protocol is tested with explicitly mocked responses and failure cases. **No fresh live AI review was run as part of release validation**, and CI does not use model credentials. The earlier local guided review is not included in the public release and did not capture its model identity. Human scientific validation remains pending; these software checks do not establish scientific-review quality.
+
+## Subsequent live-review case
+
+After release validation, a separate run on 24 October 2026 explicitly requested `gpt-6-astra` and completed successfully. The [public case](cases/2026-10-24-datasaurus-live-review/README.md) records its model-identity limits, unchanged response, numerical evidence and automated follow-up. It does not alter the historical release-validation statement above. Public file integrity can be checked using the command in that case; the curated subset intentionally excludes full text and raw logs and is not a complete SciNet run. Human scientific validation remains pending.
